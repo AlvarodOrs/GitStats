@@ -2,7 +2,7 @@
 <svg width="500" height="800" xmlns="http://www.w3.org/2000/svg">
     <defs>
         <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#563d7c;stop-opacity:0.9" /><stop offset="50%" style="stop-color:#f1e05a;stop-opacity:0.9" /><stop offset="100%" style="stop-color:#555555;stop-opacity:0.9" />
+            <stop offset="0%" style="stop-color:#3572A5;stop-opacity:0.85" /><stop offset="31.99%" style="stop-color:#3572A5;stop-opacity:0.85" /><stop offset="31.99%" style="stop-color:#2b7489;stop-opacity:0.85" /><stop offset="54.269999999999996%" style="stop-color:#2b7489;stop-opacity:0.85" /><stop offset="54.269999999999996%" style="stop-color:#555555;stop-opacity:0.85" /><stop offset="71.81%" style="stop-color:#555555;stop-opacity:0.85" /><stop offset="71.81%" style="stop-color:#563d7c;stop-opacity:0.85" /><stop offset="72.09%" style="stop-color:#563d7c;stop-opacity:0.85" /><stop offset="72.09%" style="stop-color:#f1e05a;stop-opacity:0.85" /><stop offset="72.27000000000001%" style="stop-color:#f1e05a;stop-opacity:0.85" /><stop offset="72.27000000000001%" style="stop-color:#DA3434;stop-opacity:0.85" /><stop offset="100%" style="stop-color:#DA3434;stop-opacity:0.85" />
         </linearGradient>
         <style>
             .title { font: 600 22px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
@@ -23,7 +23,7 @@
     <!-- Main Stats Card -->
     <g transform="translate(0, 20)">
         <!-- Title with Avatar -->
-        <text align="left" class="title">Álvaro d'Ors Nestares' GitHub Stats</text>
+        <text x="140" y="35" class="title">Álvaro d'Ors Nestares' GitHub Stats</text>
         
         <!-- Avatar Circle -->
         <circle cx="420" cy="70" r="35" fill="rgba(255,255,255,0.2)" stroke="#ffffff" stroke-width="3"/>
@@ -61,7 +61,7 @@
         <g transform="translate(40, 40)">
             <text x="25" y="25" text-anchor="middle" class="streak-number">138</text>
             <text x="25" y="45" text-anchor="middle" class="streak-label">Total Contributions</text>
-            <text x="25" y="62" text-anchor="middle" class="streak-date">Dec 02, 2020 - Present</text>
+            <text x="25" y="62" text-anchor="middle" class="streak-date">2020-12-02 - Present</text>
         </g>
         
         <!-- Divider -->
@@ -96,20 +96,20 @@
         
         <!-- Language Bar -->
         <g transform="translate(30, 55)">
-            <rect x="0" y="0" width="1.2320000000000002" height="8" rx="4" fill="#563d7c"/><rect x="1.2320000000000002" y="0" width="0.7919999999999999" height="8" fill="#f1e05a"/><rect x="2.024" y="0" width="77.176" height="8" fill="#555555"/><rect x="79.2" y="0" width="0.17600000000000002" height="8" fill="#858585"/><rect x="79.376" y="0" width="140.75599999999997" height="8" fill="#3572A5"/><rect x="220.13199999999998" y="0" width="98.032" height="8" fill="#2b7489"/>
+            <rect x="0" y="0" width="140.75599999999997" height="8" rx="4" fill="#3572A5"/><rect x="140.75599999999997" y="0" width="98.032" height="8" fill="#2b7489"/><rect x="238.78799999999995" y="0" width="77.176" height="8" fill="#555555"/><rect x="315.96399999999994" y="0" width="1.2320000000000002" height="8" fill="#563d7c"/><rect x="317.19599999999997" y="0" width="0.7919999999999999" height="8" fill="#f1e05a"/><rect x="317.98799999999994" y="0" width="0.17600000000000002" height="8" fill="#858585"/>
         </g>
         
         <!-- Language Labels -->
         <g transform="translate(30, 80)">
             
         <g transform="translate(0, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#563d7c"/>
-            <text x="15" y="0" class="lang-text">CSS 0.28%</text>
+            <circle cx="5" cy="-3" r="5" fill="#3572A5"/>
+            <text x="15" y="0" class="lang-text">Python 31.99%</text>
         </g>
         
         <g transform="translate(150, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#f1e05a"/>
-            <text x="15" y="0" class="lang-text">JavaScript 0.18%</text>
+            <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
+            <text x="15" y="0" class="lang-text">TypeScript 22.28%</text>
         </g>
         
         <g transform="translate(300, 0)">
@@ -118,18 +118,18 @@
         </g>
         
         <g transform="translate(0, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#858585"/>
-            <text x="15" y="0" class="lang-text">CMake 0.04%</text>
+            <circle cx="5" cy="-3" r="5" fill="#563d7c"/>
+            <text x="15" y="0" class="lang-text">CSS 0.28%</text>
         </g>
         
         <g transform="translate(150, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#3572A5"/>
-            <text x="15" y="0" class="lang-text">Python 31.99%</text>
+            <circle cx="5" cy="-3" r="5" fill="#f1e05a"/>
+            <text x="15" y="0" class="lang-text">JavaScript 0.18%</text>
         </g>
         
         <g transform="translate(300, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-            <text x="15" y="0" class="lang-text">TypeScript 22.28%</text>
+            <circle cx="5" cy="-3" r="5" fill="#858585"/>
+            <text x="15" y="0" class="lang-text">CMake 0.04%</text>
         </g>
         
         </g>
@@ -152,6 +152,18 @@
             <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
             <text x="25" y="0" class="repo-name">AlvarodOrs</text>
             <text x="380" y="0" class="lang-text">39 views</text>
+        </g>
+        
+        <g transform="translate(30, 111)">
+            <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
+            <text x="25" y="0" class="repo-name">Destiny</text>
+            <text x="380" y="0" class="lang-text">1 views</text>
+        </g>
+        
+        <g transform="translate(30, 139)">
+            <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
+            <text x="25" y="0" class="repo-name">Gideon</text>
+            <text x="380" y="0" class="lang-text">1 views</text>
         </g>
         
     </g>

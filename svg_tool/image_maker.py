@@ -80,7 +80,7 @@ def image_maker(data: dict) -> None:
     <!-- Main Stats Card -->
     <g transform="translate(0, 20)">
         <!-- Title with Avatar -->
-        <text align="left" class="title">{username_label} GitHub Stats</text>
+        <text x="140" y="35" class="title">{username_label} GitHub Stats</text>
         
         <!-- Avatar Circle -->
         <circle cx="420" cy="70" r="35" fill="rgba(255,255,255,0.2)" stroke="#ffffff" stroke-width="3"/>
@@ -118,7 +118,7 @@ def image_maker(data: dict) -> None:
         <g transform="translate(40, 40)">
             <text x="25" y="25" text-anchor="middle" class="streak-number">{total_contribs}</text>
             <text x="25" y="45" text-anchor="middle" class="streak-label">Total Contributions</text>
-            <text x="25" y="62" text-anchor="middle" class="streak-date">{_format_date(contrib_since)} - Present</text>
+            <text x="25" y="62" text-anchor="middle" class="streak-date">{contrib_since} - Present</text>
         </g>
         
         <!-- Divider -->
@@ -176,7 +176,7 @@ def image_maker(data: dict) -> None:
         f.write(svg_code)
 
 def _generate_gradient_stops(langs):
-    """Generate gradient stops based on top languages"""
+    """Generate gradient stops based on top languages proportional to their usage"""
     color_map = {
         'Python': '#3572A5',
         'JavaScript': '#f1e05a',
@@ -196,24 +196,45 @@ def _generate_gradient_stops(langs):
         'HTML': '#e34c26',
         'Shell': '#89e051',
         'PowerShell': '#012456',
+        'CMake': '#DA3434',
+        'Batchfile': '#C1F12E',
     }
     
     if not langs:
         return '<stop offset="0%" style="stop-color:#667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />'
     
-    # Get colors for top 3 languages
-    colors = []
-    for lang, _ in langs[:3]:
-        colors.append(color_map.get(lang, '#667eea'))
+    # Sort languages by percentage descending
+    sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
     
-    # If less than 3 languages, fill with default
-    while len(colors) < 3:
-        colors.append('#764ba2')
+    # Take top languages that cover at least 90% of usage, or at least top 3
+    cumulative = 0
+    selected_langs = []
+    for lang, percent in sorted_langs:
+        selected_langs.append((lang, percent))
+        cumulative += percent
+        if cumulative >= 90 and len(selected_langs) >= 3:
+            break
+        if len(selected_langs) >= 6:  # Max 6 colors in gradient
+            break
     
+    # Calculate cumulative percentages for gradient stops
     stops = []
-    stops.append(f'<stop offset="0%" style="stop-color:{colors[0]};stop-opacity:0.9" />')
-    stops.append(f'<stop offset="50%" style="stop-color:{colors[1]};stop-opacity:0.9" />')
-    stops.append(f'<stop offset="100%" style="stop-color:{colors[2]};stop-opacity:0.9" />')
+    cumulative_percent = 0
+    
+    for i, (lang, percent) in enumerate(selected_langs):
+        color = color_map.get(lang, '#667eea')
+        
+        # Add stop at the beginning of this language's section
+        stops.append(f'<stop offset="{cumulative_percent}%" style="stop-color:{color};stop-opacity:0.85" />')
+        
+        cumulative_percent += percent
+        
+        # Add stop at the end of this language's section (unless it's the last one)
+        if i < len(selected_langs) - 1:
+            stops.append(f'<stop offset="{cumulative_percent}%" style="stop-color:{color};stop-opacity:0.85" />')
+        else:
+            # Last stop should be at 100%
+            stops.append(f'<stop offset="100%" style="stop-color:{color};stop-opacity:0.85" />')
     
     return ''.join(stops)
 
@@ -221,6 +242,9 @@ def _generate_language_bar(langs):
     """Generate the horizontal language bar"""
     if not langs:
         return ''
+    
+    # Sort by percentage descending
+    sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
     
     color_map = {
         'Python': '#3572A5',
@@ -239,7 +263,7 @@ def _generate_language_bar(langs):
     x_offset = 0
     total_width = 440
     
-    for lang, percent in langs:
+    for lang, percent in sorted_langs:
         color = color_map.get(lang, '#858585')
         width = (percent / 100) * total_width
         
@@ -262,6 +286,9 @@ def _generate_language_labels(langs):
     if not langs:
         return ''
     
+    # Sort by percentage descending
+    sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
+    
     color_map = {
         'Python': '#3572A5',
         'JavaScript': '#f1e05a',
@@ -279,7 +306,7 @@ def _generate_language_labels(langs):
     x_offset = 0
     y_row = 0
     
-    for i, (lang, percent) in enumerate(langs):
+    for i, (lang, percent) in enumerate(sorted_langs):
         color = color_map.get(lang, '#858585')
         
         # 3 languages per row
@@ -307,7 +334,6 @@ def _generate_top_repos(repos):
     y_offset = 55
     
     for i, (name, data) in enumerate(sorted_repos):
-        if data['count'] <= 1: continue
         # Icons for different tiers
         if i == 0:
             icon = '★'  # Star for #1
