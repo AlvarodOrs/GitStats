@@ -1,98 +1,78 @@
 import json
 from datetime import datetime, timedelta
 
-def total_contributions_per_year(contributions, year):
-    total = 0
-    weeks = contributions.get("contributionCalendar", {}).get("weeks", [])
+def total_contributions_per_year(contributions: dict, year: int | str):
+    # Convert year to str for lookup
+    year_str = str(year)
     
-    for week in weeks:
-        for day in week.get("contributionDays", []):
-            date_str = day["date"]
-            date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-            if date_obj.year == year:
-                total += day["contributionCount"]
-    return total
-
-def longest_streak(streak_days):
-    if not streak_days:
-        return {
-            "longest_streak_days": 0,
-            "start_date": None,
-            "end_date": None
-        }
-
-    # Parse + sort ascending
-    days = sorted(
-        datetime.strptime(d["date"], "%Y-%m-%d")
-        for d in streak_days
-    )
-
-    max_len = 1
-    current_len = 1
-
-    max_start = days[0]
-    max_end = days[0]
-    current_start = days[0]
-
-    for i in range(1, len(days)):
-        if days[i] - days[i - 1] == timedelta(days=1):
-            current_len += 1
-        else:
-            # streak broken
-            if current_len > max_len:
-                max_len = current_len
-                max_start = current_start
-                max_end = days[i - 1]
-
-            current_len = 1
-            current_start = days[i]
-
-    # Final check (important, don’t forget this)
-    if current_len > max_len:
-        max_len = current_len
-        max_start = current_start
-        max_end = days[-1]
-
+    # Try both string and integer key
+    if year_str in contributions:
+        _y = contributions[year_str]
+    elif int(year) in contributions:
+        _y = contributions[int(year)]
+    else:
+        return {"commits": 0, "prs": 0, "issues": 0, "total": 0}
+    
     return {
-        "longest_streak_days": max_len,
-        "start_date": max_start.strftime("%Y-%m-%d"),
-        "end_date": max_end.strftime("%Y-%m-%d")
+        "commits": _y.get("commits", 0),
+        "prs": _y.get("prs", 0),
+        "issues": _y.get("issues", 0),
+        "total": _y.get("total", 0)
     }
 
-def format_streaks(streak_days):
-    if not streak_days:
-        return {
-            "active_streak_days": 0,
-            "start_date": None,
-            "end_date": None
-        }
+def total_contributions(contributions: dict, year_start: int | str, year_end: int | str):
+    total_sum = {"commits": 0, "prs": 0, "issues": 0, "total": 0}
+    
+    for y in range(int(year_start), int(year_end) + 1):
+        yearly = total_contributions_per_year(contributions, y)
+        for key in total_sum:
+            total_sum[key] += yearly[key]
+    
+    return total_sum
 
-    # Parse and sort by date ascending
-    days = sorted(
-        (datetime.strptime(d["date"], "%Y-%m-%d") for d in streak_days)
+def get_streaks(streaks: dict) -> tuple[dict | None, dict]:
+    if not streaks:
+        return None, {}
+
+    dates = sorted(
+        datetime.strptime(d, "%Y-%m-%d") for d in streaks.keys()
     )
 
-    # Start from the most recent day
-    streak_end = days[-1]
-    streak_start = streak_end
-    streak_len = 1
+    today = datetime.today().date()
 
-    # Walk backwards and check for consecutive days
-    for i in range(len(days) - 2, -1, -1):
-        if streak_start - days[i] == timedelta(days=1):
-            streak_start = days[i]
-            streak_len += 1
+    all_streaks = []
+    start = dates[0]
+    prev = dates[0]
+
+    for d in dates[1:]:
+        if (d - prev).days == 1:
+            prev = d
         else:
-            break
+            all_streaks.append((start, prev))
+            start = d
+            prev = d
 
-    return {
-        "active_streak_days": streak_len,
-        "start_date": streak_start.strftime("%Y-%m-%d"),
-        "end_date": streak_end.strftime("%Y-%m-%d")
-    }
+    # push last streak
+    all_streaks.append((start, prev))
+
+    # build streak objects
+    streak_objs = [{
+        "from_date": s.strftime("%Y-%m-%d"),
+        "to_date": e.strftime("%Y-%m-%d"),
+        "total_streak": (e - s).days + 1
+    } for s, e in all_streaks]
+
+    # longest streak
+    max_streak = max(streak_objs, key=lambda x: x["total_streak"])
+
+    # current streak (must end today)
+    current_streak = next(
+        (s for s in streak_objs if datetime.strptime(s["to_date"], "%Y-%m-%d").date() == today),
+        None
+    )
+
+    return current_streak, max_streak
 
 def load_config(filepath:str = 'config.json') -> dict:
-    config = {}
     with open(filepath, 'r') as file: data = json.load(file)
-    for parameter in data: config[parameter] = data[parameter]
-    return config
+    return data

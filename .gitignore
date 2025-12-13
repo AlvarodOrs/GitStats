@@ -3,4 +3,4 @@ test/
 **/__pycache__
 .env
 config.json
-github_data/
+data/
