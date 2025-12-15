@@ -12,9 +12,37 @@ def image_maker(data: dict) -> None:
         streak_info = data['streak_info']
         repos = data['repo_views']
         languages = data['languages']
-        return username, created, stars_total, contributions_now, contributions_total, streak_info, repos, languages
+        avatar_url = data['user_data']['avatar_url']
 
-    username, created, stars_total, contributions_now, contributions_total, streak_info, repos, languages = _data_fetcher(data)
+        return username, created, avatar_url, stars_total, contributions_now, contributions_total, streak_info, repos, languages
+    
+    def _color_map_set():
+        color_map = {
+            'Python': "#ffd700",
+            'JavaScript': '#f1e05a',
+            'TypeScript': '#2b7489',
+            'Java': '#b07219',
+            'C': '#555555',
+            'C++': '#f34b7d',
+            'C#': '#178600',
+            'Go': '#00ADD8',
+            'Rust': '#dea584',
+            'Ruby': '#701516',
+            'PHP': '#4F5D95',
+            'Swift': '#ffac45',
+            'Kotlin': '#F18E33',
+            'R': '#198CE7',
+            'CSS': '#563d7c',
+            'HTML': '#e34c26',
+            'Shell': '#89e051',
+            'PowerShell': '#012456',
+            'CMake': '#DA3434',
+            'Batchfile': '#C1F12E',
+        }
+        return color_map
+
+    color_map = _color_map_set()
+    username, created, avatar_url, stars_total, contributions_now, contributions_total, streak_info, repos, languages = _data_fetcher(data)
 
     # Format possessive
     if username[-1].lower() == 's':
@@ -33,9 +61,54 @@ def image_maker(data: dict) -> None:
     longest_streak_days = longest_streak.get('total_streak', 0)
     longest_from = longest_streak.get('from_date', '')
     longest_to = longest_streak.get('to_date', '')
-    active_streak_days = active_streak.get('total_streak', 0)
-    active_from = active_streak.get('from_date', '')
-    active_to = active_streak.get('to_date', '')
+    
+    if active_streak != None: 
+        print(f'Active streak!')
+        active_streak_days = active_streak.get('total_streak', 0)
+        active_from = active_streak.get('from_date', '')
+        active_to = active_streak.get('to_date', '')
+    else:
+        print(f'Inactive streak!')
+        active_streak_days = f'0'
+        active_from = f'0'
+        active_to = f'0'
+
+    # Check if streak is active (ends today)
+    from datetime import datetime, timedelta
+    today = datetime.utcnow().date()
+    is_streak_active = False
+    if active_to:
+        try:
+            streak_end_date = datetime.strptime(active_to, '%Y-%m-%d').date()
+            # Consider streak active if it ended today or yesterday
+            is_streak_active = (today - streak_end_date).days <= 1
+        except:
+            pass
+    
+    # Flame colors based on active status
+    _streak_title = 'Current Streak'
+    if active_streak != None:
+        flame_gradient = '''
+            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
+            </linearGradient>
+        '''
+        flame_fill = "url(#flame-gradient)"
+        flame_number_color = "#ff4500"
+        _streak_dates = f'{_format_date(active_from)} - {_format_date(active_to)}'
+    else:
+        flame_gradient = '''
+            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#6dd5ed;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#2193b0;stop-opacity:1" />
+            </linearGradient>
+        '''
+        flame_fill = "url(#flame-gradient)"
+        flame_number_color = "#5dade2"
+        _streak_title = f'No current streak'
+        _streak_dates = f'Lost...'
     
     # Total contributions
     total_contribs = contributions_total.get('contributions_total', 0)
@@ -46,22 +119,25 @@ def image_maker(data: dict) -> None:
     # Get contribution since date
     contrib_since = created
     
-    # Generate gradient based on top languages
-    gradient_stops = _generate_gradient_stops(top_langs)
+    # Generate animated dots based on languages
+    animated_dots, dot_animations = _generate_animated_dots(top_langs, color_map)
     
-    # Get initial for avatar circle
-    initial = username[0].upper()
-    
+        
     # Ensure folder exists
     os.makedirs("img", exist_ok=True)
 
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>
-<svg width="500" height="800" xmlns="http://www.w3.org/2000/svg">
+<svg width="500" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            {gradient_stops}
-        </linearGradient>
+        {flame_gradient}
+        <clipPath id="avatar-clip">
+            <circle cx="420" cy="70" r="35"/>
+        </clipPath>
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
         <style>
+            {dot_animations}
             .title {{ font: 600 22px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }}
             .stat-label {{ font: 400 14px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; opacity: 0.9; }}
             .stat-value {{ font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }}
@@ -74,17 +150,25 @@ def image_maker(data: dict) -> None:
         </style>
     </defs>
     
-    <!-- Background -->
-    <rect width="500" height="800" fill="url(#bg-gradient)" rx="15"/>
+    <!-- Dark Background -->
+    <rect width="500" height="800" fill="#0d1117" rx="15"/>
+    
+    <!-- Animated Dots Background -->
+    <g opacity="0.8" filter="url(#blur)">
+        {animated_dots}
+    </g>
+    
+    <!-- Overlay gradient for depth -->
+    <rect width="500" height="800" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
     
     <!-- Main Stats Card -->
     <g transform="translate(0, 20)">
         <!-- Title with Avatar -->
         <text x="140" y="35" class="title">{username_label} GitHub Stats</text>
         
-        <!-- Avatar Circle -->
-        <circle cx="420" cy="70" r="35" fill="rgba(255,255,255,0.2)" stroke="#ffffff" stroke-width="3"/>
-        <text x="420" y="80" text-anchor="middle" font-size="32" font-weight="600" fill="#ffffff">{initial}</text>
+        <!-- Avatar Image -->
+        <circle cx="420" cy="70" r="37" fill="none" stroke="#ffffff" stroke-width="3"/>
+        <image x="385" y="35" width="70" height="70" xlink:href="{avatar_url}" clip-path="url(#avatar-clip)" preserveAspectRatio="xMidYMid slice"/>
         
         <!-- Stats Grid -->
         <g transform="translate(30, 80)">
@@ -127,11 +211,11 @@ def image_maker(data: dict) -> None:
         <!-- Current Streak -->
         <g transform="translate(195, 40)">
             <!-- Flame Icon -->
-            <path d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z" fill="#ffffff" opacity="0.8"/>
-            <text x="35" y="22" text-anchor="middle" font-size="20" font-weight="700" fill="#8b5cf6">{active_streak_days}</text>
+            <path d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z" fill="{flame_fill}" opacity="0.9"/>
+            <text x="35" y="22" text-anchor="middle" font-size="20" font-weight="700" fill="{flame_number_color}">{active_streak_days}</text>
             
-            <text x="35" y="45" text-anchor="middle" class="streak-label">Current Streak</text>
-            <text x="35" y="62" text-anchor="middle" class="streak-date">{_format_date(active_from)} - {_format_date(active_to)}</text>
+            <text x="35" y="45" text-anchor="middle" class="streak-label">{_streak_title}</text>
+            <text x="35" y="62" text-anchor="middle" class="streak-date">{_streak_dates}</text>
         </g>
         
         <!-- Divider -->
@@ -153,12 +237,12 @@ def image_maker(data: dict) -> None:
         
         <!-- Language Bar -->
         <g transform="translate(30, 55)">
-            {_generate_language_bar(top_langs)}
+            {_generate_language_bar(top_langs, color_map)}
         </g>
         
         <!-- Language Labels -->
         <g transform="translate(30, 80)">
-            {_generate_language_labels(top_langs)}
+            {_generate_language_labels(top_langs, color_map)}
         </g>
     </g>
     
@@ -175,90 +259,69 @@ def image_maker(data: dict) -> None:
     with open(f"img/{data['user_data']['name'].replace(' ', '_')}-stats-card.svg", "w", encoding='utf-8') as f:
         f.write(svg_code)
 
-def _generate_gradient_stops(langs):
-    """Generate gradient stops based on top languages proportional to their usage"""
-    color_map = {
-        'Python': '#3572A5',
-        'JavaScript': '#f1e05a',
-        'TypeScript': '#2b7489',
-        'Java': '#b07219',
-        'C': '#555555',
-        'C++': '#f34b7d',
-        'C#': '#178600',
-        'Go': '#00ADD8',
-        'Rust': '#dea584',
-        'Ruby': '#701516',
-        'PHP': '#4F5D95',
-        'Swift': '#ffac45',
-        'Kotlin': '#F18E33',
-        'R': '#198CE7',
-        'CSS': '#563d7c',
-        'HTML': '#e34c26',
-        'Shell': '#89e051',
-        'PowerShell': '#012456',
-        'CMake': '#DA3434',
-        'Batchfile': '#C1F12E',
-    }
-    
+def _generate_animated_dots(langs, color_map):
+    """Generate animated dots background based on language percentages"""
+
     if not langs:
-        return '<stop offset="0%" style="stop-color:#667eea;stop-opacity:1" /><stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />'
+        return '', ''
     
-    # Sort languages by percentage descending
+    # Sort languages by percentage
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
     
-    # Take top languages that cover at least 90% of usage, or at least top 3
-    cumulative = 0
-    selected_langs = []
+    # Calculate total number of dots (let's use 100 total)
+    total_dots = 100
+    dots = []
+    animations = []
+    
+    import random
+    random.seed(42)  # For consistency
+    
+    dot_id = 0
     for lang, percent in sorted_langs:
-        selected_langs.append((lang, percent))
-        cumulative += percent
-        if cumulative >= 90 and len(selected_langs) >= 3:
-            break
-        if len(selected_langs) >= 6:  # Max 6 colors in gradient
-            break
-    
-    # Calculate cumulative percentages for gradient stops
-    stops = []
-    cumulative_percent = 0
-    
-    for i, (lang, percent) in enumerate(selected_langs):
-        color = color_map.get(lang, '#667eea')
+        color = color_map.get(lang, '#858585')
+        # Calculate number of dots for this language
+        num_dots = int((percent / 100) * total_dots)
         
-        # Add stop at the beginning of this language's section
-        stops.append(f'<stop offset="{cumulative_percent}%" style="stop-color:{color};stop-opacity:0.85" />')
-        
-        cumulative_percent += percent
-        
-        # Add stop at the end of this language's section (unless it's the last one)
-        if i < len(selected_langs) - 1:
-            stops.append(f'<stop offset="{cumulative_percent}%" style="stop-color:{color};stop-opacity:0.85" />')
-        else:
-            # Last stop should be at 100%
-            stops.append(f'<stop offset="100%" style="stop-color:{color};stop-opacity:0.85" />')
+        for i in range(num_dots):
+            # Random position
+            x = random.uniform(10, 490)
+            y = random.uniform(10, 790)
+            # Random size
+            size = random.uniform(3, 10)
+            # Random animation parameters
+            duration = random.uniform(15, 40)
+            delay = random.uniform(0, 20)
+            
+            # Random movement path
+            dx1 = random.uniform(-50, 50)
+            dy1 = random.uniform(-50, 50)
+            dx2 = random.uniform(-30, 30)
+            dy2 = random.uniform(-30, 30)
+            
+            # Create keyframe animation
+            anim_name = f"float{dot_id}"
+            animations.append(f"""
+                @keyframes {anim_name} {{
+                    0%, 100% {{ transform: translate(0, 0); opacity: 0.4; }}
+                    25% {{ transform: translate({dx1}px, {dy1}px); opacity: 0.8; }}
+                    50% {{ transform: translate({dx2}px, {dy2}px); opacity: 0.6; }}
+                    75% {{ transform: translate({-dx1}px, {-dy1}px); opacity: 0.9; }}
+                }}
+            """)
+            
+            dots.append(f'''<circle cx="{x}" cy="{y}" r="{size}" fill="{color}" style="animation: {anim_name} {duration}s ease-in-out {delay}s infinite;"/>''')
+            dot_id += 1
     
-    return ''.join(stops)
+    return ''.join(dots), ''.join(animations)
 
-def _generate_language_bar(langs):
+def _generate_language_bar(langs, color_map):
     """Generate the horizontal language bar"""
     if not langs:
         return ''
     
     # Sort by percentage descending
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
-    
-    color_map = {
-        'Python': '#3572A5',
-        'JavaScript': '#f1e05a',
-        'TypeScript': '#2b7489',
-        'Java': '#b07219',
-        'C': '#555555',
-        'C++': '#f34b7d',
-        'R': '#198CE7',
-        'CSS': '#563d7c',
-        'Shell': '#89e051',
-        'PowerShell': '#012456',
-    }
-    
+        
     segments = []
     x_offset = 0
     total_width = 440
@@ -281,27 +344,14 @@ def _generate_language_bar(langs):
     
     return ''.join(segments)
 
-def _generate_language_labels(langs):
+def _generate_language_labels(langs, color_map):
     """Generate language labels with colored dots"""
     if not langs:
         return ''
     
     # Sort by percentage descending
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
-    
-    color_map = {
-        'Python': '#3572A5',
-        'JavaScript': '#f1e05a',
-        'TypeScript': '#2b7489',
-        'Java': '#b07219',
-        'C': '#555555',
-        'C++': '#f34b7d',
-        'R': '#198CE7',
-        'CSS': '#563d7c',
-        'Shell': '#89e051',
-        'PowerShell': '#012456',
-    }
-    
+        
     labels = []
     x_offset = 0
     y_row = 0
@@ -334,6 +384,9 @@ def _generate_top_repos(repos):
     y_offset = 55
     
     for i, (name, data) in enumerate(sorted_repos):
+        
+        if data['count'] <= 1: continue
+        
         # Icons for different tiers
         if i == 0:
             icon = '★'  # Star for #1

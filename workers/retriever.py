@@ -117,8 +117,8 @@ class MyRequests:
       missed_counts = 0 
       if repo_name == self.USERNAME: missed_counts = 306 # Counts that komarev.com/ghpvc/got
       return {
-        "count": resp.get("count", 0),
-        "uniques": resp.get("uniques", 0) + missed_counts
+        "count": resp.get("count", 0) + missed_counts,
+        "uniques": resp.get("uniques", 0) 
       }
     except requests.HTTPError as e:
       if e.response.status_code == 403: return 0
@@ -144,7 +144,8 @@ class MyRequests:
     github_data = {
       "user_data": {
         "name": profile['name'],
-        "created": profile['created_at'].split('T')[0]
+        "created": profile['created_at'].split('T')[0],
+        "avatar_url": profile['avatar_url']
       },
       "stars_total": total_stars,
       "contributions_now": {

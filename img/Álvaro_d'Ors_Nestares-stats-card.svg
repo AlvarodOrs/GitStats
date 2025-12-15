@@ -1,10 +1,517 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="500" height="800" xmlns="http://www.w3.org/2000/svg">
+<svg width="500" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#3572A5;stop-opacity:0.85" /><stop offset="31.99%" style="stop-color:#3572A5;stop-opacity:0.85" /><stop offset="31.99%" style="stop-color:#2b7489;stop-opacity:0.85" /><stop offset="54.269999999999996%" style="stop-color:#2b7489;stop-opacity:0.85" /><stop offset="54.269999999999996%" style="stop-color:#555555;stop-opacity:0.85" /><stop offset="71.81%" style="stop-color:#555555;stop-opacity:0.85" /><stop offset="71.81%" style="stop-color:#563d7c;stop-opacity:0.85" /><stop offset="72.09%" style="stop-color:#563d7c;stop-opacity:0.85" /><stop offset="72.09%" style="stop-color:#f1e05a;stop-opacity:0.85" /><stop offset="72.27000000000001%" style="stop-color:#f1e05a;stop-opacity:0.85" /><stop offset="72.27000000000001%" style="stop-color:#DA3434;stop-opacity:0.85" /><stop offset="100%" style="stop-color:#DA3434;stop-opacity:0.85" />
-        </linearGradient>
+        
+            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#6dd5ed;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#2193b0;stop-opacity:1" />
+            </linearGradient>
+        
+        <clipPath id="avatar-clip">
+            <circle cx="420" cy="70" r="35"/>
+        </clipPath>
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
         <style>
+            
+                @keyframes float0 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(17.669948742291126px, 39.217956770484534px); opacity: 0.8; }
+                    50% { transform: translate(-24.78367004223503px, -4.684690818883773px); opacity: 0.6; }
+                    75% { transform: translate(-17.669948742291126px, -39.217956770484534px); opacity: 0.9; }
+                }
+            
+                @keyframes float1 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(14.988443777952327px, 4.49414806032167px); opacity: 0.8; }
+                    50% { transform: translate(-16.773562677558196px, 5.355941032554526px); opacity: 0.6; }
+                    75% { transform: translate(-14.988443777952327px, -4.49414806032167px); opacity: 0.9; }
+                }
+            
+                @keyframes float2 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-34.45205001882184px, 45.72130722067811px); opacity: 0.8; }
+                    50% { transform: translate(-9.804327293242395px, -24.435249397191125px); opacity: 0.6; }
+                    75% { transform: translate(34.45205001882184px, -45.72130722067811px); opacity: 0.9; }
+                }
+            
+                @keyframes float3 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(3.6228091454700717px, 47.31157639793706px); opacity: 0.8; }
+                    50% { transform: translate(-7.287937367498792px, 3.1224378763936187px); opacity: 0.6; }
+                    75% { transform: translate(-3.6228091454700717px, -47.31157639793706px); opacity: 0.9; }
+                }
+            
+                @keyframes float4 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-45.41756163443378px, -27.210172434845315px); opacity: 0.8; }
+                    50% { transform: translate(-12.63672218387357px, -25.21248138458235px); opacity: 0.6; }
+                    75% { transform: translate(45.41756163443378px, 27.210172434845315px); opacity: 0.9; }
+                }
+            
+                @keyframes float5 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-12.981903288311734px, -29.04929692285123px); opacity: 0.8; }
+                    50% { transform: translate(-13.981330677053197px, 26.199275262749637px); opacity: 0.6; }
+                    75% { transform: translate(12.981903288311734px, 29.04929692285123px); opacity: 0.9; }
+                }
+            
+                @keyframes float6 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-12.05445582423522px, 48.95233506365952px); opacity: 0.8; }
+                    50% { transform: translate(8.399985591245574px, 3.416984626478772px); opacity: 0.6; }
+                    75% { transform: translate(12.05445582423522px, -48.95233506365952px); opacity: 0.9; }
+                }
+            
+                @keyframes float7 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-18.45469519409181px, -23.225912402429728px); opacity: 0.8; }
+                    50% { transform: translate(-17.341029384820413px, 26.574582860103263px); opacity: 0.6; }
+                    75% { transform: translate(18.45469519409181px, 23.225912402429728px); opacity: 0.9; }
+                }
+            
+                @keyframes float8 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-4.114814741260119px, -23.511983350194754px); opacity: 0.8; }
+                    50% { transform: translate(-15.202349538360993px, 3.6820880497890442px); opacity: 0.6; }
+                    75% { transform: translate(4.114814741260119px, 23.511983350194754px); opacity: 0.9; }
+                }
+            
+                @keyframes float9 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(49.75376064951102px, 0.9526293676464519px); opacity: 0.8; }
+                    50% { transform: translate(-24.545435269572366px, -27.173017474515927px); opacity: 0.6; }
+                    75% { transform: translate(-49.75376064951102px, -0.9526293676464519px); opacity: 0.9; }
+                }
+            
+                @keyframes float10 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-11.838071349346322px, 49.61213802400968px); opacity: 0.8; }
+                    50% { transform: translate(1.7468607059482224px, 28.264702656817086px); opacity: 0.6; }
+                    75% { transform: translate(11.838071349346322px, -49.61213802400968px); opacity: 0.9; }
+                }
+            
+                @keyframes float11 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-23.317481004745723px, 14.0961798579808px); opacity: 0.8; }
+                    50% { transform: translate(-23.306869584247416px, -3.9140849598536995px); opacity: 0.6; }
+                    75% { transform: translate(23.317481004745723px, -14.0961798579808px); opacity: 0.9; }
+                }
+            
+                @keyframes float12 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-32.134811946986865px, 41.262783934482044px); opacity: 0.8; }
+                    50% { transform: translate(22.231114190206014px, -12.093312513082026px); opacity: 0.6; }
+                    75% { transform: translate(32.134811946986865px, -41.262783934482044px); opacity: 0.9; }
+                }
+            
+                @keyframes float13 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(27.862647863055827px, 3.0353672195177452px); opacity: 0.8; }
+                    50% { transform: translate(-29.96568623232339px, -10.550636579719615px); opacity: 0.6; }
+                    75% { transform: translate(-27.862647863055827px, -3.0353672195177452px); opacity: 0.9; }
+                }
+            
+                @keyframes float14 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-44.20748335058124px, 37.800959920404054px); opacity: 0.8; }
+                    50% { transform: translate(26.816966717879644px, -24.860792875927274px); opacity: 0.6; }
+                    75% { transform: translate(44.20748335058124px, -37.800959920404054px); opacity: 0.9; }
+                }
+            
+                @keyframes float15 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-2.471762190126867px, 4.9803593494943925px); opacity: 0.8; }
+                    50% { transform: translate(-14.096602263596454px, 22.345982465115448px); opacity: 0.6; }
+                    75% { transform: translate(2.471762190126867px, -4.9803593494943925px); opacity: 0.9; }
+                }
+            
+                @keyframes float16 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-18.828370869910504px, 49.51493566608947px); opacity: 0.8; }
+                    50% { transform: translate(8.99268345836721px, -3.713994965129757px); opacity: 0.6; }
+                    75% { transform: translate(18.828370869910504px, -49.51493566608947px); opacity: 0.9; }
+                }
+            
+                @keyframes float17 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-26.9885267403423px, -27.978261554844053px); opacity: 0.8; }
+                    50% { transform: translate(-25.740414839458047px, 7.866177436205938px); opacity: 0.6; }
+                    75% { transform: translate(26.9885267403423px, 27.978261554844053px); opacity: 0.9; }
+                }
+            
+                @keyframes float18 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(16.897777829628055px, -28.57631926295614px); opacity: 0.8; }
+                    50% { transform: translate(-22.0612890764985px, 26.13085443484026px); opacity: 0.6; }
+                    75% { transform: translate(-16.897777829628055px, 28.57631926295614px); opacity: 0.9; }
+                }
+            
+                @keyframes float19 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-40.30691857711767px, -6.894881759362249px); opacity: 0.8; }
+                    50% { transform: translate(-4.585282618804754px, -1.9785199177995025px); opacity: 0.6; }
+                    75% { transform: translate(40.30691857711767px, 6.894881759362249px); opacity: 0.9; }
+                }
+            
+                @keyframes float20 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-16.069739460503683px, 36.16725363527911px); opacity: 0.8; }
+                    50% { transform: translate(-15.080619964782862px, -18.58746549355131px); opacity: 0.6; }
+                    75% { transform: translate(16.069739460503683px, -36.16725363527911px); opacity: 0.9; }
+                }
+            
+                @keyframes float21 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-5.686925494654304px, 36.13491047618305px); opacity: 0.8; }
+                    50% { transform: translate(3.019518746990883px, -26.964700228507127px); opacity: 0.6; }
+                    75% { transform: translate(5.686925494654304px, -36.13491047618305px); opacity: 0.9; }
+                }
+            
+                @keyframes float22 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-33.368888939608595px, -1.4358874549281495px); opacity: 0.8; }
+                    50% { transform: translate(-17.1751620480491px, -5.937582447032842px); opacity: 0.6; }
+                    75% { transform: translate(33.368888939608595px, 1.4358874549281495px); opacity: 0.9; }
+                }
+            
+                @keyframes float23 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-4.499163266085674px, -7.699251400983712px); opacity: 0.8; }
+                    50% { transform: translate(27.439058451580394px, 29.725361369562833px); opacity: 0.6; }
+                    75% { transform: translate(4.499163266085674px, 7.699251400983712px); opacity: 0.9; }
+                }
+            
+                @keyframes float24 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(7.918029081625619px, 4.219520137427423px); opacity: 0.8; }
+                    50% { transform: translate(14.878533622743845px, -26.570083625551014px); opacity: 0.6; }
+                    75% { transform: translate(-7.918029081625619px, -4.219520137427423px); opacity: 0.9; }
+                }
+            
+                @keyframes float25 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-41.98885347594131px, -31.41750390192768px); opacity: 0.8; }
+                    50% { transform: translate(5.702106387001663px, 10.512753216245407px); opacity: 0.6; }
+                    75% { transform: translate(41.98885347594131px, 31.41750390192768px); opacity: 0.9; }
+                }
+            
+                @keyframes float26 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(11.93815103321031px, -8.077508466412752px); opacity: 0.8; }
+                    50% { transform: translate(5.02033735747348px, 1.3669629319175343px); opacity: 0.6; }
+                    75% { transform: translate(-11.93815103321031px, 8.077508466412752px); opacity: 0.9; }
+                }
+            
+                @keyframes float27 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(17.169022295997124px, -20.000292020123776px); opacity: 0.8; }
+                    50% { transform: translate(-11.029368223688756px, 15.111869544864128px); opacity: 0.6; }
+                    75% { transform: translate(-17.169022295997124px, 20.000292020123776px); opacity: 0.9; }
+                }
+            
+                @keyframes float28 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-28.68456877329596px, -23.479958524959866px); opacity: 0.8; }
+                    50% { transform: translate(25.995562679622545px, 22.85185042118637px); opacity: 0.6; }
+                    75% { transform: translate(28.68456877329596px, 23.479958524959866px); opacity: 0.9; }
+                }
+            
+                @keyframes float29 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(11.16777657259501px, 48.72330636315043px); opacity: 0.8; }
+                    50% { transform: translate(9.238579062643957px, -29.53061357087052px); opacity: 0.6; }
+                    75% { transform: translate(-11.16777657259501px, -48.72330636315043px); opacity: 0.9; }
+                }
+            
+                @keyframes float30 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-38.45713295808978px, -39.29640222905824px); opacity: 0.8; }
+                    50% { transform: translate(3.1934184530889524px, -13.659107261111021px); opacity: 0.6; }
+                    75% { transform: translate(38.45713295808978px, 39.29640222905824px); opacity: 0.9; }
+                }
+            
+                @keyframes float31 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-1.1468147850623467px, 40.53364910793232px); opacity: 0.8; }
+                    50% { transform: translate(20.766222797691327px, -24.462091937235996px); opacity: 0.6; }
+                    75% { transform: translate(1.1468147850623467px, -40.53364910793232px); opacity: 0.9; }
+                }
+            
+                @keyframes float32 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-23.80447375656518px, 24.123090834793075px); opacity: 0.8; }
+                    50% { transform: translate(3.100825267583474px, -4.33878486115924px); opacity: 0.6; }
+                    75% { transform: translate(23.80447375656518px, -24.123090834793075px); opacity: 0.9; }
+                }
+            
+                @keyframes float33 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(33.45950198860167px, 8.250956648979404px); opacity: 0.8; }
+                    50% { transform: translate(-21.11437286595104px, -22.353268843071675px); opacity: 0.6; }
+                    75% { transform: translate(-33.45950198860167px, -8.250956648979404px); opacity: 0.9; }
+                }
+            
+                @keyframes float34 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-28.992346166024596px, -25.047026077707557px); opacity: 0.8; }
+                    50% { transform: translate(-23.832382699692864px, 16.80697451228656px); opacity: 0.6; }
+                    75% { transform: translate(28.992346166024596px, 25.047026077707557px); opacity: 0.9; }
+                }
+            
+                @keyframes float35 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(36.4605696219964px, 47.62060329309628px); opacity: 0.8; }
+                    50% { transform: translate(18.646303196423816px, 22.884972279799463px); opacity: 0.6; }
+                    75% { transform: translate(-36.4605696219964px, -47.62060329309628px); opacity: 0.9; }
+                }
+            
+                @keyframes float36 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(36.406402837527935px, 31.074931657438896px); opacity: 0.8; }
+                    50% { transform: translate(-13.991657424331677px, 17.242470548128267px); opacity: 0.6; }
+                    75% { transform: translate(-36.406402837527935px, -31.074931657438896px); opacity: 0.9; }
+                }
+            
+                @keyframes float37 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-3.969676532105794px, -19.480913266139943px); opacity: 0.8; }
+                    50% { transform: translate(17.720729949171705px, -16.344270755533778px); opacity: 0.6; }
+                    75% { transform: translate(3.969676532105794px, 19.480913266139943px); opacity: 0.9; }
+                }
+            
+                @keyframes float38 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-22.08750072781286px, 14.148173860762768px); opacity: 0.8; }
+                    50% { transform: translate(-6.019296938396348px, 28.86898123189561px); opacity: 0.6; }
+                    75% { transform: translate(22.08750072781286px, -14.148173860762768px); opacity: 0.9; }
+                }
+            
+                @keyframes float39 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(46.25343157615555px, -23.453363747703136px); opacity: 0.8; }
+                    50% { transform: translate(-23.495847167117333px, -3.92617448612134px); opacity: 0.6; }
+                    75% { transform: translate(-46.25343157615555px, 23.453363747703136px); opacity: 0.9; }
+                }
+            
+                @keyframes float40 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(7.6588043496599525px, -24.527749386141807px); opacity: 0.8; }
+                    50% { transform: translate(12.527117030050235px, -29.898523306882232px); opacity: 0.6; }
+                    75% { transform: translate(-7.6588043496599525px, 24.527749386141807px); opacity: 0.9; }
+                }
+            
+                @keyframes float41 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-13.577852821873584px, -43.00261888736898px); opacity: 0.8; }
+                    50% { transform: translate(9.854261094676339px, -10.187997837444215px); opacity: 0.6; }
+                    75% { transform: translate(13.577852821873584px, 43.00261888736898px); opacity: 0.9; }
+                }
+            
+                @keyframes float42 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-9.160709138078317px, -9.759961294227537px); opacity: 0.8; }
+                    50% { transform: translate(-12.26068784844318px, -22.362732056450806px); opacity: 0.6; }
+                    75% { transform: translate(9.160709138078317px, 9.759961294227537px); opacity: 0.9; }
+                }
+            
+                @keyframes float43 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-19.90501254344347px, 4.793721313569819px); opacity: 0.8; }
+                    50% { transform: translate(-29.97564361816275px, -12.785176987864368px); opacity: 0.6; }
+                    75% { transform: translate(19.90501254344347px, -4.793721313569819px); opacity: 0.9; }
+                }
+            
+                @keyframes float44 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-28.629859901089972px, -2.68138140906737px); opacity: 0.8; }
+                    50% { transform: translate(24.070849549695254px, 17.761485607606815px); opacity: 0.6; }
+                    75% { transform: translate(28.629859901089972px, 2.68138140906737px); opacity: 0.9; }
+                }
+            
+                @keyframes float45 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(31.842346453666423px, 25.11381375407322px); opacity: 0.8; }
+                    50% { transform: translate(10.36774023343002px, -16.521560040162704px); opacity: 0.6; }
+                    75% { transform: translate(-31.842346453666423px, -25.11381375407322px); opacity: 0.9; }
+                }
+            
+                @keyframes float46 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-42.71717708154309px, -8.555898900228065px); opacity: 0.8; }
+                    50% { transform: translate(7.785922844262821px, -18.33388579561744px); opacity: 0.6; }
+                    75% { transform: translate(42.71717708154309px, 8.555898900228065px); opacity: 0.9; }
+                }
+            
+                @keyframes float47 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(25.096447661847293px, 27.004618857402505px); opacity: 0.8; }
+                    50% { transform: translate(-23.604762206187665px, -4.491228363435951px); opacity: 0.6; }
+                    75% { transform: translate(-25.096447661847293px, -27.004618857402505px); opacity: 0.9; }
+                }
+            
+                @keyframes float48 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(34.83363473516597px, -4.353817452982746px); opacity: 0.8; }
+                    50% { transform: translate(18.084996103335868px, 10.054663955181184px); opacity: 0.6; }
+                    75% { transform: translate(-34.83363473516597px, 4.353817452982746px); opacity: 0.9; }
+                }
+            
+                @keyframes float49 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(21.927396127596708px, 0.4778164824401969px); opacity: 0.8; }
+                    50% { transform: translate(19.834150183284905px, 2.8723170366497044px); opacity: 0.6; }
+                    75% { transform: translate(-21.927396127596708px, -0.4778164824401969px); opacity: 0.9; }
+                }
+            
+                @keyframes float50 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(13.76614367761563px, 26.581368429716548px); opacity: 0.8; }
+                    50% { transform: translate(1.2779887696789274px, 7.604906218906876px); opacity: 0.6; }
+                    75% { transform: translate(-13.76614367761563px, -26.581368429716548px); opacity: 0.9; }
+                }
+            
+                @keyframes float51 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(4.015222251845643px, -36.16259384838443px); opacity: 0.8; }
+                    50% { transform: translate(-16.124311216308794px, 11.636988737943135px); opacity: 0.6; }
+                    75% { transform: translate(-4.015222251845643px, 36.16259384838443px); opacity: 0.9; }
+                }
+            
+                @keyframes float52 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-29.316561048558974px, -7.985648222657439px); opacity: 0.8; }
+                    50% { transform: translate(24.29030870041062px, 5.044764852253508px); opacity: 0.6; }
+                    75% { transform: translate(29.316561048558974px, 7.985648222657439px); opacity: 0.9; }
+                }
+            
+                @keyframes float53 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-14.824119732817529px, 25.34751250593858px); opacity: 0.8; }
+                    50% { transform: translate(21.206877034146274px, 27.205820308206377px); opacity: 0.6; }
+                    75% { transform: translate(14.824119732817529px, -25.34751250593858px); opacity: 0.9; }
+                }
+            
+                @keyframes float54 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-28.057836537856385px, -6.416402395336341px); opacity: 0.8; }
+                    50% { transform: translate(-28.258510803197087px, -9.832227378097052px); opacity: 0.6; }
+                    75% { transform: translate(28.057836537856385px, 6.416402395336341px); opacity: 0.9; }
+                }
+            
+                @keyframes float55 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(12.22569609740647px, -47.30335480948623px); opacity: 0.8; }
+                    50% { transform: translate(-6.358784619617715px, 3.8635189814864503px); opacity: 0.6; }
+                    75% { transform: translate(-12.22569609740647px, 47.30335480948623px); opacity: 0.9; }
+                }
+            
+                @keyframes float56 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-12.089613581186043px, -28.83397157885185px); opacity: 0.8; }
+                    50% { transform: translate(-10.389251707121488px, 15.673782473641623px); opacity: 0.6; }
+                    75% { transform: translate(12.089613581186043px, 28.83397157885185px); opacity: 0.9; }
+                }
+            
+                @keyframes float57 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-48.06167129499893px, 3.941904792253368px); opacity: 0.8; }
+                    50% { transform: translate(29.99446971055255px, -9.002379376788966px); opacity: 0.6; }
+                    75% { transform: translate(48.06167129499893px, -3.941904792253368px); opacity: 0.9; }
+                }
+            
+                @keyframes float58 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-30.06393176374671px, -47.96199826796676px); opacity: 0.8; }
+                    50% { transform: translate(-20.857059252912578px, -22.426741507547625px); opacity: 0.6; }
+                    75% { transform: translate(30.06393176374671px, 47.96199826796676px); opacity: 0.9; }
+                }
+            
+                @keyframes float59 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-33.221085663219775px, 10.72474938909317px); opacity: 0.8; }
+                    50% { transform: translate(14.875539117317146px, -23.12802771726614px); opacity: 0.6; }
+                    75% { transform: translate(33.221085663219775px, -10.72474938909317px); opacity: 0.9; }
+                }
+            
+                @keyframes float60 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(17.734728685040878px, 45.817283820589594px); opacity: 0.8; }
+                    50% { transform: translate(-6.200733509002362px, 12.900882302968107px); opacity: 0.6; }
+                    75% { transform: translate(-17.734728685040878px, -45.817283820589594px); opacity: 0.9; }
+                }
+            
+                @keyframes float61 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(35.02932390887963px, 10.041161481684412px); opacity: 0.8; }
+                    50% { transform: translate(-22.736696095961094px, 29.03066109088028px); opacity: 0.6; }
+                    75% { transform: translate(-35.02932390887963px, -10.041161481684412px); opacity: 0.9; }
+                }
+            
+                @keyframes float62 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-15.876882513871685px, 34.957562699957734px); opacity: 0.8; }
+                    50% { transform: translate(19.339855085403485px, -23.667667761360086px); opacity: 0.6; }
+                    75% { transform: translate(15.876882513871685px, -34.957562699957734px); opacity: 0.9; }
+                }
+            
+                @keyframes float63 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(23.37953040133918px, 46.54737312380777px); opacity: 0.8; }
+                    50% { transform: translate(-13.795056216755949px, 18.491953128405356px); opacity: 0.6; }
+                    75% { transform: translate(-23.37953040133918px, -46.54737312380777px); opacity: 0.9; }
+                }
+            
+                @keyframes float64 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(35.17131600193318px, 33.07310188906034px); opacity: 0.8; }
+                    50% { transform: translate(-24.800226116659537px, 22.897871040166315px); opacity: 0.6; }
+                    75% { transform: translate(-35.17131600193318px, -33.07310188906034px); opacity: 0.9; }
+                }
+            
+                @keyframes float65 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(35.095283631245906px, -31.81601428423082px); opacity: 0.8; }
+                    50% { transform: translate(-17.27280898921566px, 17.869941409685794px); opacity: 0.6; }
+                    75% { transform: translate(-35.095283631245906px, 31.81601428423082px); opacity: 0.9; }
+                }
+            
+                @keyframes float66 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(44.806257777703124px, -41.43870380419787px); opacity: 0.8; }
+                    50% { transform: translate(13.204479846251658px, -0.6853291890727604px); opacity: 0.6; }
+                    75% { transform: translate(-44.806257777703124px, 41.43870380419787px); opacity: 0.9; }
+                }
+            
+                @keyframes float67 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-40.69466494453283px, -27.840359952746986px); opacity: 0.8; }
+                    50% { transform: translate(11.50722931771211px, -11.627638192194695px); opacity: 0.6; }
+                    75% { transform: translate(40.69466494453283px, 27.840359952746986px); opacity: 0.9; }
+                }
+            
+                @keyframes float68 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-16.920870280406987px, 20.2854942185769px); opacity: 0.8; }
+                    50% { transform: translate(-13.74501438142822px, -14.915779427943509px); opacity: 0.6; }
+                    75% { transform: translate(16.920870280406987px, -20.2854942185769px); opacity: 0.9; }
+                }
+            
+                @keyframes float69 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-31.485015756233803px, -28.36153601213943px); opacity: 0.8; }
+                    50% { transform: translate(-0.9480847672374786px, 13.475100065583092px); opacity: 0.6; }
+                    75% { transform: translate(31.485015756233803px, 28.36153601213943px); opacity: 0.9; }
+                }
+            
+                @keyframes float70 {
+                    0%, 100% { transform: translate(0, 0); opacity: 0.4; }
+                    25% { transform: translate(-27.25168365174453px, -32.05584563145967px); opacity: 0.8; }
+                    50% { transform: translate(-29.151097964636172px, 2.0481053560598px); opacity: 0.6; }
+                    75% { transform: translate(27.25168365174453px, 32.05584563145967px); opacity: 0.9; }
+                }
+            
             .title { font: 600 22px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
             .stat-label { font: 400 14px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; opacity: 0.9; }
             .stat-value { font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
@@ -17,27 +524,35 @@
         </style>
     </defs>
     
-    <!-- Background -->
-    <rect width="500" height="800" fill="url(#bg-gradient)" rx="15"/>
+    <!-- Dark Background -->
+    <rect width="500" height="800" fill="#0d1117" rx="15"/>
+    
+    <!-- Animated Dots Background -->
+    <g opacity="0.8" filter="url(#blur)">
+        <circle cx="316.9248632597842" cy="29.50838907368021" r="4.925205228583835" fill="#ffd700" style="animation: float0 20.58026845372057s ease-in-out 14.729424283280249s infinite;"/><circle cx="24.302665330273765" cy="180.53762034681063" r="6.537487016723537" fill="#ffd700" style="animation: float1 15.66339924209659s ease-in-out 3.97675301373297s infinite;"/><circle cx="398.5266192053568" cy="15.069032548887593" r="8.640734762829656" fill="#ffd700" style="animation: float2 32.45348487470567s ease-in-out 6.8050103303598375s infinite;"/><circle cx="56.423860880062726" cy="671.0456057510187" r="7.226082219568237" fill="#ffd700" style="animation: float3 35.178206831859505s ease-in-out 14.594635733876357s infinite;"/><circle cx="408.11423884143755" cy="492.4454068441119" r="9.03194830217544" fill="#ffd700" style="animation: float4 29.433803631419053s ease-in-out 14.09143672429847s infinite;"/><circle cx="121.73962545329448" cy="88.7811149395887" r="4.945815221770645" fill="#ffd700" style="animation: float5 30.892111106610002s ease-in-out 7.296643579401685s infinite;"/><circle cx="321.0569849183649" cy="485.1221844202508" r="4.197970537386679" fill="#ffd700" style="animation: float6 33.22816994875873s ease-in-out 3.268049875238568s infinite;"/><circle cx="338.61484047513983" cy="667.4244977480515" r="8.431999380823713" fill="#ffd700" style="animation: float7 20.72620179910261s ease-in-out 0.6420048780807552s infinite;"/><circle cx="430.65646070688103" cy="255.44874702281277" r="7.5880706570641605" fill="#ffd700" style="animation: float8 24.890797526516607s ease-in-out 18.29095179481087s infinite;"/><circle cx="136.11597209100893" cy="465.9770723743616" r="9.284760185217339" fill="#ffd700" style="animation: float9 24.98501262850993s ease-in-out 4.386415183145667s infinite;"/><circle cx="62.63158256831639" cy="499.40791252841024" r="8.54455555054075" fill="#ffd700" style="animation: float10 25.553999169992103s ease-in-out 1.2705541230391426s infinite;"/><circle cx="423.17425707255904" cy="18.955197115399315" r="8.045052735521363" fill="#ffd700" style="animation: float11 32.04275922566437s ease-in-out 10.739406608175903s infinite;"/><circle cx="227.78737903801908" cy="753.9764234664425" r="9.130970582647358" fill="#ffd700" style="animation: float12 21.584726268777267s ease-in-out 10.011722261005966s infinite;"/><circle cx="316.6957575356825" cy="484.9967649217744" r="4.069874879847443" fill="#ffd700" style="animation: float13 34.06277000187878s ease-in-out 10.787580602392515s infinite;"/><circle cx="19.348836345199505" cy="734.6969206864013" r="9.15105314476229" fill="#ffd700" style="animation: float14 35.791638234029485s ease-in-out 6.150282508053229s infinite;"/><circle cx="243.27542239197462" cy="63.98576440533922" r="8.324215156800621" fill="#ffd700" style="animation: float15 34.14586073267469s ease-in-out 2.567829289995256s infinite;"/><circle cx="213.10621129642573" cy="175.202600244824" r="6.775072621456209" fill="#ffd700" style="animation: float16 33.248276727249404s ease-in-out 4.0230212677939186s infinite;"/><circle cx="258.4364036970835" cy="104.38327277724726" r="4.572881359220902" fill="#ffd700" style="animation: float17 23.452139053686384s ease-in-out 11.766174369144666s infinite;"/><circle cx="119.8920562293541" cy="716.2276101447798" r="9.017447801776225" fill="#ffd700" style="animation: float18 16.771433747216335s ease-in-out 4.760092687379904s infinite;"/><circle cx="284.10068479613653" cy="378.68340052319945" r="8.492335970035274" fill="#ffd700" style="animation: float19 35.18742494416608s ease-in-out 3.808198287237554s infinite;"/><circle cx="359.9564077407283" cy="535.2243468887752" r="9.889156479561763" fill="#ffd700" style="animation: float20 17.46044677879897s ease-in-out 8.052425642045375s infinite;"/><circle cx="225.33450295990332" cy="339.06767907083525" r="4.949816012668583" fill="#ffd700" style="animation: float21 21.24516119705251s ease-in-out 18.465311985520255s infinite;"/><circle cx="489.6555848381088" cy="662.1015163623625" r="9.782973800993258" fill="#ffd700" style="animation: float22 38.15917457520319s ease-in-out 16.973914688286108s infinite;"/><circle cx="38.144991986645884" cy="305.59903280199455" r="9.89716190645808" fill="#ffd700" style="animation: float23 21.630076454303797s ease-in-out 15.681412038971388s infinite;"/><circle cx="276.76879523469677" cy="570.3584547311343" r="4.083577776918449" fill="#ffd700" style="animation: float24 22.417695637364105s ease-in-out 19.374187299383177s infinite;"/><circle cx="290.4052453403062" cy="402.22329867722055" r="8.969039244337997" fill="#ffd700" style="animation: float25 18.93581819848708s ease-in-out 19.21557806548901s infinite;"/><circle cx="122.89786960044697" cy="103.51155887875687" r="9.232011198906061" fill="#ffd700" style="animation: float26 21.15538369471562s ease-in-out 11.890383070668824s infinite;"/><circle cx="458.65900371348505" cy="169.32217555035842" r="8.013342605525903" fill="#ffd700" style="animation: float27 20.96714881539615s ease-in-out 7.91571693582509s infinite;"/><circle cx="44.82069495671551" cy="367.4627076424972" r="9.989181085981096" fill="#ffd700" style="animation: float28 39.90241119637736s ease-in-out 1.46521442199266s infinite;"/><circle cx="432.04971639258054" cy="298.23112921632946" r="4.104227826500624" fill="#ffd700" style="animation: float29 35.84362386599518s ease-in-out 14.070798501747419s infinite;"/><circle cx="402.20998485542157" cy="243.51542671598276" r="7.643721004762542" fill="#ffd700" style="animation: float30 38.4732500981776s ease-in-out 2.6858222878673543s infinite;"/><circle cx="300.31831697450747" cy="569.7375059682624" r="4.42518118629217" fill="#ffd700" style="animation: float31 30.855948972126995s ease-in-out 5.279678032608189s infinite;"/><circle cx="213.31637083058865" cy="225.8105746983563" r="3.024819823614476" fill="#ffd700" style="animation: float32 34.27798057549067s ease-in-out 12.742267546027593s infinite;"/><circle cx="14.641455812003183" cy="68.69021085753829" r="9.181744753101" fill="#ffd700" style="animation: float33 37.598214288997326s ease-in-out 10.911805784110447s infinite;"/><circle cx="157.96400796646418" cy="711.2055612192202" r="8.572856134216291" fill="#2b7489" style="animation: float34 36.51756455002257s ease-in-out 17.978492730529492s infinite;"/><circle cx="434.3846566964843" cy="326.9743640690511" r="7.3446305710549895" fill="#2b7489" style="animation: float35 18.863833458305116s ease-in-out 18.597620313873488s infinite;"/><circle cx="21.897453711130588" cy="584.520287968964" r="5.325298275625" fill="#2b7489" style="animation: float36 38.270397151208144s ease-in-out 16.044702778742778s infinite;"/><circle cx="61.885900673419414" cy="690.29009066675" r="9.010152759364471" fill="#2b7489" style="animation: float37 20.56084293864161s ease-in-out 16.331732111938578s infinite;"/><circle cx="21.35892865669673" cy="160.64123489561277" r="5.297833658383945" fill="#2b7489" style="animation: float38 36.60882355075716s ease-in-out 19.337782080967223s infinite;"/><circle cx="267.3835515897865" cy="742.6049694532783" r="3.807392262959993" fill="#2b7489" style="animation: float39 39.2600152755557s ease-in-out 3.571356323449273s infinite;"/><circle cx="359.70162911329805" cy="254.66830507209315" r="7.2434619731430026" fill="#2b7489" style="animation: float40 27.785576491736954s ease-in-out 7.703908666894543s infinite;"/><circle cx="454.2760794395597" cy="429.9925577323777" r="8.036009994013918" fill="#2b7489" style="animation: float41 33.548751945986915s ease-in-out 13.41257008865999s infinite;"/><circle cx="160.67950962801265" cy="671.4519180149417" r="8.038279841097651" fill="#2b7489" style="animation: float42 22.508056705281604s ease-in-out 6.1856932441730645s infinite;"/><circle cx="211.814240210996" cy="743.4836631695428" r="7.74122561690913" fill="#2b7489" style="animation: float43 37.570138643314564s ease-in-out 12.310298319027611s infinite;"/><circle cx="216.3463119951206" cy="462.38812933263193" r="7.582939365921502" fill="#2b7489" style="animation: float44 26.624704756175355s ease-in-out 8.843195986096148s infinite;"/><circle cx="91.45187017506628" cy="76.14051864559497" r="6.608164069406515" fill="#2b7489" style="animation: float45 30.823521394144894s ease-in-out 6.703765108196018s infinite;"/><circle cx="105.58236770875679" cy="29.051802426924546" r="4.713897808548451" fill="#2b7489" style="animation: float46 26.878408605470128s ease-in-out 16.99475389249464s infinite;"/><circle cx="344.2500402354424" cy="395.6141918281408" r="4.707891077049072" fill="#2b7489" style="animation: float47 31.401450277794602s ease-in-out 0.11089636276063519s infinite;"/><circle cx="94.4256072191352" cy="757.213512978041" r="6.625704253106186" fill="#2b7489" style="animation: float48 16.25545962851602s ease-in-out 4.983965593199433s infinite;"/><circle cx="484.188377471895" cy="474.45280840614737" r="9.650277259102092" fill="#2b7489" style="animation: float49 37.28564814526092s ease-in-out 12.253046455235257s infinite;"/><circle cx="440.6598895519658" cy="590.0512448844762" r="6.322721057761373" fill="#2b7489" style="animation: float50 21.479788711625485s ease-in-out 4.944794750193191s infinite;"/><circle cx="141.80677452041837" cy="70.43701601449393" r="5.000097056042067" fill="#2b7489" style="animation: float51 21.792877677054616s ease-in-out 6.394191368375246s infinite;"/><circle cx="349.0811880133851" cy="60.098503556824895" r="5.853195587666107" fill="#2b7489" style="animation: float52 28.565278512597885s ease-in-out 8.315484682063119s infinite;"/><circle cx="343.85103351902467" cy="678.2509851970688" r="8.359162032826486" fill="#2b7489" style="animation: float53 24.50952572319279s ease-in-out 0.11792167167986145s infinite;"/><circle cx="211.1302156623145" cy="593.0622218028795" r="6.822926168136874" fill="#2b7489" style="animation: float54 30.081314723531033s ease-in-out 4.4107738864763775s infinite;"/><circle cx="335.98810481360783" cy="325.3670019273569" r="4.155313118424562" fill="#555555" style="animation: float55 26.684753730807756s ease-in-out 2.552555945623214s infinite;"/><circle cx="23.00898224334997" cy="511.3447254472819" r="3.94989641061395" fill="#555555" style="animation: float56 26.542461101287792s ease-in-out 1.005692669772551s infinite;"/><circle cx="191.9805834707854" cy="596.5676623727322" r="8.823469996086908" fill="#555555" style="animation: float57 21.306788294559514s ease-in-out 1.638124655232851s infinite;"/><circle cx="322.06916475994" cy="619.361778696498" r="7.562282586707226" fill="#555555" style="animation: float58 33.85583010148815s ease-in-out 18.992234654319777s infinite;"/><circle cx="331.3402454175571" cy="449.8962739054149" r="4.525751786345525" fill="#555555" style="animation: float59 32.486624281153766s ease-in-out 15.337961967124816s infinite;"/><circle cx="403.2645636693208" cy="762.4822029665884" r="3.756691247603246" fill="#555555" style="animation: float60 15.64196063743665s ease-in-out 6.239144887893904s infinite;"/><circle cx="46.47830936466878" cy="548.6792444277247" r="7.390696769207311" fill="#555555" style="animation: float61 17.547532636149413s ease-in-out 15.449617699024481s infinite;"/><circle cx="385.66496625328944" cy="280.8189369405902" r="5.998646092643211" fill="#555555" style="animation: float62 24.264271905451405s ease-in-out 10.119215793541558s infinite;"/><circle cx="471.1780322629977" cy="505.7563827591278" r="8.800951177017208" fill="#555555" style="animation: float63 32.68271609265192s ease-in-out 8.709742900153541s infinite;"/><circle cx="268.32299509516275" cy="387.12805302889296" r="6.04902145102726" fill="#555555" style="animation: float64 33.275655357628054s ease-in-out 5.367910760984507s infinite;"/><circle cx="127.05445081165888" cy="372.47260395052075" r="7.2723219296136445" fill="#555555" style="animation: float65 24.4747326032066s ease-in-out 0.5739999554017916s infinite;"/><circle cx="173.36264471885616" cy="696.6495842114158" r="7.908286252325411" fill="#555555" style="animation: float66 21.906714393904622s ease-in-out 0.20302228877354223s infinite;"/><circle cx="373.91903367158386" cy="548.675284768288" r="7.521320298186666" fill="#555555" style="animation: float67 27.270533376964654s ease-in-out 15.85865736264635s infinite;"/><circle cx="289.14668095953624" cy="379.1431812324293" r="6.716453518020375" fill="#555555" style="animation: float68 25.63759531763037s ease-in-out 14.918708734272192s infinite;"/><circle cx="67.9148246811068" cy="160.21574889218357" r="3.83688318878537" fill="#555555" style="animation: float69 28.396599134593746s ease-in-out 15.24379218968206s infinite;"/><circle cx="478.77137098386726" cy="419.21675790471414" r="4.980990922924685" fill="#555555" style="animation: float70 17.51315270226977s ease-in-out 3.882351561821469s infinite;"/>
+    </g>
+    
+    <!-- Overlay gradient for depth -->
+    <rect width="500" height="800" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
     
     <!-- Main Stats Card -->
     <g transform="translate(0, 20)">
         <!-- Title with Avatar -->
         <text x="140" y="35" class="title">Álvaro d'Ors Nestares' GitHub Stats</text>
         
-        <!-- Avatar Circle -->
-        <circle cx="420" cy="70" r="35" fill="rgba(255,255,255,0.2)" stroke="#ffffff" stroke-width="3"/>
-        <text x="420" y="80" text-anchor="middle" font-size="32" font-weight="600" fill="#ffffff">Á</text>
+        <!-- Avatar Image -->
+        <circle cx="420" cy="70" r="37" fill="none" stroke="#ffffff" stroke-width="3"/>
+        <image x="385" y="35" width="70" height="70" xlink:href="https://avatars.githubusercontent.com/u/75393390?v=4" clip-path="url(#avatar-clip)" preserveAspectRatio="xMidYMid slice"/>
         
         <!-- Stats Grid -->
         <g transform="translate(30, 80)">
             <!-- Total Stars -->
             <text x="0" y="0" class="stat-label">Total Stars Earned:</text>
-            <text x="250" y="0" class="stat-value">10</text>
+            <text x="250" y="0" class="stat-value">11</text>
             
             <!-- Total Commits -->
             <text x="0" y="30" class="stat-label">Total Commits:</text>
-            <text x="250" y="30" class="stat-value">39</text>
+            <text x="250" y="30" class="stat-value">40</text>
             
             <!-- Total PRs -->
             <text x="0" y="60" class="stat-label">Total PRs:</text>
@@ -59,7 +574,7 @@
         
         <!-- Total Contributions -->
         <g transform="translate(40, 40)">
-            <text x="25" y="25" text-anchor="middle" class="streak-number">138</text>
+            <text x="25" y="25" text-anchor="middle" class="streak-number">141</text>
             <text x="25" y="45" text-anchor="middle" class="streak-label">Total Contributions</text>
             <text x="25" y="62" text-anchor="middle" class="streak-date">2020-12-02 - Present</text>
         </g>
@@ -70,11 +585,11 @@
         <!-- Current Streak -->
         <g transform="translate(195, 40)">
             <!-- Flame Icon -->
-            <path d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z" fill="#ffffff" opacity="0.8"/>
-            <text x="35" y="22" text-anchor="middle" font-size="20" font-weight="700" fill="#8b5cf6">3</text>
+            <path d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z" fill="url(#flame-gradient)" opacity="0.9"/>
+            <text x="35" y="22" text-anchor="middle" font-size="20" font-weight="700" fill="#5dade2">0</text>
             
-            <text x="35" y="45" text-anchor="middle" class="streak-label">Current Streak</text>
-            <text x="35" y="62" text-anchor="middle" class="streak-date">Dec 11, 2025 - Dec 13, 2025</text>
+            <text x="35" y="45" text-anchor="middle" class="streak-label">No current streak</text>
+            <text x="35" y="62" text-anchor="middle" class="streak-date">Lost...</text>
         </g>
         
         <!-- Divider -->
@@ -96,39 +611,39 @@
         
         <!-- Language Bar -->
         <g transform="translate(30, 55)">
-            <rect x="0" y="0" width="140.75599999999997" height="8" rx="4" fill="#3572A5"/><rect x="140.75599999999997" y="0" width="98.032" height="8" fill="#2b7489"/><rect x="238.78799999999995" y="0" width="77.176" height="8" fill="#555555"/><rect x="315.96399999999994" y="0" width="1.2320000000000002" height="8" fill="#563d7c"/><rect x="317.19599999999997" y="0" width="0.7919999999999999" height="8" fill="#f1e05a"/><rect x="317.98799999999994" y="0" width="0.17600000000000002" height="8" fill="#858585"/>
+            <rect x="0" y="0" width="153.868" height="8" rx="4" fill="#ffd700"/><rect x="153.868" y="0" width="93.764" height="8" fill="#2b7489"/><rect x="247.632" y="0" width="73.788" height="8" fill="#555555"/><rect x="321.42" y="0" width="1.1880000000000002" height="8" fill="#563d7c"/><rect x="322.608" y="0" width="0.748" height="8" fill="#f1e05a"/><rect x="323.356" y="0" width="0.17600000000000002" height="8" fill="#DA3434"/>
         </g>
         
         <!-- Language Labels -->
         <g transform="translate(30, 80)">
             
         <g transform="translate(0, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#3572A5"/>
-            <text x="15" y="0" class="lang-text">Python 31.99%</text>
+            <circle cx="5" cy="-3" r="5" fill="#ffd700"/>
+            <text x="15" y="0" class="lang-text">Python 34.97%</text>
         </g>
         
         <g transform="translate(150, 0)">
             <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-            <text x="15" y="0" class="lang-text">TypeScript 22.28%</text>
+            <text x="15" y="0" class="lang-text">TypeScript 21.31%</text>
         </g>
         
         <g transform="translate(300, 0)">
             <circle cx="5" cy="-3" r="5" fill="#555555"/>
-            <text x="15" y="0" class="lang-text">C 17.54%</text>
+            <text x="15" y="0" class="lang-text">C 16.77%</text>
         </g>
         
         <g transform="translate(0, 25)">
             <circle cx="5" cy="-3" r="5" fill="#563d7c"/>
-            <text x="15" y="0" class="lang-text">CSS 0.28%</text>
+            <text x="15" y="0" class="lang-text">CSS 0.27%</text>
         </g>
         
         <g transform="translate(150, 25)">
             <circle cx="5" cy="-3" r="5" fill="#f1e05a"/>
-            <text x="15" y="0" class="lang-text">JavaScript 0.18%</text>
+            <text x="15" y="0" class="lang-text">JavaScript 0.17%</text>
         </g>
         
         <g transform="translate(300, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#858585"/>
+            <circle cx="5" cy="-3" r="5" fill="#DA3434"/>
             <text x="15" y="0" class="lang-text">CMake 0.04%</text>
         </g>
         
@@ -145,25 +660,13 @@
         <g transform="translate(30, 55)">
             <text x="0" y="0" font-size="16" fill="#ffd700">★</text>
             <text x="25" y="0" class="repo-name">TestSolver</text>
-            <text x="380" y="0" class="lang-text">542 views</text>
+            <text x="380" y="0" class="lang-text">559 views</text>
         </g>
         
         <g transform="translate(30, 83)">
             <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
             <text x="25" y="0" class="repo-name">AlvarodOrs</text>
-            <text x="380" y="0" class="lang-text">39 views</text>
-        </g>
-        
-        <g transform="translate(30, 111)">
-            <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
-            <text x="25" y="0" class="repo-name">Destiny</text>
-            <text x="380" y="0" class="lang-text">1 views</text>
-        </g>
-        
-        <g transform="translate(30, 139)">
-            <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
-            <text x="25" y="0" class="repo-name">Gideon</text>
-            <text x="380" y="0" class="lang-text">1 views</text>
+            <text x="380" y="0" class="lang-text">345 views</text>
         </g>
         
     </g>
