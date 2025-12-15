@@ -4,6 +4,7 @@ from typing import Any
 from api.github_client import GitHubClient
 from collectors import callers, languages, contributions, views, stars
 from utils import tools
+from os.path import exists
 
 #total_contributions_per_year, total_contributions, get_streaks
 
@@ -64,6 +65,7 @@ def fetch_data(config:dict[str, Any]) -> dict[str, Any]:
     EXCLUDED_LANGUAGES = config['EXCLUDED_LANGUAGES']
 
     client = GitHubClient(USERNAME, TOKEN)
+    if not exists('data/auto-commits.json'): tools.write_json({str(datetime.now().year): {"auto-commit": 1}}, None, 2, 'data/auto-commits.json')
     data = collect_all_data(client, USERNAME, VISIBILITY, EXTRA_VIEWS, EXCLUDED_LANGUAGES)
     
     return data

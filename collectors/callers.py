@@ -87,7 +87,7 @@ def get_contributions(client:GitHubClient, username:str, creation_date:str) -> t
     
     yearly_data = {}
     all_days = {}
-
+    
     try: auto_commits = load_config('data/auto-commits.json')
     except FileNotFoundError: pass
 
