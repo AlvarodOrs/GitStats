@@ -1,1 +1,332 @@
-# GitStats
+# 📊 GitHub Stats Generator
+
+Automatically generate beautiful, animated GitHub statistics cards with contribution tracking, language breakdowns, and repository insights.
+
+![GitHub Stats Example](https://raw.githubusercontent.com/AlvarodOrs/GitStats/refs/heads/main/img/Álvaro_d'Ors_Nestares-stats-card.svg)
+
+## ✨ Features
+
+- 🎨 **Animated SVG Cards** with language-based particle effects
+- 📈 **Comprehensive Statistics**: stars, commits, PRs, issues, streaks
+- 🔥 **Streak Tracking**: current and longest contribution streaks
+- 💻 **Language Breakdown**: top 6 languages with percentages
+- 👁️ **Repository Views**: track traffic across your repos
+- 🤖 **Auto-Commit**: automatically updates and pushes to GitHub
+- 🧹 **Smart Filtering**: excludes automated commits from stats
+
+## 📁 Project Structure
+
+```
+GitStats/
+├── api/
+│   ├── __init__.py
+│   ├── github_client.py      # HTTP & GraphQL client
+│   └── queries.py             # GraphQL query templates
+│
+├── collectors/
+│   ├── __init__.py
+│   ├── callers.py             # Profile, repo and contributions fetching
+│   ├── contributions.py       # Contribution data
+│   ├── languages.py           # Languages data
+│   ├── stars.py               # Stars data
+│   └── views.py               # Views aggregation
+│
+├── generators/
+│   ├── __init__.py
+│   ├── components.py          # Individual SVG components
+│   ├── config.py              # Colors & configuration
+│   ├── data_processor.py      # Data processing
+│   └── generator.py           # Main SVG orchestrator
+│
+├── utils/
+│   ├── tools.py               # Streak & contribution helpers
+│   └── git_updater.py         # Auto Git commit/push
+│
+├── workers
+│   └── fetch_data.py          # Logic process
+├── models/
+│   └── github_data.py         # Data classes (to finish)
+├── data/
+│   └── [username]-stats.json # Generated stats data
+├── img/
+│   └── [username]-stats-card.svg  # Generated SVG card
+├── main.py                  # Main entry point
+└── README.md
+```
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Python 3.8+
+- Git installed
+- GitHub Personal Access Token
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/AlvarodOrs/GitStats.git
+   cd GitStats
+   ```
+
+2. **Install dependencies**
+   ```bash
+   pip install requests
+   ```
+
+3. **Create a GitHub Personal Access Token**
+   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Click "Generate new token"
+   - Required scopes:
+     - `repo` (Full control of private repositories)
+     - `read:user` (Read all user profile data)
+   - Copy the token
+
+4. **Configure your credentials**
+   
+   Create a `config.py` file:
+   ```python
+   config = {
+       'USERNAME': 'your_github_username',
+       'GITHUB_TOKEN': 'ghp_your_token_here',
+       "VISIBILITY": "all",
+       "EXTRA_VIEWS": 0,
+       "EXCLUDED_LANGUAGES": ["html"]
+
+   }
+   ```
+
+   **⚠️ IMPORTANT**: Add `config.py` to `.gitignore` to keep your token secure!
+
+### Usage
+
+#### Basic Usage
+
+Run the script:
+```bash
+python main.py
+```
+
+This will:
+1. ✅ Fetch all your GitHub stats
+2. ✅ Generate `data/[YourName]-stats.json`
+3. ✅ Create `img/[YourName]-stats-card.svg`
+4. ✅ Automatically commit and push to GitHub
+
+
+## 📊 Generated Output
+
+### SVG Stats Card (`img/[YourName]-stats-card.svg`)
+
+The generated card includes:
+- **Profile Section**: Avatar, username, and join date
+- **Stats Grid**: Total stars, commits, PRs, issues, repos
+- **Streak Section**: Total contributions, current streak, longest streak
+- **Languages**: Top 6 languages with color-coded bar
+- **Top Repositories**: Most viewed repos
+
+### JSON Data (`data/[YourName]-stats.json`)
+
+Complete statistics in JSON format:
+```json
+{
+  "user_data": {
+    "name": "Your Name",
+    "created": "2020-01-01",
+    "avatar_url": "https://..."
+  },
+  "stars_total": 150,
+  "contributions_now": { ... },
+  "contributions_total": { ... },
+  "streak_info": { ... },
+  "repo_views": { ... },
+  "languages": { ... }
+}
+```
+
+## 🎨 Customization
+
+### Change SVG Colors
+
+Edit `generators/config.py`:
+
+```python
+def get_color_map():
+    return {
+        'Python': "#your_color_here",
+        'JavaScript': '#your_color_here',
+        # Add more languages...
+    }
+```
+
+### Modify Card Layout
+
+Edit `generators/generator.py` to customize:
+- Card dimensions
+- Section positions
+- Text formatting
+- Animation effects
+
+### Customize Commit Message
+
+```python
+from utils.git_updater import auto_update_github
+
+auto_update_github(
+    file_paths=['img/stats.svg'],
+    commit_message="🎨 Updated my awesome stats!"
+)
+```
+
+## 🤖 Automation with GitHub Actions
+
+Create `.github/workflows/update-stats.yml`:
+
+```yaml
+name: Update GitHub Stats
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight UTC
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Generate stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python -c "
+          from fetch_data import fetch_data
+          import os
+          config = {
+              'USERNAME': '${{ github.repository_owner }}',
+              'GITHUB_TOKEN': os.environ['GITHUB_TOKEN']
+          }
+          fetch_data(config, auto_commit=False)
+          "
+      
+      - name: Commit and push
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add img/ data/
+          git diff --quiet && git diff --staged --quiet || \
+            (git commit -m '#GitStats card update#' && git push)
+```
+
+## 📈 Display Your Stats
+
+### In Your README
+
+```markdown
+![GitHub Stats](https://raw.githubusercontent.com/yourusername/GitStats/main/img/YourName-stats-card.svg)
+```
+
+### On Your GitHub Profile
+
+1. Create a repository with your username (e.g., `yourusername/yourusername`)
+2. Add the stats card to `README.md`:
+   ```markdown
+   ## 📊 My GitHub Stats
+   
+   ![Stats](https://raw.githubusercontent.com/yourusername/GitStats/main/img/YourName-stats-card.svg)
+   ```
+
+## 🛠️ Troubleshooting
+
+### API Rate Limits
+
+GitHub API has rate limits:
+- **5,000 requests/hour** for authenticated users
+- **60 requests/hour** for unauthenticated
+
+### Git Push Fails
+
+Check your Git configuration:
+```bash
+git config user.name "Your Name"
+git config user.email "your.email@example.com"
+```
+
+Verify remote:
+```bash
+git remote -v
+```
+
+### SVG Not Rendering
+
+- Ensure the SVG file is committed and pushed
+- Check the raw URL is accessible
+- GitHub may cache images; add `?raw=true` to force refresh:
+  ```markdown
+  ![Stats](https://raw.githubusercontent.com/.../stats.svg?raw=true)
+  ```
+
+## 🔒 Security Best Practices
+
+1. **Never commit tokens**
+   ```bash
+   echo "config.py" >> .gitignore
+   echo ".env" >> .gitignore
+   ```
+
+2. **Limit token permissions** to only what's needed
+
+3. **Rotate tokens regularly**
+
+## 📝 API Calls Summary
+
+| Operation | API Calls | Notes |
+|-----------|-----------|-------|
+| Get profile | 1 | Basic user info |
+| Get repos | ~1 per 100 repos | Paginated |
+| Get contributions | ~1 per year | GraphQL queries |
+| Get languages | 1 per repo | Language breakdown |
+| Get traffic | 1 per repo | Optional |
+| Get commits | 1-N per repo | For filtering automated commits |
+
+**Typical total**: 50-200 API calls depending on repo count
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- GitHub API for providing comprehensive data
+- Inspiration from [github-readme-stats](https://github.com/anuraghazra/github-readme-stats)
+- SVG animations and design patterns from the community
+
+## 📞 Support
+
+- 🐛 **Bug Reports**: [Open an issue](https://github.com/AlvarodOrs/GitStats/issues)
+- 💡 **Feature Requests**: [Start a discussion](https://github.com/AlvarodOrs/GitStats/discussions)
+---
+
+Made with ❤️ and Python | ⭐ Star this repo if you find it useful!
