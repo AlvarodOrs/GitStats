@@ -1,7 +1,7 @@
 import os
 from typing import Dict, Any
 from generators.config import get_color_map, SVG_STYLES
-from generators.components import generate_language_bar, generate_language_labels, generate_top_repos
+from generators.components import generate_animated_dots, generate_language_bar, generate_language_labels, generate_top_repos
 from generators.data_processor import process_github_data
 from utils.tools import format_date
 
@@ -10,20 +10,26 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
     # Process data
     processed = process_github_data(data)
     color_map = get_color_map()
-    
-    # Generate components
-    language_bar = generate_language_bar(processed['top_langs'], color_map)
-    language_labels = generate_language_labels(processed['top_langs'], color_map)
-    top_repos = generate_top_repos(processed['repos'], processed['username'])
-    
+        
     # SVG dimensions
     SVG_WIDTH = 900
     SVG_HEIGHT = 550
     
+    # Generate components
+    animated_dots, dot_animations = generate_animated_dots(processed['top_langs'], color_map, SVG_WIDTH, SVG_HEIGHT)
+    language_bar = generate_language_bar(processed['top_langs'], color_map)
+    language_labels = generate_language_labels(processed['top_langs'], color_map)
+    top_repos = generate_top_repos(processed['repos'], processed['username'], )
+
+
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg width="{SVG_WIDTH}" height="{SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
     <defs>
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
         <style>
+            {dot_animations}
             {SVG_STYLES}
             .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }}
             .block-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 16px; fill: #58a6ff; }}
@@ -34,8 +40,16 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
     <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="#0d1117" rx="15"/>
     
     <!-- Header -->
-    <text x="20" y="40" class="header">{processed['username_label']} — OSS Activity</text>
+    <text x="20" y="40" class="header">{processed['username_label']} — GitHub Activity</text>
     
+    <!-- Animated Dots Background -->
+    <g opacity="0.8" filter="url(#blur)">
+        {animated_dots}
+    </g>
+    
+    <!-- Overlay gradient for depth -->
+    <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
+
     <!-- Block 1: Activity Metrics -->
     <g transform="translate(20, 70)">
         <rect x="0" y="0" width="420" height="210" fill="rgba(255,255,255,0.05)" rx="10"/>

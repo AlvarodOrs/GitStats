@@ -48,7 +48,6 @@ def process_github_data(data):
         streak_title = 'Current Streak'
         streak_dates = f'{format_date(active_from, False)} - {format_date(active_to, False)}'
         flame_y = 25
-        active_streak_days = None
     else:
         color_a = "#000000"
         color_b = "#2193b0"
@@ -80,6 +79,8 @@ def process_github_data(data):
         'prs': contributions_total.get('prs_total', 0),
         'issues': contributions_total.get('issues_total', 0),
         'total_contribs': contributions_total.get('contributions_total', 0),
+        'contributions_now': contributions_now.get('contributions_total', 0),
+        'contributions_until_now': int(contributions_total.get('contributions_total', 0)) - int(contributions_now.get('contributions_total', 0)),
         'top_langs': top_langs,
         'repos': repos,
         'active_streak_days': active_streak_days,

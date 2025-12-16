@@ -1,17 +1,16 @@
 from datetime import datetime
 import random
 
-def generate_animated_dots(langs, color_map):
+def generate_animated_dots(langs, color_map, width:int = 500, height:int = 800, margin_x:int = 10, margin_y:int = 10):
     """Generate animated dots background based on language percentages"""
 
-    if not langs:
-        return '', ''
+    if not langs: return '', ''
     
     # Sort languages by percentage
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
     
     # Calculate total number of dots (let's use 100 total)
-    total_dots = 100
+    total_dots = width*height/1000
     dots = []
     animations = []
     
@@ -26,10 +25,12 @@ def generate_animated_dots(langs, color_map):
         
         for i in range(num_dots):
             # Random position
-            x = random.uniform(10, 490)
-            y = random.uniform(10, 790)
+            x = random.uniform(10, width - margin_x)
+            y = random.uniform(10, height - margin_y)
+
             # Random size
             size = random.uniform(3, 10)
+
             # Random animation parameters
             duration = random.uniform(15, 40)
             delay = random.uniform(0, 20)
@@ -116,7 +117,7 @@ def generate_language_labels(langs, color_map, total_width:int = 440):
     
     return ''.join(labels)
 
-def generate_top_repos(repos, username):
+def generate_top_repos(repos, username, x_offset:int = 380):
     """Generate top repositories list"""
     # Sort by view count
     sorted_repos = sorted(repos.items(), key=lambda x: x[1]['count'], reverse=True)[:4]
@@ -147,7 +148,7 @@ def generate_top_repos(repos, username):
                     </tspan>
                 </a>
             </text>
-            <text x="380" y="0" class="lang-text">{data['count']} views</text>
+            <text x="{x_offset}" y="0" class="lang-text">{data['count']} views</text>
         </g>
         ''')
     
