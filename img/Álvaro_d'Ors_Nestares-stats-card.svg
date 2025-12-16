@@ -2,12 +2,13 @@
 <svg width="500" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         
-            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
-                <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
-            </linearGradient>
-        
+    <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
+        <stop offset="20%" style="stop-color:#ffffff;stop-opacity:1"/>
+        <stop offset="40%" style="stop-color:#6dd5ed;stop-opacity:0.6"/>
+        <stop offset="60%" style="stop-color:#2193b0;stop-opacity:0.4"/>
+        <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2"/>
+    </radialGradient>
+    
         <clipPath id="avatar-clip">
             <circle cx="420" cy="70" r="35"/>
         </clipPath>
@@ -554,8 +555,11 @@
     
     <!-- Main Stats Card -->
     <g transform="translate(0, 20)">
+        
         <!-- Title with Avatar -->
-        <text x="140" y="35" class="title">Álvaro d'Ors Nestares' GitHub Stats</text>
+        <text x="140" y="35" class="title" text-anchor="start">
+            Álvaro d'Ors Nestares' GitHub Stats
+        </text>
         
         <!-- Avatar Image -->
         <circle cx="420" cy="70" r="37" fill="none" stroke="#ffffff" stroke-width="3"/>
@@ -563,20 +567,45 @@
         
         <!-- Stats Grid -->
         <g transform="translate(30, 80)">
-            <text x="0" y="0" class="stat-label">Total Stars Earned:</text>
-            <text x="250" y="0" class="stat-value">11</text>
+            <text x="0" y="0" class="stat-label">
+                Total Stars Earned:
+            </text>
+
+            <text x="250" y="0" class="stat-value">
+                12
+            </text>
             
-            <text x="0" y="30" class="stat-label">Total Commits:</text>
-            <text x="250" y="30" class="stat-value">40</text>
+            <text x="0" y="30" class="stat-label">
+                Total Commits:
+            </text>
             
-            <text x="0" y="60" class="stat-label">Total PRs:</text>
-            <text x="250" y="60" class="stat-value">1</text>
+            <text x="250" y="30" class="stat-value">
+                51
+            </text>
             
-            <text x="0" y="90" class="stat-label">Total Issues:</text>
-            <text x="250" y="90" class="stat-value">2</text>
+            <text x="0" y="60" class="stat-label">
+                Total PRs:
+            </text>
             
-            <text x="0" y="120" class="stat-label">Contributed to (last year):</text>
-            <text x="250" y="120" class="stat-value">10</text>
+            <text x="250" y="60" class="stat-value">
+                1
+            </text>
+            
+            <text x="0" y="90" class="stat-label">
+                Total Issues:
+            </text>
+            
+            <text x="250" y="90" class="stat-value">
+                2
+            </text>
+            
+            <text x="0" y="120" class="stat-label">
+                Contributed to (last year):
+            </text>
+            
+            <text x="250" y="120" class="stat-value">
+                10
+            </text>
         </g>
     </g>
     
@@ -585,60 +614,129 @@
         <rect x="15" y="0" width="470" height="140" fill="rgba(255,255,255,0.1)" rx="10"/>
         
         <!-- Total Contributions -->
-        <g transform="translate(40, 40)">
-            <text x="25" y="25" text-anchor="middle" class="streak-number">145</text>
-            <text x="25" y="45" text-anchor="middle" class="streak-label">Total Contributions</text>
-            <text x="25" y="62" text-anchor="middle" class="streak-date">2020-12-02 - Present</text>
+        <g transform="translate(109.0, 40)">
+            <text x="0" y="25" text-anchor="middle" class="streak-number">
+                148
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="streak-label">
+                Total Contributions
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="streak-date">
+                Dec 02, 2020 - Present
+            </text>
         </g>
         
         <!-- Divider -->
-        <line x1="150" y1="30" x2="150" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+        <line x1="203.0" x2="203.0" y1="30" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
         
         <!-- Current Streak -->
-        <g transform="translate(195, 40)">
-            <path d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z" fill="url(#flame-gradient)" opacity="0.9"/>
-            <text x="35" y="22" text-anchor="middle" font-size="20" font-weight="700" fill="#ff4500">5</text>
+        <g transform="translate(250.0, 40)">
+            <g transform="translate(-31, 0)"> <!-- shift path left by its half-width -->
+                <path
+                d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
+                fill="url(#flame-gradient)" opacity="0.9"/>
+            </g>
+            <text x="0" y="22.0" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="transparent">
+                0
+            </text>
             
-            <text x="35" y="45" text-anchor="middle" class="streak-label">Current Streak</text>
-            <text x="35" y="62" text-anchor="middle" class="streak-date">Dec 11, 2025 - Dec 15, 2025</text>
+            <text x="0" y="45" text-anchor="middle" class="streak-label">
+                No current streak
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="streak-date">
+                Lost...
+            </text>
         </g>
         
         <!-- Divider -->
-        <line x1="340" y1="30" x2="340" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+        <line x1="297.0" x2="297.0" y1="30" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
         
         <!-- Longest Streak -->
-        <g transform="translate(365, 40)">
-            <text x="40" y="25" text-anchor="middle" class="streak-number">5</text>
-            <text x="40" y="45" text-anchor="middle" class="streak-label">Longest Streak</text>
-            <text x="40" y="62" text-anchor="middle" class="streak-date">Dec 16, 2024 - Dec 20, 2024</text>
+        <g transform="translate(391.0, 40)">
+            <text x="0" y="25" text-anchor="middle" class="streak-number">
+                5
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="streak-label">
+                Longest Streak
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="streak-date">
+                Dec 16, 2024 - Dec 20, 2024
+            </text>
+        </g>
+    </g>
+    
+    <!-- Top Repositories Card -->
+    <g transform="translate(0, 390)">
+        <rect x="15" y="0" width="470" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
+        <text x="30" y="35" class="section-title">
+            Top Repositories by Views
+        </text>
+        <g transform="translate(0, 10)">
+            
+        <g transform="translate(30, 55)">
+            <text x="0" y="0" font-size="18" fill="#ffd700">★</text>
+            <text x="25" y="0" class="repo-name">
+                <a href="https://github.com/AlvarodOrs/TestSolver" target="_blank">
+                    <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
+                    TestSolver
+                    </tspan>
+                </a>
+            </text>
+            <text x="380" y="0" class="lang-text">569 views</text>
+        </g>
+        
+        <g transform="translate(30, 83)">
+            <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+            <text x="25" y="0" class="repo-name">
+                <a href="https://github.com/AlvarodOrs/AlvarodOrs" target="_blank">
+                    <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
+                    AlvarodOrs
+                    </tspan>
+                </a>
+            </text>
+            <text x="380" y="0" class="lang-text">345 views</text>
+        </g>
+        
         </g>
     </g>
     
     <!-- Languages Card -->
-    <g transform="translate(0, 400)">
+    <g transform="translate(0, 580)">
         <rect x="15" y="0" width="470" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
         
-        <text x="30" y="35" class="section-title">Most Used Languages</text>
+        <text x="30" y="35" class="section-title">
+            Most Used Languages
+        </text>
         
         <g transform="translate(30, 55)">
-            <rect x="0" y="0" width="165.21999999999997" height="8" rx="4" fill="#ffd700"/><rect x="165.21999999999997" y="0" width="90.024" height="8" fill="#2b7489"/><rect x="255.24399999999997" y="0" width="70.884" height="8" fill="#555555"/><rect x="326.128" y="0" width="1.144" height="8" fill="#563d7c"/><rect x="327.272" y="0" width="0.7040000000000001" height="8" fill="#f1e05a"/><rect x="327.976" y="0" width="0.17600000000000002" height="8" fill="#DA3434"/>
+            <defs>
+    <clipPath id="rounded-bar-2942335182144">
+      <rect x="0" y="0" width="440" height="8" rx="4"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#rounded-bar-2942335182144)"><rect x="0" y="0" width="221.71045576407508" height="8" fill="#ffd700"/><rect x="221.71045576407508" y="0" width="120.61662198391419" height="8" fill="#2b7489"/><rect x="342.3270777479893" y="0" width="94.95978552278821" height="8" fill="#555555"/><rect x="437.2868632707775" y="0" width="1.5335120643431632" height="8" fill="#563d7c"/><rect x="438.8203753351206" y="0" width="0.9436997319034851" height="8" fill="#f1e05a"/><rect x="439.7640750670241" y="0" width="0.23592493297587128" height="8" fill="#DA3434"/></g>
         </g>
         
         <g transform="translate(30, 80)">
             
         <g transform="translate(0, 0)">
             <circle cx="5" cy="-3" r="5" fill="#ffd700"/>
-            <text x="15" y="0" class="lang-text">Python 37.55%</text>
+            <text x="15" y="0" class="lang-text">Python 37.59%</text>
         </g>
         
-        <g transform="translate(150, 0)">
+        <g transform="translate(146.66666666666666, 0)">
             <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-            <text x="15" y="0" class="lang-text">TypeScript 20.46%</text>
+            <text x="15" y="0" class="lang-text">TypeScript 20.45%</text>
         </g>
         
-        <g transform="translate(300, 0)">
+        <g transform="translate(293.3333333333333, 0)">
             <circle cx="5" cy="-3" r="5" fill="#555555"/>
-            <text x="15" y="0" class="lang-text">C 16.11%</text>
+            <text x="15" y="0" class="lang-text">C 16.10%</text>
         </g>
         
         <g transform="translate(0, 25)">
@@ -646,37 +744,16 @@
             <text x="15" y="0" class="lang-text">CSS 0.26%</text>
         </g>
         
-        <g transform="translate(150, 25)">
+        <g transform="translate(146.66666666666666, 25)">
             <circle cx="5" cy="-3" r="5" fill="#f1e05a"/>
             <text x="15" y="0" class="lang-text">JavaScript 0.16%</text>
         </g>
         
-        <g transform="translate(300, 25)">
+        <g transform="translate(293.3333333333333, 25)">
             <circle cx="5" cy="-3" r="5" fill="#DA3434"/>
             <text x="15" y="0" class="lang-text">CMake 0.04%</text>
         </g>
         
         </g>
-    </g>
-    
-    <!-- Top Repositories Card -->
-    <g transform="translate(0, 600)">
-        <rect x="15" y="0" width="470" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
-        
-        <text x="30" y="35" class="section-title">Top Repositories by Views</text>
-        
-        
-        <g transform="translate(30, 55)">
-            <text x="0" y="0" font-size="16" fill="#ffd700">★</text>
-            <text x="25" y="0" class="repo-name">TestSolver</text>
-            <text x="380" y="0" class="lang-text">564 views</text>
-        </g>
-        
-        <g transform="translate(30, 83)">
-            <text x="0" y="0" font-size="16" fill="#ffffff">▪</text>
-            <text x="25" y="0" class="repo-name">AlvarodOrs</text>
-            <text x="380" y="0" class="lang-text">345 views</text>
-        </g>
-        
-    </g>
+    </g> 
 </svg>

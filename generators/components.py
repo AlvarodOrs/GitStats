@@ -56,40 +56,39 @@ def generate_animated_dots(langs, color_map):
     
     return ''.join(dots), ''.join(animations)
 
-def generate_language_bar(langs, color_map):
+def generate_language_bar(langs, color_map, total_width:int = 440):
     """Generate the horizontal language bar"""
-    if not langs:
-        return ''
+    if not langs: return ''
     
     # Sort by percentage descending
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
-        
+    
+    # Normalize percentages to sum to 100
+    total_percent = sum(percent for _, percent in sorted_langs)
+    if total_percent > 0: sorted_langs = [(lang, (percent / total_percent) * 100) for lang, percent in sorted_langs]
+    
     segments = []
     x_offset = 0
-    total_width = 440
     
     for lang, percent in sorted_langs:
         color = color_map.get(lang, '#858585')
         width = (percent / 100) * total_width
         
-        if x_offset == 0:
-            # First segment with rounded left
-            segments.append(f'<rect x="{x_offset}" y="0" width="{width}" height="8" rx="4" fill="{color}"/>')
-        elif x_offset + width >= total_width - 1:
-            # Last segment with rounded right
-            segments.append(f'<rect x="{x_offset}" y="0" width="{width}" height="8" rx="4" fill="{color}"/>')
-        else:
-            # Middle segments
-            segments.append(f'<rect x="{x_offset}" y="0" width="{width}" height="8" fill="{color}"/>')
-        
+        segments.append(f'<rect x="{x_offset}" y="0" width="{width}" height="8" fill="{color}"/>')
         x_offset += width
     
-    return ''.join(segments)
+    clip_id = f"rounded-bar-{id(langs)}"
+    bar_content = ''.join(segments)
+    return f'''<defs>
+    <clipPath id="{clip_id}">
+      <rect x="0" y="0" width="{total_width}" height="8" rx="4"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#{clip_id})">{bar_content}</g>'''
 
-def generate_language_labels(langs, color_map):
+def generate_language_labels(langs, color_map, total_width:int = 440):
     """Generate language labels with colored dots"""
-    if not langs:
-        return ''
+    if not langs: return ''
     
     # Sort by percentage descending
     sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
@@ -97,7 +96,7 @@ def generate_language_labels(langs, color_map):
     labels = []
     x_offset = 0
     y_row = 0
-    
+
     for i, (lang, percent) in enumerate(sorted_langs):
         color = color_map.get(lang, '#858585')
         
@@ -113,11 +112,11 @@ def generate_language_labels(langs, color_map):
         </g>
         ''')
         
-        x_offset += 150
+        x_offset += total_width/3
     
     return ''.join(labels)
 
-def generate_top_repos(repos):
+def generate_top_repos(repos, username):
     """Generate top repositories list"""
     # Sort by view count
     sorted_repos = sorted(repos.items(), key=lambda x: x[1]['count'], reverse=True)[:4]
@@ -137,10 +136,17 @@ def generate_top_repos(repos):
             icon = '▪'
             badge_color = '#ffffff'
         
+        repo_link = f'https://github.com/{username}/{name}'
         items.append(f'''
         <g transform="translate(30, {y_offset + i * 28})">
-            <text x="0" y="0" font-size="16" fill="{badge_color}">{icon}</text>
-            <text x="25" y="0" class="repo-name">{name}</text>
+            <text x="0" y="0" font-size="18" fill="{badge_color}">{icon}</text>
+            <text x="25" y="0" class="repo-name">
+                <a href="{repo_link}" target="_blank">
+                    <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
+                    {name}
+                    </tspan>
+                </a>
+            </text>
             <text x="380" y="0" class="lang-text">{data['count']} views</text>
         </g>
         ''')

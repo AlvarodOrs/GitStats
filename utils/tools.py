@@ -79,11 +79,14 @@ def load_config(filepath:str = 'config.json') -> dict:
     with open(filepath, 'r') as file: data = json.load(file)
     return data
 
-def format_date(date_str):
+def format_date(date_str, year:bool = True):
     """Format date from YYYY-MM-DD to 'Mon DD, YYYY'"""
     if not date_str:
         return ''
     try:
+        if not year:
+            date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+            return date_obj.strftime('%b %d')
         date_obj = datetime.strptime(date_str, '%Y-%m-%d')
         return date_obj.strftime('%b %d, %Y')
     except:

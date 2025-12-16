@@ -30,6 +30,7 @@ def collect_all_data(client:GitHubClient, USERNAME:str, visibility:str, EXTRA_VI
     repo_views = views.get_views(repos)
     github_data = {
         "user_data": {
+            "login": profile['login'],
             "name": profile['name'],
             "created": profile['created_at'].split('T')[0],
             "avatar_url": profile['avatar_url']

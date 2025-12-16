@@ -2,7 +2,7 @@
 
 Automatically generate beautiful, animated GitHub statistics cards with contribution tracking, language breakdowns, and repository insights.
 
-![GitHub Stats Example](https://raw.githubusercontent.com/AlvarodOrs/GitStats/refs/heads/main/img/Álvaro_d'Ors_Nestares-stats-card.svg)
+![GitHub Stats Example](https://raw.githubusercontent.com/AlvarodOrs/GitStats/main/img/Álvaro_d'Ors_Nestares-stats-card.svg)
 
 ## ✨ Features
 
@@ -76,11 +76,16 @@ GitStats/
    ```
 
 3. **Create a GitHub Personal Access Token**
-   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (classic)
+   - Go to GitHub Settings → Developer settings → Personal access tokens → Tokens (Fine-grained tokens) ([or click here](https://github.com/settings/personal-access-tokens))
    - Click "Generate new token"
-   - Required scopes:
-     - `repo` (Full control of private repositories)
-     - `read:user` (Read all user profile data)
+   - Repository access:
+     - `All repositories`
+   - Permissions:
+     - `Administration` (Read-only) -> Needed to find info
+     - `Contents` (Read and write) -> Needed to upload the new image to the repo #Might swap to Read-only
+     - `Issues`(Read-only) -> Needed to find info on issues data
+     - `Metadata` (Read-only) -> Required
+     - `Pull requests` (Read-only) -> Needed to find info on PRs  
    - Copy the token
 
 4. **Configure your credentials**
@@ -96,6 +101,7 @@ GitStats/
 
    }
    ```
+   **EXTRA-VIEWS** is a parameter made to match those views that `https://komarev.com/ghpvc` retrieves and GitHub doesn't
 
    **⚠️ IMPORTANT**: Add `config.py` to `.gitignore` to keep your token secure!
 
@@ -132,6 +138,7 @@ Complete statistics in JSON format:
 ```json
 {
   "user_data": {
+    "login":"Your Github username",
     "name": "Your Name",
     "created": "2020-01-01",
     "avatar_url": "https://..."

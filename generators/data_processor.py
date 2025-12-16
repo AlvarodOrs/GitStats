@@ -2,13 +2,14 @@ from utils.tools import format_date
 
 def process_github_data(data):
     
-    username = data['user_data']['name']
+    username = data['user_data']['login']
+    user_name = data['user_data']['name']
     created = data['user_data']['created']
     avatar_url = data['user_data']['avatar_url']
     
     # Format possessive
-    if username[-1].lower() == 's': username_label = f"{username}'"
-    else: username_label = f"{username}'s"
+    if user_name[-1].lower() == 's': username_label = f"{user_name}'"
+    else: username_label = f"{user_name}'s"
 
     stars_total = data['stars_total']
     contributions_now = data['contributions_now']
@@ -38,32 +39,39 @@ def process_github_data(data):
         active_to = f'0'
 
     if active_streak != None:
-        flame_gradient = '''
-            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:1" />
-                <stop offset="50%" style="stop-color:#f7931e;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#ffd700;stop-opacity:1" />
-            </linearGradient>
-        '''
+        color_a = "#000000"
+        color_b = "#ff6b35"
+        color_c = "#ff9300"
+        color_d = "#fff700"
         flame_fill = "url(#flame-gradient)"
         flame_number_color = "#ff4500"
         streak_title = 'Current Streak'
-        streak_dates = f'{format_date(active_from)} - {format_date(active_to)}'
+        streak_dates = f'{format_date(active_from, False)} - {format_date(active_to, False)}'
+        flame_y = 25
+        active_streak_days = None
     else:
-        flame_gradient = '''
-            <linearGradient id="flame-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" style="stop-color:#6dd5ed;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#2193b0;stop-opacity:1" />
-            </linearGradient>
-        '''
+        color_a = "#000000"
+        color_b = "#2193b0"
+        color_c = "#6dd5ed"
+        color_d = "#ffffff"
         flame_fill = "url(#flame-gradient)"
-        flame_number_color = "#5dade2"
+        flame_number_color = "transparent" #"#5dade2"
         streak_title = f'No current streak'
         streak_dates = f'Lost...'
+        flame_y = 0
+    flame_gradient = f'''
+    <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
+        <stop offset="20%" style="stop-color:{color_d};stop-opacity:1"/>
+        <stop offset="40%" style="stop-color:{color_c};stop-opacity:0.6"/>
+        <stop offset="60%" style="stop-color:{color_b};stop-opacity:0.4"/>
+        <stop offset="100%" style="stop-color:{color_a};stop-opacity:0.2"/>
+    </radialGradient>
+    '''
 
     return {
-        'username_label': username_label,
         'username': username,
+        'username_label': username_label,
+        'user_name': user_name,
         'avatar_url': avatar_url,
         'created': created,
         'stars_total': stars_total,
@@ -83,4 +91,5 @@ def process_github_data(data):
         'flame_gradient': flame_gradient,
         'flame_fill': flame_fill,
         'flame_number_color': flame_number_color,
+        'flame_y': flame_y,
     }
