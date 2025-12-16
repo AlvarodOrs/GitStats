@@ -89,5 +89,4 @@ def format_date(date_str, year:bool = True):
             return date_obj.strftime('%b %d')
         date_obj = datetime.strptime(date_str, '%Y-%m-%d')
         return date_obj.strftime('%b %d, %Y')
-    except:
-        return date_str
+    except: return date_str    

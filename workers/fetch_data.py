@@ -33,7 +33,7 @@ def collect_all_data(client:GitHubClient, USERNAME:str, visibility:str, EXTRA_VI
             "login": profile['login'],
             "name": profile['name'],
             "created": profile['created_at'].split('T')[0],
-            "avatar_url": profile['avatar_url']
+            "avatar_url": callers.encode_to_64(profile['avatar_url'])
         },
         "stars_total": stars_total,
         "contributions_now": {

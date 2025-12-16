@@ -69,11 +69,11 @@
         <g transform="translate(0, 15)">            
             <g transform="translate(0, 15)">
                 <defs>
-    <clipPath id="rounded-bar-1994272133504">
+    <clipPath id="rounded-bar-2620637172096">
       <rect x="0" y="0" width="510" height="8" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#rounded-bar-1994272133504)"><rect x="0" y="0" width="276.816927322907" height="8" fill="#ffd700"/><rect x="276.816927322907" y="0" width="128.8907872256538" height="8" fill="#2b7489"/><rect x="405.70771454856083" y="0" width="101.47719805493493" height="8" fill="#555555"/><rect x="507.1849126034958" y="0" width="1.608621369430937" height="8" fill="#563d7c"/><rect x="508.7935339729267" y="0" width="1.0053883558943357" height="8" fill="#f1e05a"/><rect x="509.79892232882105" y="0" width="0.20107767117886713" height="8" fill="#DA3434"/></g>
+  <g clip-path="url(#rounded-bar-2620637172096)"><rect x="0" y="0" width="276.816927322907" height="8" fill="#ffd700"/><rect x="276.816927322907" y="0" width="128.8907872256538" height="8" fill="#2b7489"/><rect x="405.70771454856083" y="0" width="101.47719805493493" height="8" fill="#555555"/><rect x="507.1849126034958" y="0" width="1.608621369430937" height="8" fill="#563d7c"/><rect x="508.7935339729267" y="0" width="1.0053883558943357" height="8" fill="#f1e05a"/><rect x="509.79892232882105" y="0" width="0.20107767117886713" height="8" fill="#DA3434"/></g>
             </g>
             
             <g transform="translate(0, 45)">
