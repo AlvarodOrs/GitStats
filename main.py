@@ -13,13 +13,9 @@ def main(card_format:int = 0, to_print:bool = False, call_api:bool = True, auto_
     if to_print: write_json(data, config["USERNAME"], 4)
     
     if card_format == 0: svg_file = generate_default_stats_card(data)
-    card_format += 1
     if card_format == 1: svg_file = neutral.generate_stats_card(data)
-    card_format += 1
     if card_format == 2: svg_file = internship.generate_stats_card(data)
-    card_format += 1
     if card_format == 3: svg_file = oss.generate_stats_card(data)
-    card_format += 1
     if card_format == 4: svg_file = backend.generate_stats_card(data)
     
     if auto_commit:
@@ -32,4 +28,4 @@ def main(card_format:int = 0, to_print:bool = False, call_api:bool = True, auto_
         else: print("Failed to update GitHub repository")
     
 if __name__ == '__main__':
-    main(card_format=0, to_print=True, call_api=False, auto_commit=False)
+    main(card_format=0, to_print=True, call_api=True, auto_commit=True)

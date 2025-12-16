@@ -110,14 +110,14 @@ def get_contributions(client:GitHubClient, username:str, creation_date:str) -> t
     return yearly_data, all_days
 
 def encode_to_64(image_link:str) -> str:
-    from base64 import base64encode
+    from base64 import b64encode
     from requests import get
     response = get(image_link)
 
     if response.status_code == 200:
         image_bytes = response.content
 
-        image_encoded = base64encode(image_bytes).decode('utf-8')
+        image_encoded = b64encode(image_bytes).decode('utf-8')
 
-        return f'data:"image/png";base64,{image_encoded}'
+        return f'data:image/png;base64,{image_encoded}'
     else: return ''
