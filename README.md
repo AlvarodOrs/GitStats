@@ -1,16 +1,22 @@
 # 📊 GitHub Stats Generator
 
-Automatically generate beautiful, animated GitHub statistics cards with contribution tracking, language breakdowns, and repository insights.
+Automatically generate stunning, animated GitHub stats cards. Track contributions, repository insights, and language breakdowns—with particle effects that visually represent the programming languages used in your repos.
 
 ## ✨ Features
 
-- 🎨 **Animated SVG Cards** with language-based particle effects
-- 📈 **Comprehensive Statistics**: stars, commits, PRs, issues, streaks
-- 🔥 **Streak Tracking**: current and longest contribution streaks
-- 💻 **Language Breakdown**: top 6 languages with percentages
-- 👁️ **Repository Views**: track traffic across your repos
-- 🤖 **Auto-Commit**: automatically updates and pushes to GitHub
-- 🧹 **Smart Filtering**: excludes automated commits from stats
+- 🎨 Animated SVG Cards – Each card features dynamic particle effects that reflect the languages used across your repositories.
+
+- 📈 Comprehensive Statistics – Stars, commits, PRs, issues, and more.
+
+- 🔥 Contribution Streaks – Track your current and longest streaks.
+
+- 💻 Language Breakdown – Top 6 languages with percentages and corresponding particle colors.
+
+- 👁️ Repository Views – Visualize traffic to your repos.
+
+- 🤖 Auto-Commit – Updates and pushes stats automatically.
+
+- 🧹 Smart Filtering – Excludes automated commits from stats calculations.
 
 ## 🧠 Models
 
