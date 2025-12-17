@@ -2669,10 +2669,10 @@
         
         <g transform="translate(20, 55)">
             <text x="0" y="0" class="stat-label">Contributions</text>
-            <text x="220" y="0" class="stat-value">152</text>
+            <text x="220" y="0" class="stat-value">158</text>
             
             <text x="0" y="30" class="stat-label">Commits</text>
-            <text x="220" y="30" class="stat-value">55</text>
+            <text x="220" y="30" class="stat-value">59</text>
             
             <text x="0" y="60" class="stat-label">Stars</text>
             <text x="220" y="60" class="stat-value">12</text>
@@ -2684,7 +2684,7 @@
             <text x="220" y="120" class="stat-value">2</text>
             
             <text x="0" y="150" class="stat-label">Contributed to (this year)</text>
-            <text x="220" y="150" class="stat-value">93</text>
+            <text x="220" y="150" class="stat-value">99</text>
         </g>
     </g>
     
@@ -2695,10 +2695,10 @@
         
         <g transform="translate(20, 55)">
             <text x="0" y="0" class="stat-label">Longest Streak</text>
-            <text x="200" y="0" class="stat-value">6 days</text>
+            <text x="200" y="0" class="stat-value">7 days</text>
             
             <text x="0" y="30" class="stat-label">Period</text>
-            <text x="200" y="30" class="stat-value">Dec 11, 2025 — Dec 16, 2025</text>
+            <text x="200" y="30" class="stat-value">Dec 11, 2025 — Dec 17, 2025</text>
             
             <text x="0" y="60" class="stat-label">Active since</text>
             <text x="200" y="60" class="stat-value">Dec 02, 2020</text>
@@ -2721,7 +2721,7 @@
                     </tspan>
                 </a>
             </text>
-            <text x="380" y="0" class="lang-text">569 views</text>
+            <text x="380" y="0" class="lang-text">573 views</text>
         </g>
         
         <g transform="translate(30, 83)">
@@ -2733,7 +2733,31 @@
                     </tspan>
                 </a>
             </text>
-            <text x="380" y="0" class="lang-text">345 views</text>
+            <text x="380" y="0" class="lang-text">348 views</text>
+        </g>
+        
+        <g transform="translate(30, 111)">
+            <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+            <text x="25" y="0" class="repo-name">
+                <a href="https://github.com/AlvarodOrs/UNIR" target="_blank">
+                    <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
+                    UNIR
+                    </tspan>
+                </a>
+            </text>
+            <text x="380" y="0" class="lang-text">158 views</text>
+        </g>
+        
+        <g transform="translate(30, 139)">
+            <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+            <text x="25" y="0" class="repo-name">
+                <a href="https://github.com/AlvarodOrs/GitStats" target="_blank">
+                    <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
+                    GitStats
+                    </tspan>
+                </a>
+            </text>
+            <text x="380" y="0" class="lang-text">31 views</text>
         </g>
         
         </g>
@@ -2746,28 +2770,28 @@
         
         <g transform="translate(20, 55)">
             <defs>
-    <clipPath id="rounded-bar-2470575176960">
+    <clipPath id="rounded-bar-1999648611584">
       <rect x="0" y="0" width="440" height="8" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#rounded-bar-2470575176960)"><rect x="0" y="0" width="240.34632034632034" height="8" fill="#ffd700"/><rect x="240.34632034632034" y="0" width="110.36075036075036" height="8" fill="#2b7489"/><rect x="350.70707070707067" y="0" width="86.86868686868686" height="8" fill="#555555"/><rect x="437.5757575757575" y="0" width="1.3852813852813852" height="8" fill="#563d7c"/><rect x="438.96103896103887" y="0" width="0.8658008658008657" height="8" fill="#f1e05a"/><rect x="439.8268398268397" y="0" width="0.17316017316017315" height="8" fill="#DA3434"/></g>
+  <g clip-path="url(#rounded-bar-1999648611584)"><rect x="0" y="0" width="240.23088023088022" height="8" fill="#ffd700"/><rect x="240.23088023088022" y="0" width="110.4184704184704" height="8" fill="#2b7489"/><rect x="350.6493506493506" y="0" width="86.92640692640693" height="8" fill="#555555"/><rect x="437.5757575757575" y="0" width="1.3852813852813852" height="8" fill="#563d7c"/><rect x="438.96103896103887" y="0" width="0.8658008658008657" height="8" fill="#f1e05a"/><rect x="439.8268398268397" y="0" width="0.17316017316017315" height="8" fill="#DA3434"/></g>
         </g>
         
         <g transform="translate(20, 80)">
             
         <g transform="translate(0, 0)">
             <circle cx="5" cy="-3" r="5" fill="#ffd700"/>
-            <text x="15" y="0" class="lang-text">Python 41.64%</text>
+            <text x="15" y="0" class="lang-text">Python 41.62%</text>
         </g>
         
         <g transform="translate(146.66666666666666, 0)">
             <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-            <text x="15" y="0" class="lang-text">TypeScript 19.12%</text>
+            <text x="15" y="0" class="lang-text">TypeScript 19.13%</text>
         </g>
         
         <g transform="translate(293.3333333333333, 0)">
             <circle cx="5" cy="-3" r="5" fill="#555555"/>
-            <text x="15" y="0" class="lang-text">C 15.05%</text>
+            <text x="15" y="0" class="lang-text">C 15.06%</text>
         </g>
         
         <g transform="translate(0, 25)">
