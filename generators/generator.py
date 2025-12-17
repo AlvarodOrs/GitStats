@@ -1,6 +1,6 @@
 import os
 from typing import Dict, Any
-from generators.config import get_color_map, SVG_WIDTH, SVG_HEIGHT, SVG_STYLES
+from generators.config import SVG_WIDTH, SVG_HEIGHT, SVG_STYLES
 from generators.components import (
     generate_animated_dots,
     generate_language_bar,
@@ -20,12 +20,11 @@ def generate_stats_card(data: Dict[str, Any]) -> None:
     
     # Process data
     processed = process_github_data(data)
-    color_map = get_color_map()
     
     # Generate components
-    animated_dots, dot_animations = generate_animated_dots(processed['top_langs'], color_map)
-    language_bar = generate_language_bar(processed['top_langs'], color_map, SVG_WIDTH - 2*15 - 30)
-    language_labels = generate_language_labels(processed['top_langs'], color_map, SVG_WIDTH - 2*15 - 30)
+    animated_dots, dot_animations = generate_animated_dots(processed['top_langs'])
+    language_bar = generate_language_bar(processed['top_langs'], SVG_WIDTH - 2*15 - 30)
+    language_labels = generate_language_labels(processed['top_langs'], SVG_WIDTH - 2*15 - 30)
     top_repos = generate_top_repos(processed['repos'], processed['username'])
     
     # Unify transform height

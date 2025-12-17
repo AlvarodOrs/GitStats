@@ -1,6 +1,6 @@
 import os
 from typing import Dict, Any
-from generators.config import get_color_map, SVG_STYLES
+from generators.config import SVG_STYLES
 from generators.components import generate_animated_dots, generate_language_bar, generate_language_labels, generate_top_repos
 from generators.data_processor import process_github_data
 from utils.tools import format_date
@@ -9,16 +9,15 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
     
     # Process data
     processed = process_github_data(data)
-    color_map = get_color_map()
     
     # SVG dimensions
     SVG_WIDTH = 900
     SVG_HEIGHT = 550
 
     # Generate components
-    animated_dots, dot_animations = generate_animated_dots(processed['top_langs'], color_map, SVG_WIDTH, SVG_HEIGHT)
-    language_bar = generate_language_bar(processed['top_langs'], color_map)
-    language_labels = generate_language_labels(processed['top_langs'], color_map)
+    animated_dots, dot_animations = generate_animated_dots(processed['top_langs'], SVG_WIDTH, SVG_HEIGHT)
+    language_bar = generate_language_bar(processed['top_langs'])
+    language_labels = generate_language_labels(processed['top_langs'])
     top_repos = generate_top_repos(processed['repos'], processed['username'], )
         
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>

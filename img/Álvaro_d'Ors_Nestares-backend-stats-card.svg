@@ -1,114 +1,236 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="550" height="380" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <style>
-            
-    .title { font: 600 22px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .stat-label { font: 400 14px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; opacity: 0.9; }
-    .stat-value { font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .section-title { font: 600 18px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .lang-text { font: 400 12px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .streak-number { font: 700 48px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .streak-label { font: 600 14px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-    .streak-date { font: 400 11px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; opacity: 0.8; }
-    .repo-name { font: 600 13px 'Segoe UI', Ubuntu, Sans-Serif; fill: #ffffff; }
-
-            .header { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }
-            .section-title { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 18px; fill: #58a6ff; }
-            .subsection-title { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }
-        </style>
-    </defs>
+<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Dark terminal-like background -->
+    <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#010409;stop-opacity:1" />
+    </linearGradient>
     
-    <!-- Background -->
-    <rect width="550" height="380" fill="#0d1117" rx="15"/>
+    <!-- Terminal green accent -->
+    <linearGradient id="terminalGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff00;stop-opacity:1" />
+    </linearGradient>
     
-    <!-- Header -->
-    <text x="20" y="40" class="header">Álvaro d'Ors Nestares' — GitHub Stats</text>
+    <!-- Scanline effect -->
+    <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+      <rect width="100%" height="2" fill="rgba(57, 255, 20, 0.02)"/>
+    </pattern>
     
-    <!-- Left Column: Core Activity -->
-    <g transform="translate(20, 80)">
-        <text x="0" y="0" class="section-title">Core Activity</text>
-        
-        <g transform="translate(0, 35)">
-            <text x="60" y="0" class="stat-label">Total Contributions</text>
-            <text x="0" y="0" class="stat-value">158</text>
-        </g>
-        
-        <g transform="translate(0, 65)">
-            <text x="60" y="0" class="stat-label">Commits</text>
-            <text x="0" y="0" class="stat-value">59</text>
-        </g>
-        
-        <g transform="translate(0, 95)">
-            <text x="60" y="0" class="stat-label">Stars Earned</text>
-            <text x="0" y="0" class="stat-value">12</text>
-        </g>
-        
-        <g transform="translate(0, 135)">
-            <text x="0" y="0" class="stat-label">PRs: 1   Issues: 2</text>
-        </g>
-    </g>                    
-    <!-- Sub Info -->
-    <g transform="translate(360, 80)">
-        <text x="0" y="0" class="section-title">Contribution Patterns</text>
-        <g transform="translate(0, 35)">
-            <text x="0" y="0" class="stat-label">Longest Streak: 7 days</text>
-        </g>
-        
-        <g transform="translate(0, 65)">
-            <text x="0" y="0" class="stat-label">Active since Dec 02, 2020</text>
-        </g>
-    </g>
+    <!-- Matrix-style background pattern -->
+    <pattern id="matrix" width="20" height="20" patternUnits="userSpaceOnUse">
+      <text x="0" y="15" font-family="'Courier New', monospace" font-size="10" fill="rgba(57, 255, 20, 0.05)">0</text>
+    </pattern>
     
-    
-    <!-- Right Column: Technical Focus -->
-    <g transform="translate(20, 250)">
-        <text x="0" y="0" class="section-title">Most Used Languages</text>
-        
-        <!-- Languages -->
-        <g transform="translate(0, 15)">            
-            <g transform="translate(0, 15)">
-                <defs>
-    <clipPath id="rounded-bar-1999649750464">
-      <rect x="0" y="0" width="510" height="8" rx="4"/>
-    </clipPath>
+    <!-- Glow for terminal text -->
+    <filter id="terminalGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
-  <g clip-path="url(#rounded-bar-1999649750464)"><rect x="0" y="0" width="278.44942935852026" height="8" fill="#ffd700"/><rect x="278.44942935852026" y="0" width="127.98504525777251" height="8" fill="#2b7489"/><rect x="406.4344746162928" y="0" width="100.7556080283353" height="8" fill="#555555"/><rect x="507.1900826446281" y="0" width="1.6056670602125147" height="8" fill="#563d7c"/><rect x="508.7957497048406" y="0" width="1.0035419126328216" height="8" fill="#f1e05a"/><rect x="509.79929161747344" y="0" width="0.20070838252656434" height="8" fill="#DA3434"/></g>
-            </g>
-            
-            <g transform="translate(0, 45)">
-                
-        <g transform="translate(0, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#ffd700"/>
-            <text x="15" y="0" class="lang-text">Python 41.62%</text>
-        </g>
-        
-        <g transform="translate(170.0, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-            <text x="15" y="0" class="lang-text">TypeScript 19.13%</text>
-        </g>
-        
-        <g transform="translate(340.0, 0)">
-            <circle cx="5" cy="-3" r="5" fill="#555555"/>
-            <text x="15" y="0" class="lang-text">C 15.06%</text>
-        </g>
-        
-        <g transform="translate(0, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#563d7c"/>
-            <text x="15" y="0" class="lang-text">CSS 0.24%</text>
-        </g>
-        
-        <g transform="translate(170.0, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#f1e05a"/>
-            <text x="15" y="0" class="lang-text">JavaScript 0.15%</text>
-        </g>
-        
-        <g transform="translate(340.0, 25)">
-            <circle cx="5" cy="-3" r="5" fill="#DA3434"/>
-            <text x="15" y="0" class="lang-text">CMake 0.03%</text>
-        </g>
-        
-            </g>
-        </g>
+  
+  <!-- Background layers -->
+  <rect width="900" height="600" fill="url(#terminalBg)"/>
+  <rect width="900" height="600" fill="url(#matrix)" opacity="0.3"/>
+  <rect width="900" height="600" fill="url(#scanlines)"/>
+  
+  <!-- Terminal window chrome -->
+  <rect x="10" y="10" width="880" height="580" fill="#0d1117" rx="8" stroke="#39ff14" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Terminal title bar -->
+  <rect x="10" y="10" width="880" height="40" fill="rgba(57, 255, 20, 0.1)" rx="8"/>
+  <circle cx="30" cy="30" r="6" fill="#ff5f56"/>
+  <circle cx="50" cy="30" r="6" fill="#ffbd2e"/>
+  <circle cx="70" cy="30" r="6" fill="#27c93f"/>
+  <text x="100" y="35" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+    alvaro@backend:~/github-stats$
+  </text>
+  
+  <!-- Terminal prompt line -->
+  <text x="30" y="80" font-family="'Courier New', monospace" font-size="13" fill="#39ff14" filter="url(#terminalGlow)">
+    $ git log --author="AlvarodOrs" --pretty=format:"%h %s" --stat
+  </text>
+  
+  <!-- Blinking cursor -->
+  <rect x="600" y="68" width="10" height="16" fill="#39ff14">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Separator line -->
+  <line x1="30" y1="100" x2="870" y2="100" stroke="#39ff14" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Main stats output -->
+  <g id="output" transform="translate(30, 130)">
+    <!-- System Architecture Section -->
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+      [INFO] Backend Development Metrics
+    </text>
+    
+    <!-- Primary metrics grid -->
+    <g transform="translate(0, 30)">
+      <!-- Commits -->
+      <g>
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ COMMITS_TOTAL:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          59 commits
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="170" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="170" dur="1.5s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Repositories -->
+      <g transform="translate(0, 35)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ REPOS_ACTIVE:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          10 repositories
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="90" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="90" dur="1.5s" begin="0.2s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- PRs -->
+      <g transform="translate(0, 70)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ PULL_REQUESTS:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          1 merged
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="135" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="135" dur="1.5s" begin="0.4s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Issues -->
+      <g transform="translate(0, 105)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          └─ ISSUES_FIXED:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          2 resolved
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="145" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="145" dur="1.5s" begin="0.6s" fill="freeze"/>
+        </rect>
+      </g>
     </g>
+    
+    <!-- Language Stack Section -->
+    <g transform="translate(0, 270)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+        [INFO] Backend Technology Stack
+    </text>
+      
+    <g transform="translate(0, 30)">
+        
+        <g transform="translate(0, 0)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            ├─ Python
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="124" height="18" fill="rgba(255, 215, 0, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="124" dur="1.5s" begin="0.0s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            41.6%
+          </text>
+        </g>
+        
+        <g transform="translate(0, 35)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            ├─ TypeScript
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="57" height="18" fill="rgba(43, 116, 137, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="57" dur="1.5s" begin="0.2s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            19.1%
+          </text>
+        </g>
+        
+        <g transform="translate(0, 70)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            ├─ C
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="45" height="18" fill="rgba(85, 85, 85, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="45" dur="1.5s" begin="0.4s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            15.1%
+          </text>
+        </g>
+        
+        <g transform="translate(0, 105)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            ├─ CSS
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="0" height="18" fill="rgba(86, 61, 124, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="0" dur="1.5s" begin="0.6000000000000001s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            0.2%
+          </text>
+        </g>
+        
+        <g transform="translate(0, 140)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            ├─ JavaScript
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="0" height="18" fill="rgba(241, 224, 90, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="0" dur="1.5s" begin="0.8s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            0.1%
+          </text>
+        </g>
+        
+        <g transform="translate(0, 175)">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            └─ CMake
+          </text>
+          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="0" height="18" fill="rgba(218, 52, 52, 0.6)" rx="3">
+            <animate attributeName="width" from="0" to="0" dur="1.5s" begin="1.0s" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            0.0%
+          </text>
+        </g>
+        
+    </g>
+    </g>
+  </g>
+  
+  <!-- Bottom status bar -->
+  <g transform="translate(30, 560)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#39ff14" opacity="0.7">
+      ● ACTIVITY | Streak: 34 days | Last commit: 2 hours ago
+    </text>
+    <text x="640" y="0" font-family="'Courier New', monospace" font-size="11" fill="#6e7681">
+      alvaro@backend:~/stats
+    </text>
+    
+    <!-- Blinking cursor at end -->
+    <rect x="840" y="-12" width="8" height="14" fill="#39ff14">
+      <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
 </svg>

@@ -1,7 +1,10 @@
 from datetime import datetime
 import random
+from generators.config import get_color_map
 
-def generate_animated_dots(langs, color_map, width:int = 500, height:int = 800, margin_x:int = 10, margin_y:int = 10):
+color_map = get_color_map()
+
+def generate_animated_dots(langs, width:int = 500, height:int = 800, margin_x:int = 10, margin_y:int = 10):
     """Generate animated dots background based on language percentages"""
 
     if not langs: return '', ''
@@ -57,7 +60,7 @@ def generate_animated_dots(langs, color_map, width:int = 500, height:int = 800, 
     
     return ''.join(dots), ''.join(animations)
 
-def generate_language_bar(langs, color_map, total_width:int = 440):
+def generate_language_bar(langs, total_width:int = 440):
     """Generate the horizontal language bar"""
     if not langs: return ''
     
@@ -87,7 +90,7 @@ def generate_language_bar(langs, color_map, total_width:int = 440):
   </defs>
   <g clip-path="url(#{clip_id})">{bar_content}</g>'''
 
-def generate_language_labels(langs, color_map, total_width:int = 440):
+def generate_language_labels(langs, total_width:int = 440):
     """Generate language labels with colored dots"""
     if not langs: return ''
     
@@ -152,4 +155,58 @@ def generate_top_repos(repos, username, x_offset:int = 380):
         </g>
         ''')
     
-    return ''.join(items)    
+    return ''.join(items)
+
+def generate_language_stack(repos, max_width:int = 300, max_langs:int = 4):
+    """
+    Generate language stack with progress bars for backend template
+    
+    Args:
+        top_langs: List of tuples (language, percentage) from process_github_data
+        max_width: Maximum width of progress bars in pixels
+        max_langs: Maximum number of languages to display
+    
+    Returns:
+        str: SVG markup for language stack
+    """
+    items = []
+    y_offset = 0
+    
+    sorted_repos = sorted(repos, key=lambda x: x[1], reverse=True)
+
+    for i, (lang, percentage) in enumerate(sorted_repos[:max_langs]):
+        # Determine tree branch character
+        if i == len(sorted_repos[:max_langs]) - 1:
+            branch = '└─'
+        else:
+            branch = '├─'
+        
+        # Calculate bar width based on percentage
+        bar_width = int((percentage / 100) * max_width)
+        
+        # Get language color, default to green if not found
+        lang_color = color_map.get(lang, '#39ff14')
+        # Convert hex to rgba with opacity
+        rgba_color = f"rgba({int(lang_color[1:3], 16)}, {int(lang_color[3:5], 16)}, {int(lang_color[5:7], 16)}, 0.6)"
+        
+        # Animation delay (staggered)
+        anim_delay = f"{i * 0.2}s"
+        
+        items.append(f'''
+        <g transform="translate(0, {y_offset})">
+          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+            {branch} {lang}
+          </text>
+          <rect x="150" y="-10" width="{max_width}" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
+          <rect x="150" y="-10" width="{bar_width}" height="18" fill="{rgba_color}" rx="3">
+            <animate attributeName="width" from="0" to="{bar_width}" dur="1.5s" begin="{anim_delay}" fill="freeze"/>
+          </rect>
+          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
+            {percentage:.1f}%
+          </text>
+        </g>
+        ''')
+        
+        y_offset += 35
+    
+    return ''.join(items)

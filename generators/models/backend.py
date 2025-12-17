@@ -1,7 +1,7 @@
 import os
 from typing import Dict, Any
-from generators.config import get_color_map, SVG_STYLES
-from generators.components import generate_language_bar, generate_language_labels
+from generators.config import SVG_STYLES
+from generators.components import generate_language_stack
 from generators.data_processor import process_github_data
 from utils.tools import format_date
 
@@ -9,86 +9,173 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
 
     # Process data
     processed = process_github_data(data)
-    color_map = get_color_map()
     
     # SVG dimensions
-    SVG_WIDTH = 550
-    SVG_HEIGHT = 380
+    SVG_WIDTH = 900
+    SVG_HEIGHT = 600
 
     # Generate components
-    language_bar = generate_language_bar(processed['top_langs'], color_map, SVG_WIDTH-2*20)
-    language_labels = generate_language_labels(processed['top_langs'], color_map, SVG_WIDTH-2*20)
-    
+    languages_stack = generate_language_stack(processed['top_langs'])
     
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg width="{SVG_WIDTH}" height="{SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-        <style>
-            {SVG_STYLES}
-            .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }}
-            .section-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 18px; fill: #58a6ff; }}
-            .subsection-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }}
-        </style>
-    </defs>
+  <defs>
+    <!-- Dark terminal-like background -->
+    <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#010409;stop-opacity:1" />
+    </linearGradient>
     
-    <!-- Background -->
-    <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="#0d1117" rx="15"/>
+    <!-- Terminal green accent -->
+    <linearGradient id="terminalGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff00;stop-opacity:1" />
+    </linearGradient>
     
-    <!-- Header -->
-    <text x="20" y="40" class="header">{processed['username_label']} — GitHub Stats</text>
+    <!-- Scanline effect -->
+    <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+      <rect width="100%" height="2" fill="rgba(57, 255, 20, 0.02)"/>
+    </pattern>
     
-    <!-- Left Column: Core Activity -->
-    <g transform="translate(20, 80)">
-        <text x="0" y="0" class="section-title">Core Activity</text>
-        
-        <g transform="translate(0, 35)">
-            <text x="60" y="0" class="stat-label">Total Contributions</text>
-            <text x="0" y="0" class="stat-value">{processed['total_contribs']}</text>
-        </g>
-        
-        <g transform="translate(0, 65)">
-            <text x="60" y="0" class="stat-label">Commits</text>
-            <text x="0" y="0" class="stat-value">{processed['commits']}</text>
-        </g>
-        
-        <g transform="translate(0, 95)">
-            <text x="60" y="0" class="stat-label">Stars Earned</text>
-            <text x="0" y="0" class="stat-value">{processed['stars_total']}</text>
-        </g>
-        
-        <g transform="translate(0, 135)">
-            <text x="0" y="0" class="stat-label">PRs: {processed['prs']}   Issues: {processed['issues']}</text>
-        </g>
-    </g>                    
-    <!-- Sub Info -->
-    <g transform="translate(360, 80)">
-        <text x="0" y="0" class="section-title">Contribution Patterns</text>
-        <g transform="translate(0, 35)">
-            <text x="0" y="0" class="stat-label">Longest Streak: {processed['longest_streak_days']} days</text>
-        </g>
-        
-        <g transform="translate(0, 65)">
-            <text x="0" y="0" class="stat-label">Active since {format_date(processed['created'])}</text>
-        </g>
+    <!-- Matrix-style background pattern -->
+    <pattern id="matrix" width="20" height="20" patternUnits="userSpaceOnUse">
+      <text x="0" y="15" font-family="'Courier New', monospace" font-size="10" fill="rgba(57, 255, 20, 0.05)">0</text>
+    </pattern>
+    
+    <!-- Glow for terminal text -->
+    <filter id="terminalGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background layers -->
+  <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="url(#terminalBg)"/>
+  <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="url(#matrix)" opacity="0.3"/>
+  <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="url(#scanlines)"/>
+  
+  <!-- Terminal window chrome -->
+  <rect x="10" y="10" width="880" height="580" fill="#0d1117" rx="8" stroke="#39ff14" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Terminal title bar -->
+  <rect x="10" y="10" width="880" height="40" fill="rgba(57, 255, 20, 0.1)" rx="8"/>
+  <circle cx="30" cy="30" r="6" fill="#ff5f56"/>
+  <circle cx="50" cy="30" r="6" fill="#ffbd2e"/>
+  <circle cx="70" cy="30" r="6" fill="#27c93f"/>
+  <text x="100" y="35" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+    alvaro@backend:~/github-stats$
+  </text>
+  
+  <!-- Terminal prompt line -->
+  <text x="30" y="80" font-family="'Courier New', monospace" font-size="13" fill="#39ff14" filter="url(#terminalGlow)">
+    $ git log --author="AlvarodOrs" --pretty=format:"%h %s" --stat
+  </text>
+  
+  <!-- Blinking cursor -->
+  <rect x="600" y="68" width="10" height="16" fill="#39ff14">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Separator line -->
+  <line x1="30" y1="100" x2="870" y2="100" stroke="#39ff14" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Main stats output -->
+  <g id="output" transform="translate(30, 130)">
+    <!-- System Architecture Section -->
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+      [INFO] Backend Development Metrics
+    </text>
+    
+    <!-- Primary metrics grid -->
+    <g transform="translate(0, 30)">
+      <!-- Commits -->
+      <g>
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ COMMITS_TOTAL:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          {processed['commits']} commits
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="170" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="170" dur="1.5s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Repositories -->
+      <g transform="translate(0, 35)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ REPOS_ACTIVE:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          {processed['total_repos']} repositories
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="90" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="90" dur="1.5s" begin="0.2s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- PRs -->
+      <g transform="translate(0, 70)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ PULL_REQUESTS:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          {processed['prs']} merged
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="135" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="135" dur="1.5s" begin="0.4s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Issues -->
+      <g transform="translate(0, 105)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          └─ ISSUES_FIXED:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          {processed['issues']} resolved
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="145" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="145" dur="1.5s" begin="0.6s" fill="freeze"/>
+        </rect>
+      </g>
     </g>
     
-    
-    <!-- Right Column: Technical Focus -->
-    <g transform="translate(20, 250)">
-        <text x="0" y="0" class="section-title">Most Used Languages</text>
-        
-        <!-- Languages -->
-        <g transform="translate(0, 15)">            
-            <g transform="translate(0, 15)">
-                {language_bar}
-            </g>
-            
-            <g transform="translate(0, 45)">
-                {language_labels}
-            </g>
-        </g>
+    <!-- Language Stack Section -->
+    <g transform="translate(0, 270)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+        [INFO] Backend Technology Stack
+    </text>
+      
+    <g transform="translate(0, 30)">
+        {languages_stack}
     </g>
-</svg>"""
+    </g>
+  </g>
+  
+  <!-- Bottom status bar -->
+  <g transform="translate(30, 560)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#39ff14" opacity="0.7">
+      ● ACTIVITY | Streak: 34 days | Last commit: 2 hours ago
+    </text>
+    <text x="640" y="0" font-family="'Courier New', monospace" font-size="11" fill="#6e7681">
+      alvaro@backend:~/stats
+    </text>
+    
+    <!-- Blinking cursor at end -->
+    <rect x="840" y="-12" width="8" height="14" fill="#39ff14">
+      <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
+"""
     
     # Save file
     os.makedirs("img", exist_ok=True)

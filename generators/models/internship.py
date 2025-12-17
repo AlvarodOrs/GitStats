@@ -1,6 +1,6 @@
 import os
 from typing import Dict, Any
-from generators.config import get_color_map, SVG_STYLES
+from generators.config import SVG_STYLES
 from generators.components import generate_language_bar, generate_language_labels
 from generators.data_processor import process_github_data
 from utils.tools import format_date
@@ -9,15 +9,14 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
 
     # Process data
     processed = process_github_data(data)
-    color_map = get_color_map()
     
     # SVG dimensions
     SVG_WIDTH = 750
     SVG_HEIGHT = 300
 
     # Generate language components
-    language_bar = generate_language_bar(processed['top_langs'], color_map, SVG_WIDTH-300-2*20)
-    language_labels = generate_language_labels(processed['top_langs'], color_map, SVG_WIDTH-300-2*20)
+    language_bar = generate_language_bar(processed['top_langs'], SVG_WIDTH-300-2*20)
+    language_labels = generate_language_labels(processed['top_langs'], SVG_WIDTH-300-2*20)
     
     
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>
