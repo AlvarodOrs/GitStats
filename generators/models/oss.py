@@ -16,9 +16,9 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
 
     # Generate components
     animated_dots, dot_animations = generate_animated_dots(processed['top_langs'], SVG_WIDTH, SVG_HEIGHT)
-    language_bar = generate_language_bar(processed['top_langs'])
-    language_labels = generate_language_labels(processed['top_langs'])
-    top_repos = generate_top_repos(processed['repos'], processed['username'], )
+    language_bar = generate_language_bar(processed['top_langs'], SVG_WIDTH - 460 - 3*20)
+    language_labels = generate_language_labels(processed['top_langs'], SVG_WIDTH - 460 - 3*20)
+    top_repos = generate_top_repos(processed['repos'], processed['username'], x_offset=220)
         
     svg_code = f"""<?xml version="1.0" encoding="UTF-8"?>
 <svg width="{SVG_WIDTH}" height="{SVG_HEIGHT}" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -51,7 +51,7 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
 
     <!-- Block 1: Activity Metrics -->
     <g transform="translate(20, 70)">
-        <rect x="0" y="0" width="420" height="210" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <rect x="0" y="0" width="420" height="220" fill="rgba(255,255,255,0.05)" rx="10"/>
         <text x="20" y="30" class="block-title">Activity Metrics</text>
         
         <g transform="translate(20, 55)">
@@ -77,7 +77,7 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
     
     <!-- Block 2: Streaks -->
     <g transform="translate(460, 70)">
-        <rect x="0" y="0" width="420" height="210" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <rect x="0" y="0" width="420" height="330" fill="rgba(255,255,255,0.05)" rx="10"/>
         <text x="20" y="30" class="block-title">Streaks</text>
         
         <g transform="translate(20, 55)">
@@ -90,6 +90,27 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
             <text x="0" y="60" class="stat-label">Active since</text>
             <text x="200" y="60" class="stat-value">{format_date(processed['created'])}</text>
         </g>
+        
+        <!-- Current Streak -->
+        <g transform="translate(20, 130)">
+            <g transform="translate(0, 0)"> <!-- shift path left by its half-width -->
+                <path
+                d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
+                fill="{processed['flame_fill']}" opacity="0.9"/>
+            </g>
+            <text x="0" y="{22 + processed['flame_y']/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="{processed['flame_number_color']}">
+                {processed['active_streak_days']}
+            </text>
+            
+            <text x="0" y="{45}" text-anchor="middle" class="streak-label">
+                {processed['streak_title']}
+            </text>
+            
+            <text x="0" y="{62}" text-anchor="middle" class="streak-date">
+                {processed['streak_dates']}
+            </text>
+        </g>
+
     </g>
     
     <!-- Block 3: Top Repositories -->
@@ -97,14 +118,14 @@ def generate_stats_card(data: Dict[str, Any]) -> str:
         <rect x="0" y="0" width="420" height="230" fill="rgba(255,255,255,0.05)" rx="10"/>
         <text x="20" y="30" class="block-title">Top Repositories</text>
         
-        <g transform="translate(20, 55)">
+        <g transform="translate(0, 0)">
             {top_repos}
         </g>
     </g>
     
     <!-- Block 4: Languages -->
-    <g transform="translate(460, 300)">
-        <rect x="0" y="0" width="420" height="230" fill="rgba(255,255,255,0.05)" rx="10"/>
+    <g transform="translate(460, 410)">
+        <rect x="0" y="0" width="420" height="120" fill="rgba(255,255,255,0.05)" rx="10"/>
         <text x="20" y="30" class="block-title">Languages</text>
         
         <g transform="translate(20, 55)">
