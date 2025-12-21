@@ -13,13 +13,13 @@ def main(card_format:int = 0, to_print:bool = False, call_api:bool = True, auto_
     if to_print: write_json(data, config["USERNAME"], 4)
     svg_file = []
     if card_format == 0: svg_file.append(generate_default_stats_card(data))
-    card_format += 1
+    # card_format += 1
     if card_format == 1: svg_file.append(neutral.generate_stats_card(data))
-    card_format += 1
+    # card_format += 1
     if card_format == 2: svg_file.append(internship.generate_stats_card(data))
-    card_format += 1
+    # card_format += 1
     if card_format == 3: svg_file.append(oss.generate_stats_card(data))
-    card_format += 1
+    # card_format += 1
     if card_format == 4: svg_file.append(backend.generate_stats_card(data))
     
     if auto_commit:
