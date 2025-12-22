@@ -36,7 +36,6 @@ class GitUpdater:
                 text=True,
                 check=True
             )
-            print(result)
             return True, result.stdout
         except subprocess.CalledProcessError as e:
             return False, e.stderr
