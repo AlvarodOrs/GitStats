@@ -6,8 +6,6 @@ from collectors import callers, languages, contributions, views, stars
 from utils import tools
 from os.path import exists
 
-#total_contributions_per_year, total_contributions, get_streaks
-
 def collect_all_data(client:GitHubClient, USERNAME:str, visibility:str, EXTRA_VIEWS:int = 0, EXCLUDED_LANGUAGES:list = None) -> dict[str, Any]:
     
     profile = callers.get_profile(client)
