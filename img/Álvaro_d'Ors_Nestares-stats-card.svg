@@ -3,9 +3,9 @@
     <defs>
         
     <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
-        <stop offset="20%" style="stop-color:#ffffff;stop-opacity:1"/>
-        <stop offset="40%" style="stop-color:#6dd5ed;stop-opacity:0.6"/>
-        <stop offset="60%" style="stop-color:#2193b0;stop-opacity:0.4"/>
+        <stop offset="20%" style="stop-color:#fff700;stop-opacity:1"/>
+        <stop offset="40%" style="stop-color:#ff9300;stop-opacity:0.6"/>
+        <stop offset="60%" style="stop-color:#ff6b35;stop-opacity:0.4"/>
         <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2"/>
     </radialGradient>
     
@@ -2197,7 +2197,7 @@
             </text>
             
             <text x="250" y="30" class="stat-value">
-                134
+                139
             </text>
             
             <text x="0" y="60" class="stat-label">
@@ -2233,7 +2233,7 @@
         <!-- Total Contributions -->
         <g transform="translate(109.0, 40)">
             <text x="0" y="25" text-anchor="middle" class="streak-number">
-                231
+                236
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="streak-label">
@@ -2250,21 +2250,21 @@
         
         <!-- Current Streak -->
         <g transform="translate(250.0, 40)">
-            <g transform="translate(-31, 0)"> <!-- shift path left by its half-width -->
+            <g transform="translate(-31, -25)"> <!-- shift path left by its half-width -->
                 <path
                 d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
                 fill="url(#flame-gradient)" opacity="0.9"/>
             </g>
-            <text x="0" y="22.0" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="transparent">
-                0
+            <text x="0" y="28.25" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="#ff4500">
+                13
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="streak-label">
-                No current streak
+                Current Streak
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="streak-date">
-                Lost...
+                Dec 11 - Dec 23
             </text>
         </g>
         
@@ -2274,7 +2274,7 @@
         <!-- Longest Streak -->
         <g transform="translate(391.0, 40)">
             <text x="0" y="25" text-anchor="middle" class="streak-number">
-                12
+                13
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="streak-label">
@@ -2282,7 +2282,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="streak-date">
-                Dec 11, 2025 - Dec 22, 2025
+                Dec 11, 2025 - Dec 23, 2025
             </text>
         </g>
     </g>
@@ -2356,11 +2356,11 @@
         
         <g transform="translate(30, 55)">
             <defs>
-    <clipPath id="rounded-bar-3101369442368">
+    <clipPath id="rounded-bar-1838489608256">
       <rect x="0" y="0" width="440" height="8" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#rounded-bar-3101369442368)"><rect x="0" y="0" width="244.6613597807647" height="8" fill="#ffd700"/><rect x="244.6613597807647" y="0" width="107.94727913349864" height="8" fill="#2b7489"/><rect x="352.60863891426334" y="0" width="84.97977293488191" height="8" fill="#555555"/><rect x="437.58841184914525" y="0" width="1.378050371917004" height="8" fill="#563d7c"/><rect x="438.9664622210623" y="0" width="0.8612814824481274" height="8" fill="#f1e05a"/><rect x="439.8277437035104" y="0" width="0.1722562964896255" height="8" fill="#DA3434"/></g>
+  <g clip-path="url(#rounded-bar-1838489608256)"><rect x="0" y="0" width="244.6613597807647" height="8" fill="#ffd700"/><rect x="244.6613597807647" y="0" width="107.94727913349864" height="8" fill="#2b7489"/><rect x="352.60863891426334" y="0" width="84.97977293488191" height="8" fill="#555555"/><rect x="437.58841184914525" y="0" width="1.378050371917004" height="8" fill="#563d7c"/><rect x="438.9664622210623" y="0" width="0.8612814824481274" height="8" fill="#f1e05a"/><rect x="439.8277437035104" y="0" width="0.1722562964896255" height="8" fill="#DA3434"/></g>
         </g>
         
         <g transform="translate(30, 80)">
