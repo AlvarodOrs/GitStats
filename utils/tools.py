@@ -8,13 +8,22 @@ def sum_dict(dictionary: dict, keys: tuple | list | None = None) -> dict[str, in
         keys = tuple(first.keys())
     return {k: sum(item.get(k, 0) for item in dictionary.values()) for k in keys}
 
-def get_streaks(streaks: dict) -> tuple[dict | None, dict]:
+def get_streaks(streaks: dict, auto_commits_path:str = 'data/auto-commits.json') -> tuple[dict | None, dict]:
     if not streaks: return None, {}
+
+    with open(auto_commits_path, "r") as f: data = json.load(f)
+
+    for auto_streaks in data:
+        if auto_streaks in streaks: streaks[auto_streaks] += data[auto_streaks]
 
     dates = sorted(
         datetime.strptime(d, "%Y-%m-%d") for d in streaks.keys()
     )
 
+    for dt in dates:
+        date_str = dt.strftime("%Y-%m-%d")
+        if streaks.get(date_str, 0) <= 0: dates.remove(dt)
+    
     today = datetime.today().date()
 
     all_streaks = []
@@ -49,23 +58,20 @@ def get_streaks(streaks: dict) -> tuple[dict | None, dict]:
 
     return current_streak, max_streak
 
-def update_json(filepath: str, key: str = "auto-commit", increment: int = 1):
-    year = str(datetime.now().year)
+def update_json(filepath: str, increment: int = 1):
+    date = str(datetime.today().date())
 
     # Load existing data
     if os.path.exists(filepath):
-        with open(filepath, "r") as f:
-            data = json.load(f)
-    else:
-        data = {}
+        with open(filepath, "r") as f: data = json.load(f)
+    else: data = {}
 
     # Ensure year exists
-    if year not in data:
-        data[year] = {}
+    if date not in data: data.setdefault(date, 0)
 
     # Update metric
-    data[year][key] = data[year].get(key, 0) + increment
-
+    else: data[date] = data[date] - increment
+    
     # Write back
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, "w") as f: json.dump(data, f, indent=2)
