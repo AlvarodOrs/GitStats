@@ -5,7 +5,8 @@ from generators.components import (
     generate_animated_dots,
     generate_language_bar,
     generate_language_labels,
-    generate_top_repos
+    generate_top_repos,
+    generate_apple_card_background
 )
 from generators.data_processor import process_github_data
 from utils.tools import format_date
@@ -21,6 +22,7 @@ def generate_stats_card(data: Dict[str, Any]) -> None:
     # Process data
     processed = process_github_data(data)
     
+    background = generate_apple_card_background(processed['top_langs'], SVG_WIDTH, SVG_HEIGHT)
     # Generate components
     animated_dots, dot_animations = generate_animated_dots(processed['top_langs'])
     language_bar = generate_language_bar(processed['top_langs'], SVG_WIDTH - 2*15 - 30)
@@ -75,17 +77,20 @@ def generate_stats_card(data: Dict[str, Any]) -> None:
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
         </filter>
         <style>
-            {dot_animations}
+            <!-- {dot_animations} -->
             {SVG_STYLES}
         </style>
     </defs>
-    
+
     <!-- Dark Background -->
     <rect width="{SVG_WIDTH}" height="{SVG_HEIGHT}" fill="#0d1117" rx="15"/>
     
+    <!-- Apple Card-style dynamic background -->
+    {background}
+
     <!-- Animated Dots Background -->
     <g opacity="0.8" filter="url(#blur)">
-        {animated_dots}
+        <!-- {animated_dots} -->
     </g>
     
     <!-- Overlay gradient for depth -->

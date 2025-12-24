@@ -4,6 +4,94 @@ from generators.config import get_color_map
 
 color_map = get_color_map()
 
+def generate_apple_card_background(langs, width=900, height=600):
+    """
+    Generate Apple Card-style flowing wave background
+    Colors flow in organic waves while maintaining exact percentages
+    Like the real Apple Card that shows spending categories as flowing color bands
+    
+    Args:
+        langs: List of tuples (language, percentage) from process_github_data
+        width: Card width
+        height: Card height
+    
+    Returns:
+        str: Complete SVG markup for the flowing wave background
+    """
+    if not langs:
+        return '''
+        <defs>
+            <linearGradient id="fallbackGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+            </linearGradient>
+        </defs>
+        <rect width="900" height="600" fill="url(#fallbackGradient)" />
+        '''
+    
+    # Sort languages by percentage
+    sorted_langs = sorted(langs, key=lambda x: x[1], reverse=True)
+    
+    # Create flowing gradient with smooth transitions
+    gradient_stops = []
+    cumulative = 0
+    
+    for i, (lang, percent) in enumerate(sorted_langs):
+        color = color_map.get(lang, '#858585')
+                
+        # Each language occupies its percentage of the gradient
+        cumulative += percent
+        gradient_stops.append(f'<stop offset="{cumulative}%" style="stop-color:{color};stop-opacity:1" />')
+    
+    # Generate multiple flowing gradients at different angles
+    gradients = []
+    for angle_idx in range(3):
+        angle = 45 + (angle_idx * 60)  # Different angles for layering
+        x1, y1, x2, y2 = _calculate_gradient_coords(angle)
+        
+        gradients.append(f'''
+        <linearGradient id="flowGradient{angle_idx}" x1="{x1}%" y1="{y1}%" x2="{x2}%" y2="{y2}%">
+            {''.join(gradient_stops)}
+            <animate attributeName="x1" values="{x1}%;{x1+10}%;{x1}%" dur="{20+angle_idx*5}s" repeatCount="indefinite"/>
+            <animate attributeName="y1" values="{y1}%;{y1+10}%;{y1}%" dur="{25+angle_idx*5}s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="{x2}%;{x2-10}%;{x2}%" dur="{20+angle_idx*5}s" repeatCount="indefinite"/>
+            <animate attributeName="y2" values="{y2}%;{y2-10}%;{y2}%" dur="{25+angle_idx*5}s" repeatCount="indefinite"/>
+        </linearGradient>
+        ''')
+    
+    background = f'''
+    <defs>
+        {''.join(gradients)}
+        
+        <!-- Blur filter for smooth blending -->
+        <filter id="softBlur">
+            <feGaussianBlur stdDeviation="40" />
+        </filter>
+    </defs>
+    
+    <!-- Base flowing gradient -->
+    <rect width="{width}" height="{height}" fill="url(#flowGradient0)" />
+    
+    <!-- Layered flowing gradients for depth -->
+    <rect width="{width}" height="{height}" fill="url(#flowGradient1)" opacity="0.6" filter="url(#softBlur)"/>
+    <rect width="{width}" height="{height}" fill="url(#flowGradient2)" opacity="0.4" filter="url(#softBlur)"/>
+    '''
+    
+    return background
+
+
+def _calculate_gradient_coords(angle):
+    """Calculate gradient coordinates based on angle"""
+    import math
+    rad = math.radians(angle)
+    
+    x1 = 50 - 50 * math.cos(rad)
+    y1 = 50 - 50 * math.sin(rad)
+    x2 = 50 + 50 * math.cos(rad)
+    y2 = 50 + 50 * math.sin(rad)
+    
+    return x1, y1, x2, y2
+
 def generate_animated_dots(langs, width:int = 500, height:int = 800, margin_x:int = 10, margin_y:int = 10):
     """Generate animated dots background based on language percentages"""
 
