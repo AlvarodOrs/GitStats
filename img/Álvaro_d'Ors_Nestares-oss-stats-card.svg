@@ -2690,10 +2690,10 @@
         
         <g transform="translate(20, 55)">
             <text x="0" y="0" class="stat-label">Contributions</text>
-            <text x="220" y="0" class="stat-value">268</text>
+            <text x="220" y="0" class="stat-value">274</text>
             
             <text x="0" y="30" class="stat-label">Commits</text>
-            <text x="220" y="30" class="stat-value">171</text>
+            <text x="220" y="30" class="stat-value">177</text>
             
             <text x="0" y="60" class="stat-label">Stars</text>
             <text x="220" y="60" class="stat-value">12</text>
@@ -2705,7 +2705,7 @@
             <text x="220" y="120" class="stat-value">2</text>
             
             <text x="0" y="150" class="stat-label">Contributed to (this year)</text>
-            <text x="220" y="150" class="stat-value">209</text>
+            <text x="220" y="150" class="stat-value">215</text>
         </g>
     </g>
     
@@ -2716,10 +2716,10 @@
         
         <g transform="translate(20, 55)">
             <text x="0" y="0" class="stat-label">Longest Streak</text>
-            <text x="200" y="0" class="stat-value">18 days</text>
+            <text x="200" y="0" class="stat-value">19 days</text>
             
             <text x="0" y="30" class="stat-label">Period</text>
-            <text x="200" y="30" class="stat-value">Dec 11, 2025 — Dec 28, 2025</text>
+            <text x="200" y="30" class="stat-value">Dec 11, 2025 — Dec 29, 2025</text>
             
             <text x="0" y="60" class="stat-label">Active since</text>
             <text x="200" y="60" class="stat-value">Dec 02, 2020</text>
@@ -2732,16 +2732,16 @@
                 d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
                 fill="url(#flame-gradient)" opacity="0.9"/>
             </g>
-            <text x="0" y="22.0" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="transparent">
-                0
+            <text x="0" y="28.25" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="#ff4500">
+                19
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="streak-label">
-                No current streak
+                Current Streak
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="streak-date">
-                Lost...
+                Dec 11 - Dec 29
             </text>
         </g>
 
@@ -2812,11 +2812,11 @@
         
         <g transform="translate(20, 55)">
             <defs>
-    <clipPath id="rounded-bar-2787598921344">
+    <clipPath id="rounded-bar-2518745001920">
       <rect x="0" y="0" width="380" height="8" rx="4"/>
     </clipPath>
   </defs>
-  <g clip-path="url(#rounded-bar-2787598921344)"><rect x="0" y="0" width="213.55535319370364" height="8" fill="#ffd700"/><rect x="213.55535319370364" y="0" width="91.99687784571354" height="8" fill="#2b7489"/><rect x="305.55223103941717" y="0" width="72.42097046962404" height="8" fill="#555555"/><rect x="377.9732015090412" y="0" width="1.1369845193183297" height="8" fill="#563d7c"/><rect x="379.1101860283595" y="0" width="0.7415116430336932" height="8" fill="#f1e05a"/><rect x="379.8516976713932" y="0" width="0.14830232860673864" height="8" fill="#DA3434"/></g>
+  <g clip-path="url(#rounded-bar-2518745001920)"><rect x="0" y="0" width="213.55535319370364" height="8" fill="#ffd700"/><rect x="213.55535319370364" y="0" width="91.99687784571354" height="8" fill="#2b7489"/><rect x="305.55223103941717" y="0" width="72.42097046962404" height="8" fill="#555555"/><rect x="377.9732015090412" y="0" width="1.1369845193183297" height="8" fill="#563d7c"/><rect x="379.1101860283595" y="0" width="0.7415116430336932" height="8" fill="#f1e05a"/><rect x="379.8516976713932" y="0" width="0.14830232860673864" height="8" fill="#DA3434"/></g>
         </g>
         
         <g transform="translate(20, 80)">
