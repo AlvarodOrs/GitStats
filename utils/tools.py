@@ -67,7 +67,7 @@ def update_json(filepath: str, increment: int = 1):
     else: data = {}
 
     # Ensure year exists
-    if date not in data: data.setdefault(date, 0)
+    if date not in data: data.setdefault(date, -1)
 
     # Update metric
     else: data[date] = data[date] - increment

@@ -37,22 +37,24 @@ class GitUpdater:
                 check=True
             )
             return True, result.stdout
-        except subprocess.CalledProcessError as e:
-            return False, e.stderr
+        except subprocess.CalledProcessError as e: return False, e.stderr
     
     def check_git_installed(self) -> bool:
         """Check if Git is installed"""
         success, _ = self.run_command(['git', '--version'])
+
         return success
     
     def check_is_git_repo(self) -> bool:
         """Check if current directory is a Git repository"""
         success, _ = self.run_command(['git', 'rev-parse', '--git-dir'])
+
         return success
     
     def check_git_remote(self) -> bool:
 
         success, _ = self.run_command(['git', 'remote', '-v'])
+
         return success
     
     def has_changes(self, file_paths: list[str]) -> bool:
@@ -66,9 +68,11 @@ class GitUpdater:
             True if any files have changes
         """
         for file_path in file_paths:
+            
             success, output = self.run_command(['git', 'status', '--porcelain', file_path])
-            if success and output.strip():
-                return True
+            
+            if success and output.strip(): return True
+
         return False
     
     def stage_files(self, file_paths: list[str]) -> bool:
@@ -82,10 +86,10 @@ class GitUpdater:
             True if successful
         """
         success, output = self.run_command(['git', 'add'] + file_paths)
-        if success:
-            print(f"Staged files: {', '.join(file_paths)}")
-        else:
-            print(f"Failed to stage files: {output}")
+        
+        if success: print(f"Staged files: {', '.join(file_paths)}")
+        else: print(f"Failed to stage files: {output}")
+        
         return success
     
     def commit(self, message: str) -> bool:
@@ -99,10 +103,10 @@ class GitUpdater:
             True if successful
         """
         success, output = self.run_command(['git', 'commit', '-m', message])
-        if success:
-            print(f"Created commit: {message}")
-        else:
-            print(f"Failed to commit: {output}")
+        
+        if success: print(f"Created commit: {message}")
+        else: print(f"Failed to commit: {output}")
+        
         return success
     
     def push(self, remote: str = 'origin', branch: Optional[str] = None) -> bool:
@@ -126,10 +130,10 @@ class GitUpdater:
         
         # Push to remote
         success, output = self.run_command(['git', 'push', remote, branch])
-        if success:
-            print(f"Pushed to {remote}/{branch}")
-        else:
-            print(f"Failed to push: {output}")
+        
+        if success: print(f"Pushed to {remote}/{branch}")
+        else: print(f"Failed to push: {output}")
+        
         return success
     
     def commit_and_push(
@@ -170,16 +174,13 @@ class GitUpdater:
             return False
         
         # Stage files
-        if not self.stage_files(file_paths):
-            return False
+        if not self.stage_files(file_paths): return False
         
         # Commit
-        if not self.commit(commit_message):
-            return False
+        if not self.commit(commit_message): return False
         
         # Push
-        if not self.push(remote, branch):
-            return False
+        if not self.push(remote, branch): return False
         
         update_json('data/auto-commits.json')
 
@@ -210,4 +211,5 @@ def auto_update_github(
         >>> auto_update_github(['img/stats-card.svg', 'data/stats.json'])
     """
     updater = GitUpdater(repo_path)
+    
     return updater.commit_and_push(file_paths, commit_message, remote, branch)
