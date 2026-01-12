@@ -1,6 +1,6 @@
 # 📊 GitHub Stats Generator
 
-Automatically generate stunning, animated GitHub stats cards. Track contributions, repository insights, and language breakdowns—with particle effects that visually represent the programming languages used in your repos.
+Automatically generate stunning, animated GitHub stats cards based on [anuraghazra's](https://github.com/anuraghazra/github-readme-stats) project. Track contributions, repository insights, and language breakdowns—with particle effects that visually represent the programming languages used in your repos.
 
 ## ✨ Features
 
