@@ -16,7 +16,6 @@ def collect_all_data(client:GitHubClient, USERNAME:str, visibility:str, EXTRA_VI
     
     languages_used = callers.get_languages(client, repos, EXCLUDED_LANGUAGES)
     languages_percentages = languages.get_percentages(languages_used) 
-    
     data_yearly, data_daily = callers.get_contributions(client, profile["login"], profile["created_at"])
     year_now = datetime.now().year
     year_created = datetime.fromisoformat(profile["created_at"].replace('Z', '')).year
@@ -26,6 +25,9 @@ def collect_all_data(client:GitHubClient, USERNAME:str, visibility:str, EXTRA_VI
     streak_current, streak_max = tools.get_streaks(data_daily)
 
     repo_views = views.get_views(repos)
+    # print(repo_views)
+    # repo_views = tools.update_total_views(repo_views)
+    # input(f'\n{repo_views}')
     github_data = {
         "user_data": {
             "login": profile['login'],

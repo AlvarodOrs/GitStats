@@ -2,24 +2,18 @@ from utils.tools import format_date
 
 def process_github_data(data):
     
-    username = data['user_data']['login']
-    user_name = data['user_data']['name']
-    created = data['user_data']['created']
-    avatar_url = data['user_data']['avatar_url']
-    
+    user_name = data['user_data']['login']
     # Format possessive
     if user_name[-1].lower() == 's': username_label = f"{user_name}'"
     else: username_label = f"{user_name}'s"
 
-    stars_total = data['stars_total']
     contributions_now = data['contributions_now']
     contributions_total = data['contributions_total']
-    
-    repos = data['repo_views']
-    repos_total = len(repos)
-    
-    languages = data['languages']
-    top_langs = list(languages.items())[:6]
+
+    print(data['languages'])
+    languages = dict(
+        sorted(data['languages'].items(), key=lambda item: item[1], reverse=True))
+    input(languages)
 
     streak_info = data['streak_info']
     longest_streak = streak_info.get("longest_streak", {})
@@ -43,21 +37,19 @@ def process_github_data(data):
         color_b = "#ff6b35"
         color_c = "#ff9300"
         color_d = "#fff700"
-        flame_fill = "url(#flame-gradient)"
         flame_number_color = "#ff4500"
-        streak_title = 'Current Streak'
         streak_dates = f'{format_date(active_from, False)} - {format_date(active_to, False)}'
-        flame_y = 25
     else:
         color_a = "#000000"
         color_b = "#2193b0"
         color_c = "#6dd5ed"
         color_d = "#ffffff"
-        flame_fill = "url(#flame-gradient)"
-        flame_number_color = "transparent" #"#5dade2"
-        streak_title = f'No current streak'
+        flame_number_color = "#5dade2"
         streak_dates = f'Lost...'
-        flame_y = 0
+    flame_fill = "url(#flame-gradient)"
+    streak_title = 'Current Streak'
+    flame_y = 25
+
     flame_gradient = f'''
     <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
         <stop offset="20%" style="stop-color:{color_d};stop-opacity:1"/>
@@ -68,21 +60,19 @@ def process_github_data(data):
     '''
 
     return {
-        'username': username,
+        'username': user_name,
+        'user_name': data['user_data']['name'],
+        'created': data['user_data']['created'],
+        'avatar_url': data['user_data']['avatar_url'],
         'username_label': username_label,
-        'user_name': user_name,
-        'avatar_url': avatar_url,
-        'created': created,
-        'stars_total': stars_total,
-        'total_repos': repos_total,
+        'stars_total': data['stars_total'],
         'commits': contributions_total.get('commits_total', 0),
         'prs': contributions_total.get('prs_total', 0),
         'issues': contributions_total.get('issues_total', 0),
+        'repos': data['repo_views'],
         'total_contribs': contributions_total.get('contributions_total', 0),
         'contributions_now': contributions_now.get('contributions_total', 0),
         'contributions_until_now': int(contributions_total.get('contributions_total', 0)) - int(contributions_now.get('contributions_total', 0)),
-        'top_langs': top_langs,
-        'repos': repos,
         'active_streak_days': active_streak_days,
         'streak_title': streak_title,
         'streak_dates': streak_dates,
@@ -93,4 +83,6 @@ def process_github_data(data):
         'flame_fill': flame_fill,
         'flame_number_color': flame_number_color,
         'flame_y': flame_y,
+        'top_langs': languages,
+        'total_repos': len(data['repo_views']),
     }
