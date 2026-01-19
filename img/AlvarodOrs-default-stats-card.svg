@@ -137,7 +137,7 @@
 <text x="0" y="0" class="text stat-label">Total Stars Earned:</text>
 <text x="250" y="0" class="text stat-value">12</text>
 <text x="0" y="30" class="text stat-label">Total Commits:</text>
-<text x="250" y="30" class="text stat-value">193</text>
+<text x="250" y="30" class="text stat-value">194</text>
 <text x="0" y="60" class="text stat-label">Total PRs:</text>
 <text x="250" y="60" class="text stat-value">1</text>
 <text x="0" y="90" class="text stat-label">Total Issues:</text>
@@ -155,6 +155,6 @@
     <!-- Languages' Card -->
     <g transform="translate(0, 500)"><text x="0" y="30" class="text section-title" >Most Used Languages:</text>
 <rect x="15" y="0" width="470" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
-<g transform="translate(30, 55)"><defs><clipPath id="rounded-bar-2704748331456"><rect x="0" y="0" width="440" height="8" rx="4"/></clipPath></defs><g clip-path="url(#rounded-bar-2704748331456)"><rect x="0" y="0" width="44.09719026141384%" height="8" fill="#ffd700"/><rect x="194.0276371502209" y="0" width="18.316227908689246%" height="8" fill="#2b7489"/><rect x="274.6190399484536" y="0" width="14.417744385125184%" height="8" fill="#555555"/><rect x="338.0571152430044" y="0" width="14.25436073269514%" height="8" fill="#b07219"/><rect x="400.776302466863" y="0" width="6.070795747422681%" height="8" fill="#198CE7"/><rect x="427.4878037555228" y="0" width="2.8436809646539114%" height="8" fill="#198CE7"/></g></g>
+<g transform="translate(30, 55)"><defs><clipPath id="rounded-bar-2329753049728"><rect x="0" y="0" width="440" height="8" rx="4"/></clipPath></defs><g clip-path="url(#rounded-bar-2329753049728)"><rect x="0" y="0" width="44.09719026141384%" height="8" fill="#ffd700"/><rect x="194.0276371502209" y="0" width="18.316227908689246%" height="8" fill="#2b7489"/><rect x="274.6190399484536" y="0" width="14.417744385125184%" height="8" fill="#555555"/><rect x="338.0571152430044" y="0" width="14.25436073269514%" height="8" fill="#b07219"/><rect x="400.776302466863" y="0" width="6.070795747422681%" height="8" fill="#198CE7"/><rect x="427.4878037555228" y="0" width="2.8436809646539114%" height="8" fill="#198CE7"/></g></g>
 <g transform="translate(30, 80)"><g transform="translate(0, 0)"><circle cx="5" cy="-3" r="5" fill="#ffd700"/><text x="15" y="0" class="text lang-text">Python 44.10%</text></g><g transform="translate(146.66666666666666, 0)"><circle cx="5" cy="-3" r="5" fill="#2b7489"/><text x="15" y="0" class="text lang-text">TypeScript 18.32%</text></g><g transform="translate(293.3333333333333, 0)"><circle cx="5" cy="-3" r="5" fill="#555555"/><text x="15" y="0" class="text lang-text">C 14.42%</text></g><g transform="translate(0, 25)"><circle cx="5" cy="-3" r="5" fill="#b07219"/><text x="15" y="0" class="text lang-text">Java 14.25%</text></g><g transform="translate(146.66666666666666, 25)"><circle cx="5" cy="-3" r="5" fill="#198CE7"/><text x="15" y="0" class="text lang-text">R 6.07%</text></g><g transform="translate(293.3333333333333, 25)"><circle cx="5" cy="-3" r="5" fill="#198CE7"/><text x="15" y="0" class="text lang-text">Others 2.84%</text></g></g></g>
 </svg>
