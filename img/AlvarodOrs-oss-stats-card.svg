@@ -6,7 +6,8 @@
         </filter>
         <style>
             
-            <!-- oss Styles -->
+                    .invisible { opacity: 0; }         .blue { fill: #58a6ff; }         .text { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; fill: #ffffff; }         .header { font-size: 28px; font-weight: bold; }         .big-title { font-size: 24px; font-weight: bold; }         .title { font-size: 22px; }         .section-title { font-size: 18px; }         .block-title { font-size: 16px; }         .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }
+        .stat-label { font-size: 14px; font-weight: 400; opacity: 0.9; }         .stat-value { font-size: 18px; }         .lang-text { font-size: 12px; font-weight: 400; }         .streak-number { font-size: 48px; font-weight: 700; }         .streak-label { font-size: 14px; }         .streak-date { font-size: 11px; font-weight: 400; opacity: 0.8; }         .repo-name { font-size: 13px; }
             .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }}
             .block-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 16px; fill: #58a6ff; }}
         </style>
@@ -16,7 +17,7 @@
     <rect width="900" height="550" fill="#0d1117" rx="15"/>
     
     <!-- Header -->
-    <text x="20" y="40" class="header">Álvaro d'Ors Nestares' — GitHub Activity</text>
+    <text x="20" y="40" class="text header">Álvaro d'Ors Nestares' — GitHub Activity</text>
     
     <!-- Animated Dots Background -->
     <g opacity="0.8" filter="url(#blur)">
@@ -30,43 +31,43 @@
     <!-- Block 1: Activity Metrics -->
     <g transform="translate(20, 70)">
         <rect x="0" y="0" width="420" height="220" fill="rgba(255,255,255,0.05)" rx="10"/>
-        <text x="20" y="30" class="block-title">Activity Metrics</text>
+        <text x="20" y="30" class="text block-title">Activity Metrics</text>
         
         <g transform="translate(20, 55)">
-            <text x="0" y="0" class="stat-label">Contributions</text>
-            <text x="220" y="0" class="stat-value">298</text>
+            <text x="0" y="0" class="text stat-label">Contributions</text>
+            <text x="220" y="0" class="text stat-value">299</text>
             
-            <text x="0" y="30" class="stat-label">Commits</text>
-            <text x="220" y="30" class="stat-value">196</text>
+            <text x="0" y="30" class="text stat-label">Commits</text>
+            <text x="220" y="30" class="text stat-value">197</text>
             
-            <text x="0" y="60" class="stat-label">Stars</text>
-            <text x="220" y="60" class="stat-value">12</text>
+            <text x="0" y="60" class="text stat-label">Stars</text>
+            <text x="220" y="60" class="text stat-value">12</text>
             
-            <text x="0" y="90" class="stat-label">PRs</text>
-            <text x="220" y="90" class="stat-value">1</text>
+            <text x="0" y="90" class="text stat-label">PRs</text>
+            <text x="220" y="90" class="text stat-value">1</text>
             
-            <text x="0" y="120" class="stat-label">Issues</text>
-            <text x="220" y="120" class="stat-value">3</text>
+            <text x="0" y="120" class="text stat-label">Issues</text>
+            <text x="220" y="120" class="text stat-value">3</text>
             
-            <text x="0" y="150" class="stat-label">Contributed to (this year)</text>
-            <text x="220" y="150" class="stat-value">21</text>
+            <text x="0" y="150" class="text stat-label">Contributed to (this year)</text>
+            <text x="220" y="150" class="text stat-value">22</text>
         </g>
     </g>
     
     <!-- Block 2: Streaks -->
     <g transform="translate(460, 70)">
         <rect x="0" y="0" width="420" height="330" fill="rgba(255,255,255,0.05)" rx="10"/>
-        <text x="20" y="30" class="block-title">Streaks</text>
+        <text x="20" y="30" class="text block-title">Streaks</text>
         
         <g transform="translate(20, 55)">
-            <text x="0" y="0" class="stat-label">Longest Streak</text>
-            <text x="200" y="0" class="stat-value">19 days</text>
+            <text x="0" y="0" class="text stat-label">Longest Streak</text>
+            <text x="200" y="0" class="text stat-value">19 days</text>
             
-            <text x="0" y="30" class="stat-label">Period</text>
-            <text x="200" y="30" class="stat-value">{longest_from_formatted} — {longest_to_formatted}</text>
+            <text x="0" y="30" class="text stat-label">Period</text>
+            <text x="200" y="30" class="text stat-value">{longest_from_formatted} — {longest_to_formatted}</text>
             
-            <text x="0" y="60" class="stat-label">Active since</text>
-            <text x="200" y="60" class="stat-value">{created_formatted}</text>
+            <text x="0" y="60" class="text stat-label">Active since</text>
+            <text x="200" y="60" class="text stat-value">{created_formatted}</text>
         </g>
         
         <!-- Current Streak -->
@@ -80,11 +81,11 @@
                 0
             </text>
             
-            <text x="0" y="45" text-anchor="middle" class="streak-label">
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
                 Current Streak
             </text>
             
-            <text x="0" y="62" text-anchor="middle" class="streak-date">
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
                 Lost...
             </text>
         </g>
@@ -94,7 +95,7 @@
     <!-- Block 3: Top Repositories -->
     <g transform="translate(20, 300)">
         <rect x="0" y="0" width="420" height="230" fill="rgba(255,255,255,0.05)" rx="10"/>
-        <text x="20" y="30" class="block-title">Top Repositories</text>
+        <text x="20" y="30" class="text block-title">Top Repositories</text>
         
         <g transform="translate(0, 0)">
             
@@ -155,7 +156,7 @@
     <!-- Block 4: Languages -->
     <g transform="translate(460, 410)">
         <rect x="0" y="0" width="420" height="120" fill="rgba(255,255,255,0.05)" rx="10"/>
-        <text x="20" y="30" class="block-title">Languages</text>
+        <text x="20" y="30" class="text block-title">Languages</text>
         
         <g transform="translate(20, 55)">
             <rect x="0" y="0" width="44.09719026141384%" height="8" fill="#ffd700"/>

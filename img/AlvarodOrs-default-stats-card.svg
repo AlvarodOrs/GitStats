@@ -16,7 +16,8 @@
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
         </filter>
         <style>
-            <!-- default Styles -->
+                    .invisible { opacity: 0; }         .blue { fill: #58a6ff; }         .text { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; fill: #ffffff; }         .header { font-size: 28px; font-weight: bold; }         .big-title { font-size: 24px; font-weight: bold; }         .title { font-size: 22px; }         .section-title { font-size: 18px; }         .block-title { font-size: 16px; }         .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }
+        .stat-label { font-size: 14px; font-weight: 400; opacity: 0.9; }         .stat-value { font-size: 18px; }         .lang-text { font-size: 12px; font-weight: 400; }         .streak-number { font-size: 48px; font-weight: 700; }         .streak-label { font-size: 14px; }         .streak-date { font-size: 11px; font-weight: 400; opacity: 0.8; }         .repo-name { font-size: 13px; }
         </style>
     </defs>
 
@@ -37,7 +38,7 @@
     <g transform="translate(0, 60)">
         
         <!-- Title with Avatar -->
-        <text x="140" y="35" class="title" text-anchor="start">
+        <text x="140" y="35" class="text title" text-anchor="start">
             Álvaro d'Ors Nestares' GitHub Stats
         </text>
         
@@ -47,43 +48,43 @@
         
         <!-- Stats Grid -->
         <g transform="translate(30, 80)">
-            <text x="0" y="0" class="stat-label">
+            <text x="0" y="0" class="text stat-label">
                 Total Stars Earned:
             </text>
 
-            <text x="250" y="0" class="stat-value">
+            <text x="250" y="0" class="text stat-value">
                 12
             </text>
             
-            <text x="0" y="30" class="stat-label">
+            <text x="0" y="30" class="text stat-label">
                 Total Commits:
             </text>
             
-            <text x="250" y="30" class="stat-value">
-                196
+            <text x="250" y="30" class="text stat-value">
+                197
             </text>
             
-            <text x="0" y="60" class="stat-label">
+            <text x="0" y="60" class="text stat-label">
                 Total PRs:
             </text>
             
-            <text x="250" y="60" class="stat-value">
+            <text x="250" y="60" class="text stat-value">
                 1
             </text>
             
-            <text x="0" y="90" class="stat-label">
+            <text x="0" y="90" class="text stat-label">
                 Total Issues:
             </text>
             
-            <text x="250" y="90" class="stat-value">
+            <text x="250" y="90" class="text stat-value">
                 3
             </text>
             
-            <text x="0" y="120" class="stat-label">
+            <text x="0" y="120" class="text stat-label">
                 Contributed to (last year):
             </text>
             
-            <text x="250" y="120" class="stat-value">
+            <text x="250" y="120" class="text stat-value">
                 2
             </text>
         </g>
@@ -95,15 +96,15 @@
         
         <!-- Total Contributions -->
         <g transform="translate(150, 40)">
-            <text x="0" y="25" text-anchor="middle" class="streak-number">
-                298
+            <text x="0" y="25" text-anchor="middle" class="text streak-number">
+                299
             </text>
             
-            <text x="0" y="45" text-anchor="middle" class="streak-label">
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
                 Total Contributions
             </text>
             
-            <text x="0" y="62" text-anchor="middle" class="streak-date">
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
                 {created_formatted} - Present
             </text>
         </g>
@@ -122,11 +123,11 @@
                 0
             </text>
             
-            <text x="0" y="45" text-anchor="middle" class="streak-label">
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
                 Current Streak
             </text>
             
-            <text x="0" y="62" text-anchor="middle" class="streak-date">
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
                 Lost...
             </text>
         </g>
@@ -136,15 +137,15 @@
         
         <!-- Longest Streak -->
         <g transform="translate(690, 40)">
-            <text x="0" y="25" text-anchor="middle" class="streak-number">
+            <text x="0" y="25" text-anchor="middle" class="text streak-number">
                 19
             </text>
             
-            <text x="0" y="45" text-anchor="middle" class="streak-label">
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
                 Longest Streak
             </text>
             
-            <text x="0" y="62" text-anchor="middle" class="streak-date">
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
                 {longest_from_formatted} - {longest_to_formatted}
             </text>
         </g>
@@ -153,7 +154,7 @@
     <!-- Top Repositories Card -->
     <g transform="translate(0, 440)">
         <rect x="30" y="0" width="840" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
-        <text x="30" y="35" class="section-title">
+        <text x="30" y="35" class="text section-title">
             Top Repositories by Views
         </text>
         <g transform="translate(0, 10)">
@@ -216,7 +217,7 @@
     <g transform="translate(0, 640)">
         <rect x="30" y="0" width="840" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
         
-        <text x="30" y="35" class="section-title">
+        <text x="30" y="35" class="text section-title">
             Most Used Languages
         </text>
         
