@@ -60,7 +60,7 @@
             </text>
             
             <text x="250" y="30" class="stat-value">
-                195
+                196
             </text>
             
             <text x="0" y="60" class="stat-label">
@@ -96,7 +96,7 @@
         <!-- Total Contributions -->
         <g transform="translate(150, 40)">
             <text x="0" y="25" text-anchor="middle" class="streak-number">
-                297
+                298
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="streak-label">
@@ -104,7 +104,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="streak-date">
-                <function format_date at 0x00000283F84C9620>(created']) - Present
+                {created_formatted} - Present
             </text>
         </g>
         
@@ -145,7 +145,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="streak-date">
-                {longest_from_formatted} - {<function format_date at 0x00000283F84C9620>(processed['longest_to'])}
+                {longest_from_formatted} - {longest_to_formatted}
             </text>
         </g>
     </g>
