@@ -18,7 +18,7 @@ def format_date(date_str, year: bool = True):
     except: return date_str
 
 def get_streaks(streaks: dict, auto_commits_path: str = 'data/auto-commits.json') -> tuple[dict | None, dict]:
-    if not streaks: return None, {}
+    if not streaks: return None, None
 
     with open(auto_commits_path, "r") as f: data = json.load(f)
 
