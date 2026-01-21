@@ -44,6 +44,4 @@ def test1(lst: list):
     exit(0)
 
 if __name__ == '__main__':
-    lst  = ['unwrap_data', 'update_json', 'update_total_views']
-    # test1(lst)
-    main(card_indx=0, to_write=True, call_api=False, auto_commit=False)
+    main(card_indx=0, to_write=True, call_api=True, auto_commit=True)

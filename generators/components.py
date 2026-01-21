@@ -167,8 +167,8 @@ def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dime
     return f'{separator}'.join(items)
 
 def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, str]:
-    input(active_streak)
-
+    #input(active_streak)
+    print(active_streak)
     # Flame parameters
     T_core = 2200
     k_r = 1.3
