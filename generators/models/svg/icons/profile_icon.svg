@@ -1,0 +1,10 @@
+<svg width="500" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Avatar Image -->
+        <circle cx="$x_px" cy="$y_px" r="$radio1" fill="none" stroke="$ring_color" stroke-width="$ring_width"/>
+        <image x="$img_x" y="$img_y" width="$img_w" height="$img_h" xlink:href="$profile_picture" clip-path="url(#avatar-clip)" preserveAspectRatio="xMidYMid slice"/>
+
+        <!-- Profile Pic Ring -->
+        <clipPath id="avatar-clip">
+            <circle cx="$x_px" cy="$y_px" r="$radio"/>
+        </clipPath>
+</svg>

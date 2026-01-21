@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- TEMPLATE -->
+<svg width="$width_total" height="$height_total"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    
+    <defs>
+        <!-- Card Blur -->
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
+            
+        <!-- Glow for terminal text -->
+        <filter id="terminalGlow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+            
+        <style>
+            .invisible { opacity: 0; }
+            .blue { fill: #58a6ff; }
+            .text { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; fill: #ffffff; }
+            .header { font-size: 28px; font-weight: bold; }
+            .big-title { font-size: 24px; font-weight: bold; }
+            .title { font-size: 22px; }
+            .section-title { font-size: 18px; }
+            .block-title { font-size: 16px; }
+            .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }
+            .stat-label { font-size: 14px; font-weight: 400; opacity: 0.9; }
+            .stat-value { font-size: 18px; }
+            .lang-text { font-size: 12px; font-weight: 400; }
+            .streak-number { font-size: 48px; font-weight: 700; }
+            .streak-label { font-size: 14px; }
+            .streak-date { font-size: 11px; font-weight: 400; opacity: 0.8; }
+            .repo-name { font-size: 13px; }
+            $dot_animations
+        </style>
+        
+        $streak_gradient
+
+        <!-- Dark terminal-like background -->
+        <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#010409;stop-opacity:1" />
+        </linearGradient>
+            
+        <!-- Terminal green accent -->
+        <linearGradient id="terminalGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#00ff00;stop-opacity:1" />
+        </linearGradient>
+        
+        <!-- Scanline effect -->
+        <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+            <rect width="100%" height="2" fill="rgba(57, 255, 20, 0.02)"/>
+        </pattern>
+        
+        <!-- Matrix-style background pattern -->
+        <pattern id="matrix" width="20" height="20" patternUnits="userSpaceOnUse">
+            <text x="0" y="15" font-family="'Courier New', monospace" font-size="10" fill="rgba(57, 255, 20, 0.05)">0</text>
+        </pattern>
+    </defs>
+
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="url(#bg-color)" rx="15"/>
+
+    <!-- Dynamic Background -->
+    $dynamic_background
+
+    <!-- Overlay Gradient for Depth -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
+
+    <!-- User's Name -->
+    <text x="$username_x" y="$username_y" class="$normal_title">$username_label GitHub Stats</text>
+
+    <!-- Profile Icon -->
+    $profile_icon
+
+
+    <!-- Activity' Card -->
+    <g transform="translate($activity_x, $activity_y)">$activity_block</g>
+    
+    <!-- Streaks' Card -->
+    <g transform="translate($streak_x, $streak_y)">$streak_block</g>
+    
+    <!-- Repositories' Card -->
+    <g transform="translate($repositories_x, $repositories_y)">$repositories_block</g>
+    
+    <!-- Languages' Card -->
+    <g transform="translate($languages_x, $languages_y)">$languages_block</g>
+</svg>

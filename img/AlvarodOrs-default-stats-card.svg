@@ -2,13 +2,17 @@
 <svg width="500" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         
-    <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
-        <stop offset="20%" style="stop-color:#ffffff;stop-opacity:1"/>
-        <stop offset="40%" style="stop-color:#6dd5ed;stop-opacity:0.6"/>
-        <stop offset="60%" style="stop-color:#2193b0;stop-opacity:0.4"/>
-        <stop offset="100%" style="stop-color:#000000;stop-opacity:0.2"/>
-    </radialGradient>
-    
+<radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
+    <stop offset="0%" style="stop-color:rgb(216,162,40);stop-opacity:1.00"/>
+    <stop offset="25%" style="stop-color:rgb(181,154,14);stop-opacity:0.70"/>
+    <stop offset="50%" style="stop-color:rgb(146,154,21);stop-opacity:0.45"/>
+    <stop offset="75%" style="stop-color:rgb(111,164,28);stop-opacity:0.26"/>
+    <stop offset="100%" style="stop-color:rgb(76,183,35);stop-opacity:0.15"/>
+</radialGradient>
+
+        <clipPath id="rounded-bar-2550161553088">
+<rect x="0" y="0" width="470" height="8" rx="4"/>
+</clipPath>
         <clipPath id="avatar-clip">
             <circle cx="420" cy="70" r="35"/>
         </clipPath>
@@ -22,24 +26,60 @@
     </defs>
 
     <!-- Dark Background -->
-    <rect width="500" height="800" fill="#0d1117" rx="15"/>
+    <rect width="100%" height="100%" fill="#0d1117" rx="15"/>
     
     <!-- Apple Card-style dynamic background -->
     
-
-    <!-- Animated Dots Background -->
-    <g opacity="0.8" filter="url(#blur)">
-    </g>
+        <defs>
+            
+        <linearGradient id="flowGradient0" x1="14.644660940672622%" y1="14.644660940672622%" x2="85.35533905932738%" y2="85.35533905932738%">
+            <stop offset="44.09719026141384%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="62.413418170103085%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="76.83116255522827%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.08552328792342%" style="stop-color:#b07219;stop-opacity:1" />
+            <animate attributeName="x1" values="14.644660940672622%;24.644660940672622%;14.644660940672622%" dur="20s" repeatCount="indefinite"/>
+            <animate attributeName="y1" values="14.644660940672622%;24.644660940672622%;14.644660940672622%" dur="25s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="85.35533905932738%;75.35533905932738%;85.35533905932738%" dur="20s" repeatCount="indefinite"/>
+            <animate attributeName="y2" values="85.35533905932738%;75.35533905932738%;85.35533905932738%" dur="25s" repeatCount="indefinite"/>
+        </linearGradient>
+        
+        <linearGradient id="flowGradient1" x1="62.94095225512604%" y1="1.7037086855465873%" x2="37.05904774487396%" y2="98.29629131445341%">
+            <stop offset="44.09719026141384%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="62.413418170103085%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="76.83116255522827%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.08552328792342%" style="stop-color:#b07219;stop-opacity:1" />
+            <animate attributeName="x1" values="62.94095225512604%;72.94095225512604%;62.94095225512604%" dur="25s" repeatCount="indefinite"/>
+            <animate attributeName="y1" values="1.7037086855465873%;11.703708685546587%;1.7037086855465873%" dur="30s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="37.05904774487396%;27.059047744873958%;37.05904774487396%" dur="25s" repeatCount="indefinite"/>
+            <animate attributeName="y2" values="98.29629131445341%;88.29629131445341%;98.29629131445341%" dur="30s" repeatCount="indefinite"/>
+        </linearGradient>
+        
+        <linearGradient id="flowGradient2" x1="98.29629131445341%" y1="37.05904774487395%" x2="1.7037086855465873%" y2="62.94095225512605%">
+            <stop offset="44.09719026141384%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="62.413418170103085%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="76.83116255522827%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.08552328792342%" style="stop-color:#b07219;stop-opacity:1" />
+            <animate attributeName="x1" values="98.29629131445341%;108.29629131445341%;98.29629131445341%" dur="30s" repeatCount="indefinite"/>
+            <animate attributeName="y1" values="37.05904774487395%;47.05904774487395%;37.05904774487395%" dur="35s" repeatCount="indefinite"/>
+            <animate attributeName="x2" values="1.7037086855465873%;-8.296291314453413%;1.7037086855465873%" dur="30s" repeatCount="indefinite"/>
+            <animate attributeName="y2" values="62.94095225512605%;52.94095225512605%;62.94095225512605%" dur="35s" repeatCount="indefinite"/>
+        </linearGradient>
+        
+            
+            <!-- Blur filter for smooth blending -->
+            <filter id="softBlur">
+                <feGaussianBlur stdDeviation="40" />
+            </filter>
+        </defs>
+        
+        <!-- Base flowing gradient -->
+        <rect width="100%" height="100%" fill="url(#flowGradient0)" />
+        
+        <!-- Layered flowing gradients for depth -->
+        <rect width="100%" height="100%" fill="url(#flowGradient1)" opacity="0.6" filter="url(#softBlur)"/>
+        <rect width="100%" height="100%" fill="url(#flowGradient2)" opacity="0.4" filter="url(#softBlur)"/>
+        
     
     <!-- Overlay gradient for depth -->
     <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
     
     <!-- Main Stats Card -->
-    <g transform="translate(0, 60)">
+    <g transform="translate(0, 20)">
         
         <!-- Title with Avatar -->
-        <text x="140" y="35" class="text title" text-anchor="start">
-            Álvaro d'Ors Nestares' GitHub Stats
+        <text x="20" y="20" class="text title" text-anchor="start">
+            AlvarodOrs' GitHub Stats
         </text>
         
         <!-- Avatar Image -->
@@ -105,7 +145,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="text streak-date">
-                {created_formatted} - Present
+                Dec 02, 2020 - Present
             </text>
         </g>
         
@@ -119,7 +159,7 @@
                 d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
                 fill="url(#flame-gradient)" opacity="0.9"/>
             </g>
-            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="#5dade2">
+            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="rgb(0, 255, 50)">
                 0
             </text>
             
@@ -146,7 +186,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="text streak-date">
-                {longest_from_formatted} - {longest_to_formatted}
+                Dec 11, 2025 - Dec 29, 2025
             </text>
         </g>
     </g>
@@ -159,57 +199,45 @@
         </text>
         <g transform="translate(0, 10)">
             
-            <g transform="translate(30, 55)">
-                <text x="0" y="0" font-size="18" fill="#ffd700">★</text>
-                <text x="25" y="0" class="text repo-name">
-                    <a href="https://github.com/AlvarodOrs/GitStats" target="_blank">
-                        <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
-                        GitStats
-                        </tspan>
-                    </a>
-                </text>
-                <text x="380" y="0" class="text lang-text">12 views</text>
-            </g>
-            
+			<g transform="translate(30, 55)">
+				<text x="0" y="0" font-size="18" fill="#ffd700">★</text>
+				<text x="25" y="0" class="text repo-name">
+					<a href="https://github.com/AlvarodOrs/GitStats" target="_blank">
+						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan>
+					</a>
+				</text>
+				<text x="380" y="0" class="text lang-text">12 views</text>
+			</g>
 
-            <g transform="translate(30, 83)">
-                <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-                <text x="25" y="0" class="text repo-name">
-                    <a href="https://github.com/AlvarodOrs/TestSolver" target="_blank">
-                        <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
-                        TestSolver
-                        </tspan>
-                    </a>
-                </text>
-                <text x="380" y="0" class="text lang-text">13 views</text>
-            </g>
-            
+			<g transform="translate(30, 83)">
+				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+				<text x="25" y="0" class="text repo-name">
+					<a href="https://github.com/AlvarodOrs/TestSolver" target="_blank">
+						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan>
+					</a>
+				</text>
+				<text x="380" y="0" class="text lang-text">13 views</text>
+			</g>
 
-            <g transform="translate(30, 111)">
-                <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-                <text x="25" y="0" class="text repo-name">
-                    <a href="https://github.com/AlvarodOrs/Destiny" target="_blank">
-                        <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
-                        Destiny
-                        </tspan>
-                    </a>
-                </text>
-                <text x="380" y="0" class="text lang-text">1 views</text>
-            </g>
-            
+			<g transform="translate(30, 111)">
+				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+				<text x="25" y="0" class="text repo-name">
+					<a href="https://github.com/AlvarodOrs/Destiny" target="_blank">
+						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan>
+					</a>
+				</text>
+				<text x="380" y="0" class="text lang-text">1 views</text>
+			</g>
 
-            <g transform="translate(30, 139)">
-                <text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-                <text x="25" y="0" class="text repo-name">
-                    <a href="https://github.com/AlvarodOrs/AlvarodOrs" target="_blank">
-                        <tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">
-                        AlvarodOrs
-                        </tspan>
-                    </a>
-                </text>
-                <text x="380" y="0" class="text lang-text">306 views</text>
-            </g>
-            
+			<g transform="translate(30, 139)">
+				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
+				<text x="25" y="0" class="text repo-name">
+					<a href="https://github.com/AlvarodOrs/AlvarodOrs" target="_blank">
+						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">AlvarodOrs</tspan>
+					</a>
+				</text>
+				<text x="380" y="0" class="text lang-text">306 views</text>
+			</g>
         </g>
     </g>
     
@@ -222,21 +250,36 @@
         </text>
         
         <g transform="translate(30, 55)">
-            <rect x="0" y="0" width="44.09719026141384%" height="8" fill="#ffd700"/>
-<rect x="194.0276371502209" y="0" width="18.316227908689246%" height="8" fill="#2b7489"/>
-<rect x="274.6190399484536" y="0" width="14.417744385125184%" height="8" fill="#555555"/>
-<rect x="338.0571152430044" y="0" width="14.25436073269514%" height="8" fill="#b07219"/>
-<rect x="400.776302466863" y="0" width="6.070795747422681%" height="8" fill="#198CE7"/>
-<rect x="427.4878037555228" y="0" width="2.8436809646539114%" height="8" fill="#198CE7"/>
+            <g clip-path="url(#rounded-bar-2550161553088)">
+	<rect x="0.0" y="0" width="44.09719026141384%" height="8" fill="#ffd700"/>
+	<rect x="207.25679422864508" y="0" width="18.316227908689246%" height="8" fill="#2b7489"/>
+	<rect x="293.34306539948454" y="0" width="14.417744385125184%" height="8" fill="#555555"/>
+	<rect x="361.1064640095729" y="0" width="14.25436073269514%" height="8" fill="#b07219"/>
+	<rect x="428.10195945324006" y="0" width="8.914476712076592%" height="8" fill="#83056a"/>
+</g>
         </g>
         
         <g transform="translate(30, 80)">
-            <g transform="translate(0, 0)">                             <circle cx="5" cy="-3" r="5" fill="#ffd700"/>                             <text x="15" y="0" class="text lang-text">Python 44.10%</text>                         </g>
-<g transform="translate(146.66666666666666, 0)">                             <circle cx="5" cy="-3" r="5" fill="#2b7489"/>                             <text x="15" y="0" class="text lang-text">TypeScript 18.32%</text>                         </g>
-<g transform="translate(293.3333333333333, 0)">                             <circle cx="5" cy="-3" r="5" fill="#555555"/>                             <text x="15" y="0" class="text lang-text">C 14.42%</text>                         </g>
-<g transform="translate(0, 25)">                             <circle cx="5" cy="-3" r="5" fill="#b07219"/>                             <text x="15" y="0" class="text lang-text">Java 14.25%</text>                         </g>
-<g transform="translate(146.66666666666666, 25)">                             <circle cx="5" cy="-3" r="5" fill="#198CE7"/>                             <text x="15" y="0" class="text lang-text">R 6.07%</text>                         </g>
-<g transform="translate(293.3333333333333, 25)">                         <circle cx="5" cy="-3" r="5" fill="#198CE7"/>                         <text x="15" y="0" class="text lang-text">Others 2.84%</text>                     </g>
+            <g transform="translate(0.0, 0.0)">
+	<circle cx="5" cy="-3" r="5" fill="#ffd700"/>
+	<text x="15" y="0" class="text lang-text">Python 44.10%</text>
+</g>
+<g transform="translate(156.66666666666666, 0.0)">
+	<circle cx="5" cy="-3" r="5" fill="#2b7489"/>
+	<text x="15" y="0" class="text lang-text">TypeScript 18.32%</text>
+</g>
+<g transform="translate(313.3333333333333, 0.0)">
+	<circle cx="5" cy="-3" r="5" fill="#555555"/>
+	<text x="15" y="0" class="text lang-text">C 14.42%</text>
+</g>
+<g transform="translate(0, 25.0)">
+	<circle cx="5" cy="-3" r="5" fill="#b07219"/>
+	<text x="15" y="0" class="text lang-text">Java 14.25%</text>
+</g>
+<g transform="translate(156.66666666666666, 25.0)">
+	<circle cx="5" cy="-3" r="5" fill="#83056a"/>
+	<text x="15" y="0" class="text lang-text">Others 8.91%</text>
+</g>
         </g>
     </g> 
 </svg>

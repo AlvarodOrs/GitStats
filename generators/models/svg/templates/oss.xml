@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="$SVG_WIDTH" height="$SVG_HEIGHT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        $language_bar_defs
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
+        <style>
+            $animated_dots_style
+            $SVG_STYLES
+            .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }}
+            .block-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 16px; fill: #58a6ff; }}
+        </style>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="100%" height="100%" fill="#0d1117" rx="15"/>
+    
+    <!-- Header -->
+    <text x="20" y="40" class="text header">$username_label — GitHub Activity</text>
+    
+    <!-- Animated Dots Background -->
+    $animated_dots
+
+    <!-- Overlay gradient for depth -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
+
+
+    <!-- Block 1: Activity Metrics -->
+    <g transform="translate(20, 70)">
+        <rect x="0" y="0" width="420" height="220" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <text x="20" y="30" class="text block-title">Activity Metrics</text>
+        
+        <g transform="translate(20, 55)">
+            <text x="0" y="0" class="text stat-label">Contributions</text>
+            <text x="220" y="0" class="text stat-value">$total_contribs</text>
+            
+            <text x="0" y="30" class="text stat-label">Commits</text>
+            <text x="220" y="30" class="text stat-value">$commits</text>
+            
+            <text x="0" y="60" class="text stat-label">Stars</text>
+            <text x="220" y="60" class="text stat-value">$stars_total</text>
+            
+            <text x="0" y="90" class="text stat-label">PRs</text>
+            <text x="220" y="90" class="text stat-value">$prs</text>
+            
+            <text x="0" y="120" class="text stat-label">Issues</text>
+            <text x="220" y="120" class="text stat-value">$issues</text>
+            
+            <text x="0" y="150" class="text stat-label">Contributed to (this year)</text>
+            <text x="220" y="150" class="text stat-value">$contributions_this_year</text>
+        </g>
+    </g>
+    
+    <!-- Block 2: Streaks -->
+    <g transform="translate(460, 70)">
+        <rect x="0" y="0" width="420" height="330" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <text x="20" y="30" class="text block-title">Streaks</text>
+        
+        <g transform="translate(20, 55)">
+            <text x="0" y="0" class="text stat-label">Longest Streak</text>
+            <text x="200" y="0" class="text stat-value">$longest_streak_days days</text>
+            
+            <text x="0" y="30" class="text stat-label">Period</text>
+            <text x="200" y="30" class="text stat-value">{format_date(processed['longest_from'])} — {format_date(processed['longest_to'])}</text>
+            
+            <text x="0" y="60" class="text stat-label">Active since</text>
+            <text x="200" y="60" class="text stat-value">{format_date(processed['created'])}</text>
+        </g>
+        
+        <!-- Current Streak -->
+        <g transform="translate(20, 130)">
+            <g transform="translate(0, 0)"> <!-- shift path left by its half-width -->
+                <path
+                d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
+                fill="$flame_fill" opacity="0.9"/>
+            </g>
+            <text x="0" y="22 + $flame_y/4" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="$flame_number_color">
+                $active_streak_days
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
+                $streak_title
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
+                $streak_dates
+            </text>
+        </g>
+
+    </g>
+    
+    <!-- Block 3: Top Repositories -->
+    <g transform="translate(20, 300)">
+        <rect x="0" y="0" width="420" height="230" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <text x="20" y="30" class="text block-title">Top Repositories</text>
+        
+        <g transform="translate(0, 0)">
+            $top_repos
+        </g>
+    </g>
+    
+    <!-- Block 4: Languages -->
+    <g transform="translate(460, 410)">
+        <rect x="0" y="0" width="420" height="120" fill="rgba(255,255,255,0.05)" rx="10"/>
+        <text x="20" y="30" class="text block-title">Languages</text>
+        
+        <g transform="translate(20, 55)">
+            $language_bar
+        </g>
+        
+        <g transform="translate(20, 80)">
+            $language_labels
+        </g>
+    </g>
+</svg>

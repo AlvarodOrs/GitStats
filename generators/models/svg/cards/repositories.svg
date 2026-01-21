@@ -1,0 +1,9 @@
+<svg width="500" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="{card_margin}" y="0" width="{card_width}" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
+<text x="30" y="35" class="text section-title">
+    Top Repositories by Views
+</text>
+<g transform="translate(0, 10)">
+    {top_repos}
+</g>
+</svg>

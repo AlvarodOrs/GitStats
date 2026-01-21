@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="$SVG_WIDTH" height="$SVG_HEIGHT" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        $flame_gradient
+        $language_bar_defs
+        <clipPath id="avatar-clip">
+            <circle cx="420" cy="70" r="35"/>
+        </clipPath>
+        <filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+        </filter>
+        <style>
+            $SVG_STYLES
+        </style>
+    </defs>
+
+    <!-- Dark Background -->
+    <rect width="100%" height="100%" fill="#0d1117" rx="15"/>
+    
+    <!-- Apple Card-style dynamic background -->
+    $background
+    
+    <!-- Overlay gradient for depth -->
+    <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
+    
+    <!-- Main Stats Card -->
+    <g transform="translate(0, $main_stats_y)">
+        
+        <!-- Title with Avatar -->
+        <text x="20" y="20" class="text title" text-anchor="start">
+            $username_label GitHub Stats
+        </text>
+        
+        <!-- Avatar Image -->
+        <circle cx="420" cy="70" r="37" fill="none" stroke="#ffffff" stroke-width="3"/>
+        <image x="385" y="35" width="70" height="70" xlink:href="$avatar_url" clip-path="url(#avatar-clip)" preserveAspectRatio="xMidYMid slice"/>
+        
+        <!-- Stats Grid -->
+        <g transform="translate(30, 80)">
+            <text x="0" y="0" class="text stat-label">
+                Total Stars Earned:
+            </text>
+
+            <text x="250" y="0" class="text stat-value">
+                $stars_total
+            </text>
+            
+            <text x="0" y="30" class="text stat-label">
+                Total Commits:
+            </text>
+            
+            <text x="250" y="30" class="text stat-value">
+                $commits
+            </text>
+            
+            <text x="0" y="60" class="text stat-label">
+                Total PRs:
+            </text>
+            
+            <text x="250" y="60" class="text stat-value">
+                $prs
+            </text>
+            
+            <text x="0" y="90" class="text stat-label">
+                Total Issues:
+            </text>
+            
+            <text x="250" y="90" class="text stat-value">
+                $issues
+            </text>
+            
+            <text x="0" y="120" class="text stat-label">
+                Contributed to (last year):
+            </text>
+            
+            <text x="250" y="120" class="text stat-value">
+                $total_repos
+            </text>
+        </g>
+    </g>
+    
+    <!-- Streak Stats Card -->
+    <g transform="translate(0, $streak_y)">
+        <rect x="$card_margin" y="0" width="$card_width" height="140" fill="rgba(255,255,255,0.1)" rx="10"/>
+        
+        <!-- Total Contributions -->
+        <g transform="translate($total_center_x, 40)">
+            <text x="0" y="25" text-anchor="middle" class="text streak-number">
+                $total_contribs
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
+                Total Contributions
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
+                {format_date(processed['created'])} - Present
+            </text>
+        </g>
+        
+        <!-- Divider -->
+        <line x1="$divider1_x" x2="$divider1_x" y1="30" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+        
+        <!-- Current Streak -->
+        <g transform="translate($current_center_x, 40)">
+            <g transform="translate(-31, -$flame_y)"> <!-- shift path left by its half-width -->
+                <path
+                d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
+                fill="$flame_fill" opacity="0.9"/>
+            </g>
+            <text x="0" y="{22 + $flame_y/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="$flame_number_color">
+                $active_streak_days
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
+                $streak_title
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
+                $streak_dates
+            </text>
+        </g>
+        
+        <!-- Divider -->
+        <line x1="$divider2_x" x2="$divider2_x" y1="30" y2="110" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+        
+        <!-- Longest Streak -->
+        <g transform="translate($longest_center_x, 40)">
+            <text x="0" y="25" text-anchor="middle" class="text streak-number">
+                $longest_streak_days
+            </text>
+            
+            <text x="0" y="45" text-anchor="middle" class="text streak-label">
+                Longest Streak
+            </text>
+            
+            <text x="0" y="62" text-anchor="middle" class="text streak-date">
+                {format_date(processed['longest_from'])} - {format_date(processed['longest_to'])}
+            </text>
+        </g>
+    </g>
+    
+    <!-- Top Repositories Card -->
+    <g transform="translate(0, $repos_y)">
+        <rect x="$card_margin" y="0" width="$card_width" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
+        <text x="30" y="35" class="text section-title">
+            Top Repositories by Views
+        </text>
+        <g transform="translate(0, 10)">
+            $top_repos
+        </g>
+    </g>
+    
+    <!-- Languages Card -->
+    <g transform="translate(0, $languages_y)">
+        <rect x="$card_margin" y="0" width="$card_width" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
+        
+        <text x="30" y="35" class="text section-title">
+            Most Used Languages
+        </text>
+        
+        <g transform="translate(30, 55)">
+            $language_bar
+        </g>
+        
+        <g transform="translate(30, 80)">
+            $language_labels
+        </g>
+    </g> 
+</svg>

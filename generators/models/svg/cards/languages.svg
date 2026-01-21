@@ -1,0 +1,15 @@
+<svg width="500" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="{card_margin}" y="0" width="{card_width}" height="180" fill="rgba(255,255,255,0.1)" rx="10"/>
+
+<text x="30" y="35" class="text section-title">
+    Most Used Languages
+</text>
+
+<g transform="translate(30, 55)">
+    {language_bar}
+</g>
+
+<g transform="translate(30, 80)">
+    {language_labels}
+</g>
+</svg>

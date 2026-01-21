@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
+<svg width="$SVG_WIDTH" height="$SVG_HEIGHT" xmlns="http://www.w3.org/2000/svg">
   <defs>
+    $language_bar_defs
     <!-- Dark terminal-like background -->
     <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
@@ -34,9 +35,9 @@
   </defs>
   
   <!-- Background layers -->
-  <rect width="900" height="600" fill="url(#terminalBg)"/>
-  <rect width="900" height="600" fill="url(#matrix)" opacity="0.3"/>
-  <rect width="900" height="600" fill="url(#scanlines)"/>
+  <rect width="100%" height="100%" fill="url(#terminalBg)"/>
+  <rect width="100%" height="100%" fill="url(#matrix)" opacity="0.3"/>
+  <rect width="100%" height="100%" fill="url(#scanlines)"/>
   
   <!-- Terminal window chrome -->
   <rect x="10" y="10" width="880" height="580" fill="#0d1117" rx="8" stroke="#39ff14" stroke-width="2" opacity="0.8"/>
@@ -47,12 +48,12 @@
   <circle cx="50" cy="30" r="6" fill="#ffbd2e"/>
   <circle cx="70" cy="30" r="6" fill="#27c93f"/>
   <text x="100" y="35" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
-    alvaro@backend:~/github-stats$
+    $special_title
   </text>
   
   <!-- Terminal prompt line -->
   <text x="30" y="80" font-family="'Courier New', monospace" font-size="13" fill="#39ff14" filter="url(#terminalGlow)">
-    $ git log --author="AlvarodOrs" --pretty=format:"%h %s" --stat
+    $special_subtitle
   </text>
   
   <!-- Blinking cursor -->
@@ -78,7 +79,7 @@
           ├─ COMMITS_TOTAL:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          180 commits
+          $commits commits
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="170" height="4" fill="#39ff14" rx="2">
@@ -92,7 +93,7 @@
           ├─ REPOS_ACTIVE:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          11 repositories
+          $total_repos repositories
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="90" height="4" fill="#39ff14" rx="2">
@@ -106,7 +107,7 @@
           ├─ PULL_REQUESTS:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          1 merged
+          $prs merged
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="135" height="4" fill="#39ff14" rx="2">
@@ -120,7 +121,7 @@
           └─ ISSUES_FIXED:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          2 resolved
+          $issues resolved
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="145" height="4" fill="#39ff14" rx="2">
@@ -136,59 +137,7 @@
     </text>
       
     <g transform="translate(0, 30)">
-        
-        <g transform="translate(0, 0)">
-          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
-            ├─ Python
-          </text>
-          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
-          <rect x="150" y="-10" width="132" height="18" fill="rgba(255, 215, 0, 0.6)" rx="3">
-            <animate attributeName="width" from="0" to="132" dur="1.5s" begin="0.0s" fill="freeze"/>
-          </rect>
-          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
-            44.1%
-          </text>
-        </g>
-        
-        <g transform="translate(0, 35)">
-          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
-            ├─ TypeScript
-          </text>
-          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
-          <rect x="150" y="-10" width="54" height="18" fill="rgba(43, 116, 137, 0.6)" rx="3">
-            <animate attributeName="width" from="0" to="54" dur="1.5s" begin="0.2s" fill="freeze"/>
-          </rect>
-          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
-            18.3%
-          </text>
-        </g>
-        
-        <g transform="translate(0, 70)">
-          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
-            ├─ C
-          </text>
-          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
-          <rect x="150" y="-10" width="43" height="18" fill="rgba(85, 85, 85, 0.6)" rx="3">
-            <animate attributeName="width" from="0" to="43" dur="1.5s" begin="0.4s" fill="freeze"/>
-          </rect>
-          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
-            14.4%
-          </text>
-        </g>
-        
-        <g transform="translate(0, 105)">
-          <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
-            └─ CSS
-          </text>
-          <rect x="150" y="-10" width="300" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>
-          <rect x="150" y="-10" width="0" height="18" fill="rgba(86, 61, 124, 0.6)" rx="3">
-            <animate attributeName="width" from="0" to="0" dur="1.5s" begin="0.6000000000000001s" fill="freeze"/>
-          </rect>
-          <text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">
-            0.2%
-          </text>
-        </g>
-        
+        $languages_stack
     </g>
     </g>
   </g>
@@ -196,10 +145,10 @@
   <!-- Bottom status bar -->
   <g transform="translate(30, 560)">
     <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#39ff14" opacity="0.7">
-      ● ACTIVITY | Streak: 34 days | Last commit: 2 hours ago
+      $special_streak
     </text>
     <text x="640" y="0" font-family="'Courier New', monospace" font-size="11" fill="#6e7681">
-      alvaro@backend:~/stats
+      $special_endline
     </text>
     
     <!-- Blinking cursor at end -->

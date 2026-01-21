@@ -1,0 +1,46 @@
+<svg width="500" height="250" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Title Block -->
+{title_block}
+
+<!-- Stats Grid -->
+<g transform="translate($card_x, $card_y)"> 30, 80
+    <text x="$card_label_x" x="$card_label_y" class="stat-label"> 0, 0
+        Total Stars Earned:
+    </text>
+    <text x="$card_text_x" x="$card_label_y" class="stat-value"> 250, 0
+        {processed['stars_total']}
+    </text>
+    
+    <text x="$card_label_x" y="30" class="stat-label"> 0, 30
+        Total Commits:
+    </text>
+    
+    <text x="$card_text_x" y="30" class="stat-value">
+        {processed['commits']}
+    </text>
+    
+    <text x="$card_label_x" y="60" class="stat-label">
+        Total PRs:
+    </text>
+    
+    <text x="$card_text_x" y="60" class="stat-value">
+        {processed['prs']}
+    </text>
+    
+    <text x="$card_label_x" y="90" class="stat-label">
+        Total Issues:
+    </text>
+    
+    <text x="$card_text_x" y="90" class="stat-value">
+        {processed['issues']}
+    </text>
+    
+    <text x="$card_label_x" y="120" class="stat-label">
+        Contributed to (last year):
+    </text>
+    
+    <text x="$card_text_x" y="120" class="stat-value">
+        {processed['total_repos']}
+    </text>
+</g>
+</svg>
