@@ -48,7 +48,7 @@
           cursor: pointer;
         ">
 
-        <option value="AlvarodOrs-default-stats-card.svg" selected>
+        <option value="AlvarodOrs-default-stats-card.svg" selected="selected">
           Default
         </option>
 
