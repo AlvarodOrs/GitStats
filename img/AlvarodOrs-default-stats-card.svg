@@ -3,16 +3,14 @@
     <defs>
         
 <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
-    <stop offset="0%" style="stop-color:rgb(216,162,40);stop-opacity:1.00"/>
-    <stop offset="25%" style="stop-color:rgb(181,154,14);stop-opacity:0.70"/>
-    <stop offset="50%" style="stop-color:rgb(146,154,21);stop-opacity:0.45"/>
-    <stop offset="75%" style="stop-color:rgb(111,164,28);stop-opacity:0.26"/>
-    <stop offset="100%" style="stop-color:rgb(76,183,35);stop-opacity:0.15"/>
+    <stop offset="0%" style="stop-color:rgb(255,136,33);stop-opacity:1.00"/>
+    <stop offset="25%" style="stop-color:rgb(255,105,0);stop-opacity:0.70"/>
+    <stop offset="50%" style="stop-color:rgb(255,82,0);stop-opacity:0.45"/>
+    <stop offset="75%" style="stop-color:rgb(255,69,0);stop-opacity:0.26"/>
+    <stop offset="100%" style="stop-color:rgb(255,64,0);stop-opacity:0.15"/>
 </radialGradient>
 
-        <clipPath id="rounded-bar-2947610938688">
-<rect x="0" y="0" width="470" height="8" rx="4"/>
-</clipPath>
+        <clipPath id="rounded-bar-2027352928576"><rect x="0" y="0" width="470" height="8" rx="4"/></clipPath>
         <clipPath id="avatar-clip">
             <circle cx="420" cy="70" r="35"/>
         </clipPath>
@@ -29,47 +27,186 @@
     <rect width="100%" height="100%" fill="#0d1117" rx="15"/>
     
     <!-- Apple Card-style dynamic background -->
-    
-        <defs>
-            
-        <linearGradient id="flowGradient0" x1="14.644660940672622%" y1="14.644660940672622%" x2="85.35533905932738%" y2="85.35533905932738%">
-            <stop offset="49.34090654349339%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="65.9390615510136%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="79.00441307186816%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.92170642254446%" style="stop-color:#b07219;stop-opacity:1" />
-            <animate attributeName="x1" values="14.644660940672622%;24.644660940672622%;14.644660940672622%" dur="20s" repeatCount="indefinite"/>
-            <animate attributeName="y1" values="14.644660940672622%;24.644660940672622%;14.644660940672622%" dur="25s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="85.35533905932738%;75.35533905932738%;85.35533905932738%" dur="20s" repeatCount="indefinite"/>
-            <animate attributeName="y2" values="85.35533905932738%;75.35533905932738%;85.35533905932738%" dur="25s" repeatCount="indefinite"/>
-        </linearGradient>
-        
-        <linearGradient id="flowGradient1" x1="62.94095225512604%" y1="1.7037086855465873%" x2="37.05904774487396%" y2="98.29629131445341%">
-            <stop offset="49.34090654349339%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="65.9390615510136%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="79.00441307186816%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.92170642254446%" style="stop-color:#b07219;stop-opacity:1" />
-            <animate attributeName="x1" values="62.94095225512604%;72.94095225512604%;62.94095225512604%" dur="25s" repeatCount="indefinite"/>
-            <animate attributeName="y1" values="1.7037086855465873%;11.703708685546587%;1.7037086855465873%" dur="30s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="37.05904774487396%;27.059047744873958%;37.05904774487396%" dur="25s" repeatCount="indefinite"/>
-            <animate attributeName="y2" values="98.29629131445341%;88.29629131445341%;98.29629131445341%" dur="30s" repeatCount="indefinite"/>
-        </linearGradient>
-        
-        <linearGradient id="flowGradient2" x1="98.29629131445341%" y1="37.05904774487395%" x2="1.7037086855465873%" y2="62.94095225512605%">
-            <stop offset="49.34090654349339%" style="stop-color:#ffd700;stop-opacity:1" /><stop offset="65.9390615510136%" style="stop-color:#2b7489;stop-opacity:1" /><stop offset="79.00441307186816%" style="stop-color:#555555;stop-opacity:1" /><stop offset="91.92170642254446%" style="stop-color:#b07219;stop-opacity:1" />
-            <animate attributeName="x1" values="98.29629131445341%;108.29629131445341%;98.29629131445341%" dur="30s" repeatCount="indefinite"/>
-            <animate attributeName="y1" values="37.05904774487395%;47.05904774487395%;37.05904774487395%" dur="35s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="1.7037086855465873%;-8.296291314453413%;1.7037086855465873%" dur="30s" repeatCount="indefinite"/>
-            <animate attributeName="y2" values="62.94095225512605%;52.94095225512605%;62.94095225512605%" dur="35s" repeatCount="indefinite"/>
-        </linearGradient>
-        
-            
-            <!-- Blur filter for smooth blending -->
-            <filter id="softBlur">
-                <feGaussianBlur stdDeviation="40" />
-            </filter>
-        </defs>
-        
-        <!-- Base flowing gradient -->
-        <rect width="100%" height="100%" fill="url(#flowGradient0)" />
-        
-        <!-- Layered flowing gradients for depth -->
-        <rect width="100%" height="100%" fill="url(#flowGradient1)" opacity="0.6" filter="url(#softBlur)"/>
-        <rect width="100%" height="100%" fill="url(#flowGradient2)" opacity="0.4" filter="url(#softBlur)"/>
-        
+    <svg width="500" height="800" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs><filter id="blobBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter></defs>
+<rect width="100%" height="100%" fill="#ffd700"/>
+	<path fill="#2b7489" filter="url(#blobBlur)">
+		<animate attributeName="d" dur="19.54725587885546s" repeatCount="indefinite"
+			values="M 102,-12
+		C 83,31 80,42 69,79
+		C 54,99 41,128 27,150
+		C -35,106 -27,135 -121,110
+		C -90,59 -94,65 -105,21
+		C -77,-27 -131,-28 -97,-78
+		C -40,-139 -57,-132 -14,-158
+		C 56,-143 68,-100 120,-104
+		C 88,-57 91,-58 102,-12
+		Z;
+
+		M 170,23
+		C 149,58 149,101 45,141
+		C -7,153 -2,142 -28,187
+		C -66,174 -68,146 -134,58
+		C -121,15 -126,12 -147,-27
+		C -102,-87 -111,-87 -87,-118
+		C -12,-208 -6,-156 68,-128
+		C 106,-79 129,-94 158,-84
+		C 131,-29 136,-26 170,23
+		Z;
+
+		M 102,-12
+		C 83,31 80,42 69,79
+		C 54,99 41,128 27,150
+		C -35,106 -27,135 -121,110
+		C -90,59 -94,65 -105,21
+		C -77,-27 -131,-28 -97,-78
+		C -40,-139 -57,-132 -14,-158
+		C 56,-143 68,-100 120,-104
+		C 88,-57 91,-58 102,-12
+		Z"/>
+		<animateTransform attributeName="transform" dur="30.076711951322142s" repeatCount="indefinite" type="translate"
+			values="296.74885046087064,29.948398922940566;257.6340411649881,23.77158990572065;300.9661318162247,12.537865223814261;296.74885046087064,29.948398922940566" />
+	</path>
+	<path fill="#555555" filter="url(#blobBlur)">
+		<animate attributeName="d" dur="33.46999112754065s" repeatCount="indefinite"
+			values="M 148,12
+		C 101,37 119,30 60,70
+		C 69,123 45,125 25,162
+		C -25,102 -50,131 -107,127
+		C -76,68 -79,67 -107,9
+		C -118,-46 -71,-43 -97,-99
+		C -56,-107 -56,-139 -1,-123
+		C 67,-138 59,-139 114,-88
+		C 142,-45 147,-51 148,12
+		Z;
+
+		M 138,18
+		C 117,39 98,59 51,96
+		C 10,130 1,140 -24,142
+		C -72,77 -72,119 -142,70
+		C -118,29 -174,26 -155,-22
+		C -113,-39 -123,-44 -61,-84
+		C -12,-49 -11,-94 38,-83
+		C 87,-50 87,-114 138,-86
+		C 136,-34 142,-34 138,18
+		Z;
+
+		M 148,12
+		C 101,37 119,30 60,70
+		C 69,123 45,125 25,162
+		C -25,102 -50,131 -107,127
+		C -76,68 -79,67 -107,9
+		C -118,-46 -71,-43 -97,-99
+		C -56,-107 -56,-139 -1,-123
+		C 67,-138 59,-139 114,-88
+		C 142,-45 147,-51 148,12
+		Z"/>
+		<animateTransform attributeName="transform" dur="34.796513481384075s" repeatCount="indefinite" type="translate"
+			values="97.61576913561711,51.95914875287761;94.65384622119407,98.13767271626446;55.373657957079814,90.09370595294644;97.61576913561711,51.95914875287761" />
+	</path>
+	<path fill="#b07219" filter="url(#blobBlur)">
+		<animate attributeName="d" dur="29.794132959030158s" repeatCount="indefinite"
+			values="M 139,-23
+		C 156,50 132,37 91,108
+		C 1,125 6,81 -57,70
+		C -111,67 -114,55 -145,12
+		C -79,-28 -81,-70 -70,-100
+		C -1,-169 -14,-46 70,-137
+		C 77,-102 60,-55 139,-23
+		Z;
+
+		M 135,26
+		C 42,50 78,93 48,119
+		C -19,49 -31,45 -114,86
+		C -102,40 -114,23 -153,-24
+		C -91,-74 -111,-88 -44,-123
+		C 36,-26 19,-19 129,-79
+		C 110,-27 134,-28 135,26
+		Z;
+
+		M 139,-23
+		C 156,50 132,37 91,108
+		C 1,125 6,81 -57,70
+		C -111,67 -114,55 -145,12
+		C -79,-28 -81,-70 -70,-100
+		C -1,-169 -14,-46 70,-137
+		C 77,-102 60,-55 139,-23
+		Z"/>
+		<animateTransform attributeName="transform" dur="20.79667487545566s" repeatCount="indefinite" type="translate"
+			values="268.08704284940126,606.2888999332604;229.7944464778497,641.8610207008702;241.14028589847413,576.918899451126;268.08704284940126,606.2888999332604" />
+	</path>
+	<path fill="#198CE7" filter="url(#blobBlur)">
+		<animate attributeName="d" dur="27.50785273362212s" repeatCount="indefinite"
+			values="M 97,-1
+		C 73,31 98,27 77,56
+		C 33,81 17,124 -18,105
+		C -39,79 -35,97 -58,77
+		C -85,57 -90,37 -96,17
+		C -48,-31 -63,-8 -41,-44
+		C 6,-69 10,-89 13,-100
+		C 23,-92 37,-103 51,-75
+		C 59,-52 65,-29 97,-1
+		Z;
+
+		M 97,40
+		C 71,70 77,71 42,56
+		C 16,99 -5,68 -24,97
+		C -35,91 -78,42 -90,37
+		C -74,5 -85,4 -83,-23
+		C -31,-70 -62,-47 -25,-76
+		C -4,-85 1,-89 25,-68
+		C 56,-73 50,-60 80,-47
+		C 66,-7 119,-11 97,40
+		Z;
+
+		M 97,-1
+		C 73,31 98,27 77,56
+		C 33,81 17,124 -18,105
+		C -39,79 -35,97 -58,77
+		C -85,57 -90,37 -96,17
+		C -48,-31 -63,-8 -41,-44
+		C 6,-69 10,-89 13,-100
+		C 23,-92 37,-103 51,-75
+		C 59,-52 65,-29 97,-1
+		Z"/>
+		<animateTransform attributeName="transform" dur="36.370134422504286s" repeatCount="indefinite" type="translate"
+			values="266.56891422262703,17.371632253230445;298.6131513120871,49.54670018435672;261.04026112590924,19.128913688486243;266.56891422262703,17.371632253230445" />
+	</path>
+	<path fill="#83056a" filter="url(#blobBlur)">
+		<animate attributeName="d" dur="23.513849765229352s" repeatCount="indefinite"
+			values="M 50,3
+		C 67,28 49,28 54,50
+		C 20,71 20,41 -15,49
+		C -40,47 -32,38 -59,35
+		C -67,1 -50,5 -39,-25
+		C -13,-43 -22,-51 -17,-54
+		C 5,-53 6,-56 27,-46
+		C 57,-24 36,-18 50,3
+		Z;
+
+		M 65,23
+		C 35,57 44,28 19,61
+		C -1,49 -12,63 -33,44
+		C -35,29 -28,30 -46,11
+		C -56,-5 -49,-5 -29,-37
+		C -10,-35 -13,-37 4,-45
+		C 16,-39 29,-34 41,-27
+		C 27,-8 70,1 65,23
+		Z;
+
+		M 50,3
+		C 67,28 49,28 54,50
+		C 20,71 20,41 -15,49
+		C -40,47 -32,38 -59,35
+		C -67,1 -50,5 -39,-25
+		C -13,-43 -22,-51 -17,-54
+		C 5,-53 6,-56 27,-46
+		C 57,-24 36,-18 50,3
+		Z"/>
+		<animateTransform attributeName="transform" dur="39.989815208436575s" repeatCount="indefinite" type="translate"
+			values="341.63322670522894,495.2367200121345;310.647159840685,479.0733124223941;355.2655095133496,505.69137715706574;341.63322670522894,495.2367200121345" />
+	</path>
+</svg>
     
     <!-- Overlay gradient for depth -->
     <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>
@@ -101,7 +238,7 @@
             </text>
             
             <text x="250" y="30" class="text stat-value">
-                200
+                209
             </text>
             
             <text x="0" y="60" class="text stat-label">
@@ -137,7 +274,7 @@
         <!-- Total Contributions -->
         <g transform="translate(150, 40)">
             <text x="0" y="25" text-anchor="middle" class="text streak-number">
-                302
+                311
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="text streak-label">
@@ -159,8 +296,8 @@
                 d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
                 fill="url(#flame-gradient)" opacity="0.9"/>
             </g>
-            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="rgb(0, 255, 50)">
-                1
+            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="rgb(255, 85, 0)">
+                3
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="text streak-label">
@@ -168,7 +305,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="text streak-date">
-                Jan 21 - Jan 21
+                Jan 21 - Jan 23
             </text>
         </g>
         
@@ -198,46 +335,7 @@
             Top Repositories by Views
         </text>
         <g transform="translate(0, 10)">
-            
-			<g transform="translate(30, 55)">
-				<text x="0" y="0" font-size="18" fill="#ffd700">★</text>
-				<text x="25" y="0" class="text repo-name">
-					<a href="https://github.com/AlvarodOrs/GitStats" target="_blank">
-						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan>
-					</a>
-				</text>
-				<text x="380" y="0" class="text lang-text">13 views</text>
-			</g>
-
-			<g transform="translate(30, 83)">
-				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-				<text x="25" y="0" class="text repo-name">
-					<a href="https://github.com/AlvarodOrs/TestSolver" target="_blank">
-						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan>
-					</a>
-				</text>
-				<text x="380" y="0" class="text lang-text">21 views</text>
-			</g>
-
-			<g transform="translate(30, 111)">
-				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-				<text x="25" y="0" class="text repo-name">
-					<a href="https://github.com/AlvarodOrs/Destiny" target="_blank">
-						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan>
-					</a>
-				</text>
-				<text x="380" y="0" class="text lang-text">1 views</text>
-			</g>
-
-			<g transform="translate(30, 139)">
-				<text x="0" y="0" font-size="18" fill="#ffffff">▪</text>
-				<text x="25" y="0" class="text repo-name">
-					<a href="https://github.com/AlvarodOrs/AlvarodOrs" target="_blank">
-						<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">AlvarodOrs</tspan>
-					</a>
-				</text>
-				<text x="380" y="0" class="text lang-text">306 views</text>
-			</g>
+            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="380" y="0" class="text lang-text">22 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="380" y="0" class="text lang-text">14 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="380" y="0" class="text lang-text">1 views</text></g>
         </g>
     </g>
     
@@ -250,36 +348,11 @@
         </text>
         
         <g transform="translate(30, 55)">
-            <g clip-path="url(#rounded-bar-2947610938688)">
-	<rect x="0.0" y="0" width="49.34090654349339%" height="8" fill="#ffd700"/>
-	<rect x="231.90226075441893" y="0" width="16.59815500752021%" height="8" fill="#2b7489"/>
-	<rect x="309.91358928976393" y="0" width="13.065351520854568%" height="8" fill="#555555"/>
-	<rect x="371.3207414377804" y="0" width="12.917293350676298%" height="8" fill="#b07219"/>
-	<rect x="432.03202018595897" y="0" width="8.078293577455538%" height="8" fill="#83056a"/>
-</g>
+            <g clip-path="url(#rounded-bar-2027352928576)"><rect x="0.0" y="0" width="49.33866157824491%" height="8" fill="#ffd700"/><rect x="231.89170941775106" y="0" width="16.598890557223893%" height="8" fill="#2b7489"/><rect x="309.90649503670335" y="0" width="13.06593051384718%" height="8" fill="#555555"/><rect x="371.3163684517851" y="0" width="12.917865782449114%" height="8" fill="#b07219"/><rect x="432.0303376292959" y="0" width="5.501595345345345%" height="8" fill="#198CE7"/><rect x="457.88783575241905" y="0" width="2.5770562228895564%" height="8" fill="#83056a"/></g>
         </g>
         
         <g transform="translate(30, 80)">
-            <g transform="translate(0.0, 0.0)">
-	<circle cx="5" cy="-3" r="5" fill="#ffd700"/>
-	<text x="15" y="0" class="text lang-text">Python 49.34%</text>
-</g>
-<g transform="translate(156.66666666666666, 0.0)">
-	<circle cx="5" cy="-3" r="5" fill="#2b7489"/>
-	<text x="15" y="0" class="text lang-text">TypeScript 16.60%</text>
-</g>
-<g transform="translate(313.3333333333333, 0.0)">
-	<circle cx="5" cy="-3" r="5" fill="#555555"/>
-	<text x="15" y="0" class="text lang-text">C 13.07%</text>
-</g>
-<g transform="translate(0, 25.0)">
-	<circle cx="5" cy="-3" r="5" fill="#b07219"/>
-	<text x="15" y="0" class="text lang-text">Java 12.92%</text>
-</g>
-<g transform="translate(156.66666666666666, 25.0)">
-	<circle cx="5" cy="-3" r="5" fill="#83056a"/>
-	<text x="15" y="0" class="text lang-text">Others 8.08%</text>
-</g>
+            <g transform="translate(0.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#ffd700"/><text x="15" y="0" class="text lang-text">Python 49.34%</text></g><g transform="translate(156.66666666666666, 0.0)"><circle cx="5" cy="-3" r="5" fill="#2b7489"/><text x="15" y="0" class="text lang-text">TypeScript 16.60%</text></g><g transform="translate(313.3333333333333, 0.0)"><circle cx="5" cy="-3" r="5" fill="#555555"/><text x="15" y="0" class="text lang-text">C 13.07%</text></g><g transform="translate(0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#b07219"/><text x="15" y="0" class="text lang-text">Java 12.92%</text></g><g transform="translate(156.66666666666666, 25.0)"><circle cx="5" cy="-3" r="5" fill="#198CE7"/><text x="15" y="0" class="text lang-text">R 5.50%</text></g><g transform="translate(313.3333333333333, 25.0)"><circle cx="5" cy="-3" r="5" fill="#83056a"/><text x="15" y="0" class="text lang-text">Others 2.58%</text></g>
         </g>
     </g> 
 </svg>
