@@ -1,5 +1,6 @@
+from api import callers
 from api.github_client import GitHubClient
-from collectors import callers, contributions, languages, stars, views
+from collectors import contributions, languages, stars, views
 from datetime import datetime
 from typing import Any
 from utils.customDataTypes import ConfigData, GitHubClientExtraData, GitHubClientData, GitHubData

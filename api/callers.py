@@ -8,16 +8,13 @@ from utils.tools import load_json
 def get_profile(client: GitHubClient) -> dict[str, Any]: 
     return client.rest_get("https://api.github.com/user") 
 
-def get_repos(client: GitHubClient, username: str, visibility: str = "public", EXTRA_VIEWS: int = 0) -> tuple[dict, dict]: 
+def get_repos(client: GitHubClient, username: str, visibility: str = "public") -> tuple[dict, dict]: 
     
-    def _get_repo_views(client:GitHubClient, api_url:str, repo_name:str, username:str, EXTRA_VIEWS:int = 0) -> dict[str, int]: 
+    def _get_repo_views(client:GitHubClient, api_url:str, repo_name:str, username:str) -> dict[str, int]: 
         response = client.rest_get(f'{api_url}/{username}/{repo_name}/traffic/views')
 
-        if repo_name == username: missed_counts = EXTRA_VIEWS
-        else: missed_counts = 0
-
         return {
-            "count": response.get("count", 0) + missed_counts,
+            "count": response.get("count", 0),
             "views": response.get("uniques", 0)
         }
     repos = {}
@@ -45,8 +42,7 @@ def get_repos(client: GitHubClient, username: str, visibility: str = "public", E
                     client=client,
                     api_url="https://api.github.com/repos",
                     repo_name=repo["name"],
-                    username=username,
-                    EXTRA_VIEWS=EXTRA_VIEWS
+                    username=username
                     )
             }
 
