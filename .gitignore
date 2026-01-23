@@ -1,0 +1,7 @@
+.vscode/
+tests/
+**/__pycache__
+.env
+output/data/views/**.json
+output/data/**.json
+*copy*
