@@ -6,7 +6,7 @@
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
         </filter>
         <style>
-            $animated_dots_style
+            $animated_blobs_style
             $SVG_STYLES
             .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }}
             .block-title {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; font-size: 16px; fill: #58a6ff; }}
@@ -19,8 +19,8 @@
     <!-- Header -->
     <text x="20" y="40" class="text header">$username_label — GitHub Activity</text>
     
-    <!-- Animated Dots Background -->
-    $animated_dots
+    <!-- Animated blobs Background -->
+    $animated_blobs
 
     <!-- Overlay gradient for depth -->
     <rect width="100%" height="100%" fill="url(#bg-gradient)" rx="15" opacity="0.15"/>

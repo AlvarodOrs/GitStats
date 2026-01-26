@@ -8,20 +8,20 @@ from utils.helpers.debug import shout, whisper
 from utils.helpers.registry import select_model_params, select_model_blocks, select_model, Data
 from utils.helpers.svg_unwrapper import unwrapper
 
-def set_model(data: GitHubData, card_indx: int):
+def set_model(data: GitHubData, card_indx: int, debug: bool = False):
 
     # Process data
-    processed = process_github_data(data)
+    processed = process_github_data(data, debug)
 
     models_name: list[str] = ["all", "default", "neutral", "profesional", "oss", "backend"]
     
     # Build SVG
-    svg_code = generate_svg(processed, models_name[card_indx])
+    svg_code = generate_svg(processed, models_name[card_indx], debug)
 
     return processed['username'].replace(' ', '_'), models_name[card_indx], svg_code
 
-def generate_stats_card(data: dict[str, Any], card_indx:int) -> None:
-    username, card_name, svg_code = set_model(data, card_indx)
+def generate_stats_card(data: dict[str, Any], card_indx: int, debug: bool = False) -> None:
+    username, card_name, svg_code = set_model(data, card_indx, debug)
     
     # Save file
     os.makedirs("img", exist_ok=True)

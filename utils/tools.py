@@ -5,6 +5,24 @@ from os.path import dirname, exists
 from typing import Any
 from utils.customDataTypes import ConfigData
 from utils.helpers.debug import cprint
+from base64 import b64encode
+from requests import get
+
+def encode_to_64(image_link: str) -> str: 
+    response = get(image_link)
+
+    if response.status_code == 200: 
+        image_bytes = response.content
+
+        image_encoded = b64encode(image_bytes).decode('utf-8')
+
+        return f'data:image/png;base64,{image_encoded}'
+    else: return ''
+
+def update_autocommits() -> None:
+    if not exists('data/auto-commits.json'):
+        data_to_write = {str(datetime.today().date()): -1}
+        write_json(data_to_write, 2, 'data/auto-commits.json')
 
 def format_date(date_str, year: bool = True):
     """Format date from YYYY-MM-DD to 'Mon DD, YYYY'"""

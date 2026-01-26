@@ -1,26 +1,38 @@
-from utils.customDataTypes import GitHubData, ProcessedData
+from datetime import date
+from models.github_data import Profile, Repository
+from stats import stars, languages, views, contributions
+from utils.customDataTypes import TotalGitHubData, ProcessedData
 from utils.tools import format_date, unwrap_data
 
-def process_github_data(github_data: GitHubData) -> ProcessedData:
+def process_github_data(github_data: TotalGitHubData, debug: bool = False) -> ProcessedData:
+    (
+        user_data, repositories_data, languages_used_total, contributions_total, contributions_day
+     ) = unwrap_data(github_data, ['user_data', 'repositories_data', 'languages_used_total', 'data_year', 'data_day'])
     
-    user_data, repositories_data = unwrap_data(github_data, ['user_data', 'repositories_data'])
+    profile = Profile(user_data)
+    repos: dict[str, Repository] = {
+        name: Repository(raw_repo_data)
+        for name, raw_repo_data in repositories_data.items()
+}
+    stars_total = stars.get_total(repos, debug)
+
+    # Might update when changed to fetch contribs per repository
+    #contributions_this_year = contributions.get_year(repos, date.today().year, debug)
+    #contributions_total = contributions.get_total(repos, debug)
+    elements = ['total', 'commits', 'prs', 'issues']
+    contributions_this_year = {contributions.get_year(element, contributions_total, date.today().year, debug) for element in elements}
+    contributions_total = {contributions.get_total(element, contributions_total, debug) for element in elements}
     
-    stars_total = repositories_data['stars_total']
-    contributions = repositories_data['contributions']
+    HACER LAS FUNCIONES DE STREAKS
     streak_info = repositories_data['streak_info']
     repo_views = repositories_data['repo_views']
     languages = repositories_data['languages']
 
-    contributions_now = contributions['contributions_this_year']
-    contributions_total = contributions['contributions_total']
     
     user_name = user_data['login']
     # Format possessive
     if user_name[-1].lower() == 's': username_label = f"{user_name}'"
     else: username_label = f"{user_name}'s"
-
-    repo_views = dict(sorted(repo_views.items(), key=lambda item: item[1]['views'], reverse=True))
-    languages = dict(sorted(languages.items(), key=lambda item: item[1], reverse=True))
 
     longest_streak = streak_info.get("longest_streak", {})
     longest_streak_days = longest_streak.get('total_streak', 0)
@@ -59,6 +71,6 @@ def process_github_data(github_data: GitHubData) -> ProcessedData:
         'longest_streak_days': longest_streak_days,
         'longest_from': longest_from,
         'longest_to': longest_to,
-        'top_repos': repo_views,
-        'top_langs': languages
+        'repos_views': repo_views,
+        'langs': languages
     }

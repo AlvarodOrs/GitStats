@@ -14,8 +14,6 @@ Number = int | float
 Red, Green, Blue = (Number, Number, Number)
 RGB = tuple[Red, Green, Blue]
 color_map: dict[str, str] = get_color_map()
-separator = '\n'
-separator_t = '\t'
 
 def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number]) -> tuple[str, str]:
     # WILL REDO TO WORK IN PERCENTAGES
@@ -36,19 +34,19 @@ def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], ca
         color = color_map.get(lang, '#858585')
         width = (percent / 100) * total_width
         
-        segments.append(f'{separator_t}<rect x="{x_offset}" y="0" width="{percent}%" height="8" fill="{color}"/>')
+        segments.append(f'<rect x="{x_offset}" y="0" width="{percent}%" height="8" fill="{color}"/>')
         x_offset += width
 
-    segments.append(f'{separator_t}<rect x="{x_offset}" y="0" width="{other_languages}%" height="8" fill="{color_map.get('Others', '#858585')}"/>')
+    segments.append(f'<rect x="{x_offset}" y="0" width="{other_languages}%" height="8" fill="{color_map.get('Others', '#858585')}"/>')
     
     clip_id = f"rounded-bar-{id(top_langs)}"
     
-    bar = f'{separator}'.join(segments)
+    bar = f''.join(segments)
     bar_block = [f'<g clip-path="url(#{clip_id})">', f'{bar}', '</g>']
-    bar_block = f'{separator}'.join(bar_block)
+    bar_block = f''.join(bar_block)
     
     bar_defs = [f'<clipPath id="{clip_id}">', f'<rect x="0" y="0" width="{total_width}" height="8" rx="4"/>', '</clipPath>']
-    bar_defs = f'{separator}'.join(bar_defs)
+    bar_defs = f''.join(bar_defs)
     
     return bar_block, bar_defs
 
@@ -76,12 +74,12 @@ def generate_language_labels(langs_info: tuple[dict[str, Number], int], card_dim
             y_row += 25
             x_offset = 0
         
-        items.append(f'<g transform="translate({x_offset}, {y_row})">{separator}{separator_t}<circle cx="5" cy="-3" r="5" fill="{color}"/>{separator}{separator_t}<text x="15" y="0" class="text lang-text">{lang} {percent:.2f}%</text>{separator}</g>')
+        items.append(f'<g transform="translate({x_offset}, {y_row})"><circle cx="5" cy="-3" r="5" fill="{color}"/><text x="15" y="0" class="text lang-text">{lang} {percent:.2f}%</text></g>')
 
         x_offset += total_width/3
-    items.append(f'<g transform="translate({x_offset}, {y_row})">{separator}{separator_t}<circle cx="5" cy="-3" r="5" fill="{color_map.get('Others', '#858585')}"/>{separator}{separator_t}<text x="15" y="0" class="text lang-text">Others {other_languages:.2f}%</text>{separator}</g>')
+    items.append(f'<g transform="translate({x_offset}, {y_row})"><circle cx="5" cy="-3" r="5" fill="{color_map.get('Others', '#858585')}"/><text x="15" y="0" class="text lang-text">Others {other_languages:.2f}%</text></g>')
             
-    return f'{separator}'.join(items)
+    return f''.join(items)
 
 def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tuple[str, tuple[Number, Number]], x_offset: int = 380) -> str:
     # WILL REDO TO WORK IN PERCENTAGES
@@ -109,17 +107,17 @@ def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tup
         
         repo_link = f'https://github.com/{username}/{name}'
         items.append(
-            f'{separator}{3*separator_t}<g transform="translate(30, {y_offset + i * 28})">'
-                f'{separator}{4*separator_t}<text x="0" y="0" font-size="18" fill="{badge_color}">{icon}</text>'
-                f'{separator}{4*separator_t}<text x="25" y="0" class="text repo-name">'
-                    f'{separator}{5*separator_t}<a href="{repo_link}" target="_blank">'
-                        f'{separator}{6*separator_t}<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">{name}</tspan>'
-                    f'{separator}{5*separator_t}</a>'
-                f'{separator}{4*separator_t}</text>{separator}'
-                f'{4*separator_t}<text x="{x_offset}" y="0" class="text lang-text">{data['count']} views</text>'
-            f'{separator}{3*separator_t}</g>'
+            f'<g transform="translate(30, {y_offset + i * 28})">'
+                f'<text x="0" y="0" font-size="18" fill="{badge_color}">{icon}</text>'
+                f'<text x="25" y="0" class="text repo-name">'
+                    f'<a href="{repo_link}" target="_blank">'
+                        f'<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">{name}</tspan>'
+                    f'</a>'
+                f'</text>'
+                f'<text x="{x_offset}" y="0" class="text lang-text">{data['count']} views</text>'
+            f'</g>'
             )
-    return f'{separator}'.join(items)
+    return f''.join(items)
 
 def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number]) -> str:
     # WILL REDO TO WORK IN PERCENTAGES
@@ -152,19 +150,19 @@ def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dime
         anim_delay = f"{i * 0.2}s"
         
         items.append(
-            f'{separator}{3*separator_t}<g transform="translate(0, {y_offset})">'
-            f'''{separator}{4*separator_t}<text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">{branch} {lang}</text>'''
-            f'{separator}{4*separator_t}<rect x="150" y="-10" width="{total_width}" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>'
-            f'{separator}{4*separator_t}<rect x="150" y="-10" width="{bar_width}" height="18" fill="{rgba_color}" rx="3">'
-            f'{separator}{5*separator_t}<animate attributeName="width" from="0" to="{bar_width}" dur="1.5s" begin="{anim_delay}" fill="freeze"/>'
-            f'{separator}{4*separator_t}</rect>'
-            f'''{separator}{4*separator_t}<text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">{percentage:.1f}%</text>'''
-            f'{separator}{3*separator_t}</g>'
+            f'<g transform="translate(0, {y_offset})">'
+            f'''<text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">{branch} {lang}</text>'''
+            f'<rect x="150" y="-10" width="{total_width}" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/>'
+            f'<rect x="150" y="-10" width="{bar_width}" height="18" fill="{rgba_color}" rx="3">'
+            f'<animate attributeName="width" from="0" to="{bar_width}" dur="1.5s" begin="{anim_delay}" fill="freeze"/>'
+            f'</rect>'
+            f'''<text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">{percentage:.1f}%</text>'''
+            f'</g>'
         )
         
         y_offset += 35
     
-    return f'{separator}'.join(items)
+    return f''.join(items)
 
 def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, str]:
     #input(active_streak)
@@ -254,7 +252,7 @@ def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, 
 
     return flame_gradient, flame_fill, flame_number_color, flame_y
 
-def generate_animated_dots_and_style(langs_info: tuple[dict[str, Number], int], svg_dimensions: tuple[Number, Number] = (500, 800), margins: tuple[Number, Number] = (10, 10)) -> tuple[str, str]:
+def generate_animated_blobs_and_style(langs_info: tuple[dict[str, Number], int], svg_dimensions: tuple[Number, Number] = (500, 800), margins: tuple[Number, Number] = (10, 10)) -> tuple[str, str]:
     # WILL REDO TO WORK IN PERCENTAGES
     
     langs, max_langs = langs_info
@@ -265,9 +263,9 @@ def generate_animated_dots_and_style(langs_info: tuple[dict[str, Number], int], 
 
     top_langs = list(langs.items())[:max_langs-1]
         
-    # Calculate total number of dots (let's use 100 total)
-    total_dots = width*height/1000
-    dots = ['<g opacity="0.8" filter="url(#blur)">']
+    # Calculate total number of blobs (let's use 100 total)
+    total_blobs = width*height/1000
+    blobs = ['<g opacity="0.8" filter="url(#blur)">']
     
     animations = []
     
@@ -277,10 +275,10 @@ def generate_animated_dots_and_style(langs_info: tuple[dict[str, Number], int], 
     dot_id = 0
     for lang, percent in top_langs:
         color = color_map.get(lang, '#858585')
-        # Calculate number of dots for this language
-        num_dots = int((percent / 100) * total_dots)
+        # Calculate number of blobs for this language
+        num_blobs = int((percent / 100) * total_blobs)
         
-        for i in range(num_dots):
+        for i in range(num_blobs):
             # Random position
             x = random.uniform(10, width - margin_x)
             y = random.uniform(10, height - margin_y)
@@ -307,76 +305,7 @@ def generate_animated_dots_and_style(langs_info: tuple[dict[str, Number], int], 
                 }}
             """)
             
-            dots.append(f'''{separator_t}<circle cx="{x}" cy="{y}" r="{size}" fill="{color}" style="animation: {anim_name} {duration}s ease-in-out {delay}s infinite;"/>''')
+            blobs.append(f'''<circle cx="{x}" cy="{y}" r="{size}" fill="{color}" style="animation: {anim_name} {duration}s ease-in-out {delay}s infinite;"/>''')
             dot_id += 1
-    dots.append('</g>')
-    return f'{separator}'.join(dots), f'{separator}'.join(animations)
-
-def generate_apple_card_background(langs_info: tuple[dict[str, Number], int], svg_dimensions: tuple[Number, Number]) -> str:
-    # WILL REDO TO WORK IN PERCENTAGES
-    
-    langs, max_langs = langs_info
-    total_width, total_height = svg_dimensions
-    
-    if not langs:
-        return '''
-        <defs>
-            <linearGradient id="fallbackGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
-                <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
-            </linearGradient>
-        </defs>
-        <rect width="100%" height="100%" fill="url(#fallbackGradient)" />
-        '''
-
-    top_langs = list(langs.items())[:max_langs-1]
-
-    # Create flowing gradient with smooth transitions
-    gradient_stops = []
-    cumulative = 0
-    
-    for i, (lang, percent) in enumerate(top_langs):
-        color = color_map.get(lang, '#858585')
-                
-        # Each language occupies its percentage of the gradient
-        cumulative += percent
-        gradient_stops.append(f'<stop offset="{cumulative}%" style="stop-color:{color};stop-opacity:1" />')
-    
-    # Generate multiple flowing gradients at different angles
-    gradients = []
-    for angle_idx in range(3):
-        angle = 45 + (angle_idx * 60)  # Different angles for layering
-        x1, y1, x2, y2 = gradient_coords(angle)
-        
-        gradients.append(f'''
-        <linearGradient id="flowGradient{angle_idx}" x1="{x1}%" y1="{y1}%" x2="{x2}%" y2="{y2}%">
-            {''.join(gradient_stops)}
-            <animate attributeName="x1" values="{x1}%;{x1+10}%;{x1}%" dur="{20+angle_idx*5}s" repeatCount="indefinite"/>
-            <animate attributeName="y1" values="{y1}%;{y1+10}%;{y1}%" dur="{25+angle_idx*5}s" repeatCount="indefinite"/>
-            <animate attributeName="x2" values="{x2}%;{x2-10}%;{x2}%" dur="{20+angle_idx*5}s" repeatCount="indefinite"/>
-            <animate attributeName="y2" values="{y2}%;{y2-10}%;{y2}%" dur="{25+angle_idx*5}s" repeatCount="indefinite"/>
-        </linearGradient>
-        ''')
-    
-    background = f'''
-        <defs>
-            {''.join(gradients)}
-            
-            <!-- Blur filter for smooth blending -->
-            <filter id="softBlur">
-                <feGaussianBlur stdDeviation="40" />
-            </filter>
-        </defs>
-        
-        <!-- Base flowing gradient -->
-        <rect width="100%" height="100%" fill="url(#flowGradient0)" />
-        
-        <!-- Layered flowing gradients for depth -->
-        <rect width="100%" height="100%" fill="url(#flowGradient1)" opacity="0.6" filter="url(#softBlur)"/>
-        <rect width="100%" height="100%" fill="url(#flowGradient2)" opacity="0.4" filter="url(#softBlur)"/>
-        '''
-
-    return background
-
-
-    # WILL REDO TO WORK IN PERCENTAGES
+    blobs.append('</g>')
+    return f''.join(blobs), f''.join(animations)
