@@ -3,14 +3,14 @@
     <defs>
         
 <radialGradient id="flame-gradient" cx="50%" cy="85%" r="60%">
-    <stop offset="0%" style="stop-color:rgb(255,136,33);stop-opacity:1.00"/>
-    <stop offset="25%" style="stop-color:rgb(255,105,0);stop-opacity:0.70"/>
-    <stop offset="50%" style="stop-color:rgb(255,82,0);stop-opacity:0.45"/>
-    <stop offset="75%" style="stop-color:rgb(255,69,0);stop-opacity:0.26"/>
-    <stop offset="100%" style="stop-color:rgb(255,64,0);stop-opacity:0.15"/>
+    <stop offset="0%" style="stop-color:rgb(216,162,40);stop-opacity:1.00"/>
+    <stop offset="25%" style="stop-color:rgb(181,154,14);stop-opacity:0.70"/>
+    <stop offset="50%" style="stop-color:rgb(146,154,21);stop-opacity:0.45"/>
+    <stop offset="75%" style="stop-color:rgb(111,164,28);stop-opacity:0.26"/>
+    <stop offset="100%" style="stop-color:rgb(76,183,35);stop-opacity:0.15"/>
 </radialGradient>
 
-        <clipPath id="rounded-bar-2027352928576"><rect x="0" y="0" width="470" height="8" rx="4"/></clipPath>
+        <clipPath id="rounded-bar-1929298556928"><rect x="0" y="0" width="470" height="8" rx="4"/></clipPath>
         <clipPath id="avatar-clip">
             <circle cx="420" cy="70" r="35"/>
         </clipPath>
@@ -31,180 +31,165 @@
 <defs><filter id="blobBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter></defs>
 <rect width="100%" height="100%" fill="#ffd700"/>
 	<path fill="#2b7489" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="19.54725587885546s" repeatCount="indefinite"
-			values="M 102,-12
-		C 83,31 80,42 69,79
-		C 54,99 41,128 27,150
-		C -35,106 -27,135 -121,110
-		C -90,59 -94,65 -105,21
-		C -77,-27 -131,-28 -97,-78
-		C -40,-139 -57,-132 -14,-158
-		C 56,-143 68,-100 120,-104
-		C 88,-57 91,-58 102,-12
+		<animate attributeName="d" dur="18.827236279969377s" repeatCount="indefinite"
+			values="M 163,13
+		C 158,11 132,28 88,83
+		C 58,97 56,109 -26,150
+		C -77,103 -75,92 -136,74
+		C -140,7 -151,12 -156,-49
+		C -94,-97 -111,-71 -38,-97
+		C 14,-93 14,-77 66,-117
+		C 116,-70 126,-65 163,13
 		Z;
 
-		M 170,23
-		C 149,58 149,101 45,141
-		C -7,153 -2,142 -28,187
-		C -66,174 -68,146 -134,58
-		C -121,15 -126,12 -147,-27
-		C -102,-87 -111,-87 -87,-118
-		C -12,-208 -6,-156 68,-128
-		C 106,-79 129,-94 158,-84
-		C 131,-29 136,-26 170,23
+		M 131,17
+		C 98,66 63,54 49,138
+		C -3,121 -17,139 -67,164
+		C -50,116 -106,85 -108,36
+		C -84,-23 -107,-23 -109,-82
+		C -30,-84 -37,-113 27,-128
+		C 72,-69 76,-113 133,-57
+		C 138,-20 146,-19 131,17
 		Z;
 
-		M 102,-12
-		C 83,31 80,42 69,79
-		C 54,99 41,128 27,150
-		C -35,106 -27,135 -121,110
-		C -90,59 -94,65 -105,21
-		C -77,-27 -131,-28 -97,-78
-		C -40,-139 -57,-132 -14,-158
-		C 56,-143 68,-100 120,-104
-		C 88,-57 91,-58 102,-12
+		M 163,13
+		C 158,11 132,28 88,83
+		C 58,97 56,109 -26,150
+		C -77,103 -75,92 -136,74
+		C -140,7 -151,12 -156,-49
+		C -94,-97 -111,-71 -38,-97
+		C 14,-93 14,-77 66,-117
+		C 116,-70 126,-65 163,13
 		Z"/>
-		<animateTransform attributeName="transform" dur="30.076711951322142s" repeatCount="indefinite" type="translate"
-			values="296.74885046087064,29.948398922940566;257.6340411649881,23.77158990572065;300.9661318162247,12.537865223814261;296.74885046087064,29.948398922940566" />
+		<animateTransform attributeName="transform" dur="30.287752741155707s" repeatCount="indefinite" type="translate"
+			values="261.32941094583225,162.17460744214156;278.4556075534049,197.1338417793122;262.566194095796,137.60209064351127;261.32941094583225,162.17460744214156" />
 	</path>
 	<path fill="#555555" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="33.46999112754065s" repeatCount="indefinite"
-			values="M 148,12
-		C 101,37 119,30 60,70
-		C 69,123 45,125 25,162
-		C -25,102 -50,131 -107,127
-		C -76,68 -79,67 -107,9
-		C -118,-46 -71,-43 -97,-99
-		C -56,-107 -56,-139 -1,-123
-		C 67,-138 59,-139 114,-88
-		C 142,-45 147,-51 148,12
+		<animate attributeName="d" dur="20.535407322526748s" repeatCount="indefinite"
+			values="M 99,8
+		C 90,30 117,49 75,69
+		C 18,127 54,71 -18,149
+		C -115,97 -129,129 -136,36
+		C -144,-9 -138,-2 -120,-56
+		C -40,-127 -73,-121 -10,-115
+		C 45,-154 44,-105 89,-129
+		C 78,-56 131,-60 99,8
 		Z;
 
-		M 138,18
-		C 117,39 98,59 51,96
-		C 10,130 1,140 -24,142
-		C -72,77 -72,119 -142,70
-		C -118,29 -174,26 -155,-22
-		C -113,-39 -123,-44 -61,-84
-		C -12,-49 -11,-94 38,-83
-		C 87,-50 87,-114 138,-86
-		C 136,-34 142,-34 138,18
+		M 91,38
+		C 96,86 100,88 72,120
+		C 6,73 -10,69 -69,96
+		C -115,57 -117,54 -127,39
+		C -129,-27 -147,-28 -113,-105
+		C -57,-127 -51,-117 6,-114
+		C 59,-125 44,-126 116,-64
+		C 124,-5 152,-14 91,38
 		Z;
 
-		M 148,12
-		C 101,37 119,30 60,70
-		C 69,123 45,125 25,162
-		C -25,102 -50,131 -107,127
-		C -76,68 -79,67 -107,9
-		C -118,-46 -71,-43 -97,-99
-		C -56,-107 -56,-139 -1,-123
-		C 67,-138 59,-139 114,-88
-		C 142,-45 147,-51 148,12
+		M 99,8
+		C 90,30 117,49 75,69
+		C 18,127 54,71 -18,149
+		C -115,97 -129,129 -136,36
+		C -144,-9 -138,-2 -120,-56
+		C -40,-127 -73,-121 -10,-115
+		C 45,-154 44,-105 89,-129
+		C 78,-56 131,-60 99,8
 		Z"/>
-		<animateTransform attributeName="transform" dur="34.796513481384075s" repeatCount="indefinite" type="translate"
-			values="97.61576913561711,51.95914875287761;94.65384622119407,98.13767271626446;55.373657957079814,90.09370595294644;97.61576913561711,51.95914875287761" />
+		<animateTransform attributeName="transform" dur="37.13510484321304s" repeatCount="indefinite" type="translate"
+			values="344.5510080043541,452.2758238641717;388.287543661451,500.4885771220487;308.0657894992437,443.6126006097856;344.5510080043541,452.2758238641717" />
 	</path>
 	<path fill="#b07219" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="29.794132959030158s" repeatCount="indefinite"
-			values="M 139,-23
-		C 156,50 132,37 91,108
-		C 1,125 6,81 -57,70
-		C -111,67 -114,55 -145,12
-		C -79,-28 -81,-70 -70,-100
-		C -1,-169 -14,-46 70,-137
-		C 77,-102 60,-55 139,-23
+		<animate attributeName="d" dur="28.633972937812334s" repeatCount="indefinite"
+			values="M 102,-18
+		C 85,81 58,73 18,123
+		C -18,114 0,114 -83,44
+		C -119,-13 -102,-12 -77,-66
+		C -12,-114 -1,-80 44,-137
+		C 104,-107 102,-65 102,-18
 		Z;
 
-		M 135,26
-		C 42,50 78,93 48,119
-		C -19,49 -31,45 -114,86
-		C -102,40 -114,23 -153,-24
-		C -91,-74 -111,-88 -44,-123
-		C 36,-26 19,-19 129,-79
-		C 110,-27 134,-28 135,26
+		M 144,48
+		C 59,34 58,81 -11,108
+		C -91,18 -105,46 -158,44
+		C -150,-34 -113,-35 -67,-82
+		C 10,-96 15,-63 91,-91
+		C 138,-28 115,-10 144,48
 		Z;
 
-		M 139,-23
-		C 156,50 132,37 91,108
-		C 1,125 6,81 -57,70
-		C -111,67 -114,55 -145,12
-		C -79,-28 -81,-70 -70,-100
-		C -1,-169 -14,-46 70,-137
-		C 77,-102 60,-55 139,-23
+		M 102,-18
+		C 85,81 58,73 18,123
+		C -18,114 0,114 -83,44
+		C -119,-13 -102,-12 -77,-66
+		C -12,-114 -1,-80 44,-137
+		C 104,-107 102,-65 102,-18
 		Z"/>
-		<animateTransform attributeName="transform" dur="20.79667487545566s" repeatCount="indefinite" type="translate"
-			values="268.08704284940126,606.2888999332604;229.7944464778497,641.8610207008702;241.14028589847413,576.918899451126;268.08704284940126,606.2888999332604" />
+		<animateTransform attributeName="transform" dur="20.167867202719897s" repeatCount="indefinite" type="translate"
+			values="43.00532464930348,670.4853413566572;44.096562575861455,676.563278663856;8.45684711831047,672.8273546758636;43.00532464930348,670.4853413566572" />
 	</path>
 	<path fill="#198CE7" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="27.50785273362212s" repeatCount="indefinite"
-			values="M 97,-1
-		C 73,31 98,27 77,56
-		C 33,81 17,124 -18,105
-		C -39,79 -35,97 -58,77
-		C -85,57 -90,37 -96,17
-		C -48,-31 -63,-8 -41,-44
-		C 6,-69 10,-89 13,-100
-		C 23,-92 37,-103 51,-75
-		C 59,-52 65,-29 97,-1
+		<animate attributeName="d" dur="21.372915939779144s" repeatCount="indefinite"
+			values="M 94,-5
+		C 116,47 60,42 63,80
+		C 47,118 28,102 4,105
+		C -33,68 -35,72 -36,50
+		C -67,41 -38,30 -94,-9
+		C -95,-40 -87,-40 -74,-64
+		C -23,-80 -33,-91 -3,-98
+		C 7,-90 23,-70 41,-54
+		C 53,-36 83,-24 94,-5
 		Z;
 
-		M 97,40
-		C 71,70 77,71 42,56
-		C 16,99 -5,68 -24,97
-		C -35,91 -78,42 -90,37
-		C -74,5 -85,4 -83,-23
-		C -31,-70 -62,-47 -25,-76
-		C -4,-85 1,-89 25,-68
-		C 56,-73 50,-60 80,-47
-		C 66,-7 119,-11 97,40
+		M 74,28
+		C 59,42 50,52 37,58
+		C 1,60 2,33 -35,64
+		C -58,68 -51,65 -78,47
+		C -101,7 -67,7 -70,-36
+		C -60,-64 -49,-60 -58,-87
+		C -9,-97 -10,-44 40,-95
+		C 66,-65 37,-47 81,-34
+		C 95,-2 81,-2 74,28
 		Z;
 
-		M 97,-1
-		C 73,31 98,27 77,56
-		C 33,81 17,124 -18,105
-		C -39,79 -35,97 -58,77
-		C -85,57 -90,37 -96,17
-		C -48,-31 -63,-8 -41,-44
-		C 6,-69 10,-89 13,-100
-		C 23,-92 37,-103 51,-75
-		C 59,-52 65,-29 97,-1
+		M 94,-5
+		C 116,47 60,42 63,80
+		C 47,118 28,102 4,105
+		C -33,68 -35,72 -36,50
+		C -67,41 -38,30 -94,-9
+		C -95,-40 -87,-40 -74,-64
+		C -23,-80 -33,-91 -3,-98
+		C 7,-90 23,-70 41,-54
+		C 53,-36 83,-24 94,-5
 		Z"/>
-		<animateTransform attributeName="transform" dur="36.370134422504286s" repeatCount="indefinite" type="translate"
-			values="266.56891422262703,17.371632253230445;298.6131513120871,49.54670018435672;261.04026112590924,19.128913688486243;266.56891422262703,17.371632253230445" />
+		<animateTransform attributeName="transform" dur="38.35932154841571s" repeatCount="indefinite" type="translate"
+			values="140.5778462481117,276.92300559262554;177.24948770937453,252.6677938550864;164.2202763721781,311.71675616044206;140.5778462481117,276.92300559262554" />
 	</path>
 	<path fill="#83056a" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="23.513849765229352s" repeatCount="indefinite"
-			values="M 50,3
-		C 67,28 49,28 54,50
-		C 20,71 20,41 -15,49
-		C -40,47 -32,38 -59,35
-		C -67,1 -50,5 -39,-25
-		C -13,-43 -22,-51 -17,-54
-		C 5,-53 6,-56 27,-46
-		C 57,-24 36,-18 50,3
+		<animate attributeName="d" dur="25.228635248599662s" repeatCount="indefinite"
+			values="M 48,-9
+		C 44,29 64,21 32,58
+		C -12,101 -8,99 -53,51
+		C -29,10 -22,6 -41,-35
+		C 2,-40 -12,-34 31,-66
+		C 17,-47 46,-39 48,-9
 		Z;
 
-		M 65,23
-		C 35,57 44,28 19,61
-		C -1,49 -12,63 -33,44
-		C -35,29 -28,30 -46,11
-		C -56,-5 -49,-5 -29,-37
-		C -10,-35 -13,-37 4,-45
-		C 16,-39 29,-34 41,-27
-		C 27,-8 70,1 65,23
+		M 48,24
+		C 18,66 33,41 -1,66
+		C -32,58 -36,54 -64,28
+		C -28,-19 -27,-19 -37,-37
+		C 1,-41 -4,-50 36,-65
+		C 21,-18 46,-23 48,24
 		Z;
 
-		M 50,3
-		C 67,28 49,28 54,50
-		C 20,71 20,41 -15,49
-		C -40,47 -32,38 -59,35
-		C -67,1 -50,5 -39,-25
-		C -13,-43 -22,-51 -17,-54
-		C 5,-53 6,-56 27,-46
-		C 57,-24 36,-18 50,3
+		M 48,-9
+		C 44,29 64,21 32,58
+		C -12,101 -8,99 -53,51
+		C -29,10 -22,6 -41,-35
+		C 2,-40 -12,-34 31,-66
+		C 17,-47 46,-39 48,-9
 		Z"/>
-		<animateTransform attributeName="transform" dur="39.989815208436575s" repeatCount="indefinite" type="translate"
-			values="341.63322670522894,495.2367200121345;310.647159840685,479.0733124223941;355.2655095133496,505.69137715706574;341.63322670522894,495.2367200121345" />
+		<animateTransform attributeName="transform" dur="30.490727236345542s" repeatCount="indefinite" type="translate"
+			values="9.666748603768983,571.2711594510374;19.314839344867007,526.4386497976033;-38.04914330326598,565.0023591187935;9.666748603768983,571.2711594510374" />
 	</path>
 </svg>
     
@@ -238,7 +223,7 @@
             </text>
             
             <text x="250" y="30" class="text stat-value">
-                209
+                210
             </text>
             
             <text x="0" y="60" class="text stat-label">
@@ -274,7 +259,7 @@
         <!-- Total Contributions -->
         <g transform="translate(150, 40)">
             <text x="0" y="25" text-anchor="middle" class="text streak-number">
-                311
+                312
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="text streak-label">
@@ -296,8 +281,8 @@
                 d="M30 10 C 30 10, 35 0, 35 0 C 35 0, 40 10, 40 10 C 42 15, 43 20, 41 25 C 39 30, 35 33, 30 33 C 25 33, 21 30, 19 25 C 17 20, 18 15, 20 10 Z"
                 fill="url(#flame-gradient)" opacity="0.9"/>
             </g>
-            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="rgb(255, 85, 0)">
-                3
+            <text x="0" y="{22 + 25/4}" text-anchor="middle" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="rgb(0, 255, 50)">
+                0
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="text streak-label">
@@ -305,7 +290,7 @@
             </text>
             
             <text x="0" y="62" text-anchor="middle" class="text streak-date">
-                Jan 21 - Jan 23
+                Lost...
             </text>
         </g>
         
@@ -335,7 +320,7 @@
             Top Repositories by Views
         </text>
         <g transform="translate(0, 10)">
-            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="380" y="0" class="text lang-text">22 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="380" y="0" class="text lang-text">14 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="380" y="0" class="text lang-text">1 views</text></g>
+            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="380" y="0" class="text lang-text">21 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="380" y="0" class="text lang-text">19 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/AlvarodOrs/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="380" y="0" class="text lang-text">1 views</text></g>
         </g>
     </g>
     
@@ -348,7 +333,7 @@
         </text>
         
         <g transform="translate(30, 55)">
-            <g clip-path="url(#rounded-bar-2027352928576)"><rect x="0.0" y="0" width="49.33866157824491%" height="8" fill="#ffd700"/><rect x="231.89170941775106" y="0" width="16.598890557223893%" height="8" fill="#2b7489"/><rect x="309.90649503670335" y="0" width="13.06593051384718%" height="8" fill="#555555"/><rect x="371.3163684517851" y="0" width="12.917865782449114%" height="8" fill="#b07219"/><rect x="432.0303376292959" y="0" width="5.501595345345345%" height="8" fill="#198CE7"/><rect x="457.88783575241905" y="0" width="2.5770562228895564%" height="8" fill="#83056a"/></g>
+            <g clip-path="url(#rounded-bar-1929298556928)"><rect x="0.0" y="0" width="49.33866157824491%" height="8" fill="#ffd700"/><rect x="231.89170941775106" y="0" width="16.598890557223893%" height="8" fill="#2b7489"/><rect x="309.90649503670335" y="0" width="13.06593051384718%" height="8" fill="#555555"/><rect x="371.3163684517851" y="0" width="12.917865782449114%" height="8" fill="#b07219"/><rect x="432.0303376292959" y="0" width="5.501595345345345%" height="8" fill="#198CE7"/><rect x="457.88783575241905" y="0" width="2.5770562228895564%" height="8" fill="#83056a"/></g>
         </g>
         
         <g transform="translate(30, 80)">
