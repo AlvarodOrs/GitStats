@@ -62,6 +62,10 @@ class RepositoryViews:
     uniques: int
 
 @dataclass
+class LanguagesData:
+    language: int
+
+@dataclass
 class GitHubRepository:
     id: int
     node_id: str
@@ -157,8 +161,8 @@ class GitHubRepository:
     permissions: RepositoryPermissions
     views: RepositoryViews
 
-    languages: dict[str, int]
-
+    languages: LanguagesData
+    
 @dataclass
 class LanguagesUsed:
     bytes_by_language: dict[str, int]
@@ -199,7 +203,6 @@ class GitHubClientData:
 @dataclass
 class GitHubClientExtraData:
     VISIBILITY: Literal["all", "public", "private"]
-    EXTRA_VIEWS: int
     EXCLUDED_LANGUAGES: list[str]
     
 @dataclass

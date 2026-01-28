@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="900" height="600" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    
+    <clipPath id="rounded-bar-2125720060288"><rect x="0" y="0" width="1" height="8" rx="4"/></clipPath>
     <!-- Dark terminal-like background -->
     <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
       <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
@@ -79,7 +79,7 @@
           ├─ COMMITS_TOTAL:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          0 commits
+          215 commits
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="170" height="4" fill="#39ff14" rx="2">
@@ -93,7 +93,7 @@
           ├─ REPOS_ACTIVE:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          2 repositories
+          40 repositories
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="90" height="4" fill="#39ff14" rx="2">
@@ -107,7 +107,7 @@
           ├─ PULL_REQUESTS:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          0 merged
+          1 merged
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="135" height="4" fill="#39ff14" rx="2">
@@ -121,7 +121,7 @@
           └─ ISSUES_FIXED:
         </text>
         <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
-          0 resolved
+          3 resolved
         </text>
         <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
         <rect x="350" y="-10" width="145" height="4" fill="#39ff14" rx="2">
@@ -137,7 +137,7 @@
     </text>
       
     <g transform="translate(0, 30)">
-        
+        <g transform="translate(0, 0.0)"><text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">├─ Python</text><rect x="150" y="-10" width="900" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/><rect x="150" y="-10" width="409" height="18" fill="rgba(255, 215, 0, 0.6)" rx="3"><animate attributeName="width" from="0" to="409" dur="1.5s" begin="0.0s" fill="freeze"/></rect><text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">45.5%</text></g><g transform="translate(0, 35.0)"><text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">├─ TypeScript</text><rect x="150" y="-10" width="900" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/><rect x="150" y="-10" width="160" height="18" fill="rgba(43, 116, 137, 0.6)" rx="3"><animate attributeName="width" from="0" to="160" dur="1.5s" begin="0.2s" fill="freeze"/></rect><text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">17.8%</text></g><g transform="translate(0, 70.0)"><text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">├─ C</text><rect x="150" y="-10" width="900" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/><rect x="150" y="-10" width="126" height="18" fill="rgba(85, 85, 85, 0.6)" rx="3"><animate attributeName="width" from="0" to="126" dur="1.5s" begin="0.4s" fill="freeze"/></rect><text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">14.0%</text></g><g transform="translate(0, 105.0)"><text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">├─ Java</text><rect x="150" y="-10" width="900" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/><rect x="150" y="-10" width="124" height="18" fill="rgba(176, 114, 25, 0.6)" rx="3"><animate attributeName="width" from="0" to="124" dur="1.5s" begin="0.6000000000000001s" fill="freeze"/></rect><text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">13.9%</text></g><g transform="translate(0, 140.0)"><text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">└─ R</text><rect x="150" y="-10" width="900" height="18" fill="rgba(57, 255, 20, 0.1)" rx="3"/><rect x="150" y="-10" width="53" height="18" fill="rgba(25, 140, 231, 0.6)" rx="3"><animate attributeName="width" from="0" to="53" dur="1.5s" begin="0.8s" fill="freeze"/></rect><text x="470" y="4" font-family="'Courier New', monospace" font-size="11" fill="#39ff14">5.9%</text></g>
     </g>
     </g>
   </g>

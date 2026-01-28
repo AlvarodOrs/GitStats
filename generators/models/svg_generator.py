@@ -1,3 +1,6 @@
+from string import Template
+from typing import Any, Dict
+
 from generators.components import (
     generate_animated_blobs_and_style,
     generate_flame,
@@ -5,13 +8,16 @@ from generators.components import (
     generate_language_labels,
     generate_language_stack,
     generate_top_repos,
-    )
+)
 from generators.models.background_generator import Background
-from string import Template
-from typing import Dict, Any
+from models.github_data import Profile, Repository
+from utils.helpers.debug import debugLog
 from utils.tools import format_date, unwrap_data
 
-def load_template(model_name: str) -> str:
+
+def load_template(model_name: str, debug: bool = False) -> str:
+    debugLog(load_template, f'Loading template for model: {model_name}', debug, 'DEBUG')
+
     templates = {
         'default': open('generators/models/svg/templates/default.xml', 'r', encoding='utf-8').read(),
         'neutral': open('generators/models/svg/templates/neutral.xml', 'r', encoding='utf-8').read(),
@@ -19,13 +25,16 @@ def load_template(model_name: str) -> str:
         'profesional': open('generators/models/svg/templates/profesional.xml', 'r', encoding='utf-8').read(),
         'backend': open('generators/models/svg/templates/backend.xml', 'r', encoding='utf-8').read(),
     }
-    
+
     if model_name not in templates:
         raise ValueError(f"Unknown model: {model_name}. Available: {list(templates.keys())}")
-    
+
+    debugLog(load_template, f'Template loaded for model: {model_name}', debug, 'DEBUG')
     return templates[model_name]
 
-def load_styles(model_card: str) -> str:
+
+def load_styles(model_card: str, debug: bool = False) -> str:
+    debugLog(load_styles, f'Loading styles for model: {model_card}', debug, 'DEBUG')
     return '''\
         .invisible { opacity: 0; } \
         .blue { fill: #58a6ff; } \
@@ -35,7 +44,7 @@ def load_styles(model_card: str) -> str:
         .title { font-size: 22px; } \
         .section-title { font-size: 18px; } \
         .block-title { font-size: 16px; } \
-        .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }
+        .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; } \
         .stat-label { font-size: 14px; font-weight: 400; opacity: 0.9; } \
         .stat-value { font-size: 18px; } \
         .lang-text { font-size: 12px; font-weight: 400; } \
@@ -45,21 +54,21 @@ def load_styles(model_card: str) -> str:
         .repo-name { font-size: 13px; }'''
 
 
-def generate_svg(data: Dict[str, Any], model_card: str) -> str:
-    
+def generate_svg(data: Dict[str, Any], model_card: str, debug: bool = False) -> str:
+    debugLog(generate_svg, f'Starting generate_svg for model: {model_card}', debug, 'DEBUG')
+
     # Load template
-    template_str = load_template(model_card)
+    template_str = load_template(model_card, debug)
 
     # Filter the data
-    languages = data.get('langs', {})
-    print(languages)
-    top_repos = data.get('repos_views', [])
-    
-    streak_time = 'days'
-    if data.get('active_streak_days') > 0: streak_time = 'hours'
+    languages = data.get('languages', {})
+    top_repos = data.get('repos_views', {})
+    active_streak = data.get('active_streak', {})
+    longest_streak = data.get('longest_streak', {})
 
-    username = data.get('username', 'User')
-
+    profile = Profile(data.get('full_profile'))
+    streak_time = 'days' if active_streak.get('total_streak') > 0 else 'hours'
+    username = profile.login()
     # Model-specific dimensions and elements
     model_config = {
         'default': {
@@ -149,52 +158,53 @@ def generate_svg(data: Dict[str, Any], model_card: str) -> str:
             # 'card_element_HEIGHT': ,
             'special_title': f'{username}@backend:~/github-stats$',
             'special_subtitle': f'$ git log --author="{username}" --pretty=format:"%h %s" --stat',
-            'special_streak': f'● ACTIVITY | Streak: {data.get('longest_streak_days', 0)} days | Last commit: few {streak_time} ago',
+            'special_streak': f'● ACTIVITY | Streak: {longest_streak.get('total_streak')} days | Last commit: few {streak_time} ago',
             'special_endline': f'{username}@backend:~/stats'
         }
     }
     
     config = model_config.get(model_card, model_config['default'])
+    debugLog(generate_svg, f'Model configuration loaded for {model_card}', debug, 'DEBUG')
+
     # Define parameters in tuples
     languages_info = (languages, config['max_langs'])
     top_repos_info = (top_repos, config['max_langs'])
     svg_dimensions = (config['SVG_WIDTH'], config['SVG_HEIGHT'])
     card_langs_dimensions = (config['card_langs_WIDTH'], config['card_langs_HEIGHT'])
     card_streaks_dimensions = (config['card_streaks_WIDTH'], config['card_streaks_HEIGHT'])
-    card_repos_dimensions = (100, 100)
+    card_repos_dimensions = (400, 100)
     # Easy expansion
     # card_element_dimensions = (config['card_element_WIDTH'], config['card_element_HEIGHT'])
     # card_element_dimensions = (config['card_element_WIDTH'], config['card_element_HEIGHT'])
 
     # Generate components
-    animated_blobs, animated_blobs_style = generate_animated_blobs_and_style(languages_info, svg_dimensions)
-    language_bar, language_bar_defs = generate_language_bar_and_defs(languages_info, card_langs_dimensions)
+    animated_blobs, animated_blobs_style = generate_animated_blobs_and_style(languages_info, svg_dimensions, debug=debug)
+    language_bar, language_bar_defs = generate_language_bar_and_defs(languages_info, card_langs_dimensions, debug)
     language_labels = generate_language_labels(languages_info, card_langs_dimensions)
-    top_repos_svg = generate_top_repos(top_repos_info, (data.get('username'), card_repos_dimensions))
-    languages_stack = generate_language_stack(languages_info, svg_dimensions) 
-
-    flame_gradient, flame_fill, flame_number_color, flame_y = generate_flame(data.get('active_streak_days'))
+    top_repos_svg = generate_top_repos(top_repos_info, (data.get('username'), card_repos_dimensions), debug)
+    languages_stack = generate_language_stack(languages_info, svg_dimensions, debug) 
+    flame_gradient, flame_fill, flame_number_color, flame_y = generate_flame(active_streak.get('total_streak'), debug)
     
     config['animated_blobs'] = animated_blobs
     config['animated_blobs_style'] = animated_blobs_style
 
     # Create processed data with all required fields
     processed = {
-        'username_label': data.get('username_label', 'User'),
-        'created': data.get('created'),
-        'avatar_url': data.get('avatar_url', ''),
-        'stars_total': data.get('stars_total', 0),
-        'commits': data.get('commits', 0),
-        'prs': data.get('prs', 0),
-        'issues': data.get('issues', 0),
-        'repos': data.get('repos', 0),
-        'total_repos': len((data.get('repos'), [])),
-        'contributions_this_year': data.get('contributions_this_year', 0),
-        'total_contribs': data.get('total_contribs', data.get('contributions_this_year', 0)),
-        'active_streak_days': data.get('active_streak_days', 0),
-        'longest_streak_days': data.get('longest_streak_days', 0),
-        'longest_from': data.get('longest_from'),
-        'longest_to': data.get('longest_to'),
+        'username_label': profile.label(),
+        'created': format_date(profile.created_at().split('T')[0]),
+        'avatar_url': profile.avatar_url(),
+        'stars_total': data.get('stars_total', -1),
+        'commits': data['contributions_t'].get('commits', -1),
+        'prs': data['contributions_t'].get('prs', -1),
+        'issues': data['contributions_t'].get('issues', -1),
+        'repos': data.get('repos', -1),
+        'total_repos': data['contributions_y'].get('total', -1),
+        'total_contribs': data['contributions_t'].get('total', -1),
+        'contributions_this_year': data.get('total_contribs', data.get('contributions_this_year', -1)),
+        'active_streak_days': active_streak.get('total_streak', -1),
+        'longest_streak_days': longest_streak.get('total_streak', -1),
+        'longest_from': longest_streak.get('from_date', '9/9/999'),
+        'longest_to': longest_streak.get('to_date', '9/9/999'),
         'streak_title': data.get('streak_title', 'Current Streak'),
         'streak_dates': data.get('streak_dates', ''),
         'flame_gradient': flame_gradient,
@@ -239,7 +249,8 @@ def generate_svg(data: Dict[str, Any], model_card: str) -> str:
     
     # Generate SVG
     svg = Template(template_str).substitute(**template_vars)
-    
+    debugLog(generate_svg, f'SVG generated for model: {model_card}', debug, 'SUCCESS')
+
     return svg
 
 

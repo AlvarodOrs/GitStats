@@ -130,7 +130,6 @@ GitStats/
        'USERNAME': 'your_github_username',
        'GITHUB_TOKEN': 'ghp_your_token_here',
        "VISIBILITY": "all",
-       "EXTRA_VIEWS": 0,
        "EXCLUDED_LANGUAGES": ["html"]
 
    }

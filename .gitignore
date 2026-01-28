@@ -1,7 +1,12 @@
 .vscode/
 test/
 **/__pycache__
+*copy*
 .env
 config.json
-data/
-*copy*
+data/*
+!data/UserExample-statsExample.json
+!data/auto-commitsExample.json
+!data/views
+data/views/*
+!data/views/YYYY-MM-DDExample.json

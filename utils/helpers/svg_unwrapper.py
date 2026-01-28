@@ -1,4 +1,4 @@
-def unwrapper(file_name: str):
+def remove_svg_headers(file_name: str):
     with open(f'generators/models/svg/{file_name}.svg', 'r', encoding='utf-8') as file:
         svg = file.readlines()
     

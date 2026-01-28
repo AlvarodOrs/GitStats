@@ -1,21 +1,16 @@
-from generators.config import get_color_map
 from math import log
 from typing import Literal
-from utils.meths import (
-    exponential_decay_formula,
-    gradient_coords,
-    k_rate,
-    opacity_rate,
-    hue_base,
 
-)
+from generators.config import get_color_map
+from utils.helpers.debug import debugLog
+from utils.meths import exponential_decay_formula
 
 Number = int | float
 Red, Green, Blue = (Number, Number, Number)
 RGB = tuple[Red, Green, Blue]
 color_map: dict[str, str] = get_color_map()
 
-def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number]) -> tuple[str, str]:
+def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number], debug: bool = False) -> tuple[str, str]:
     # WILL REDO TO WORK IN PERCENTAGES
     
     langs, max_langs = langs_info
@@ -29,7 +24,8 @@ def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], ca
     x_offset = 0.0
     other_languages = 100.0
         
-    for lang, percent in top_langs: 
+    for lang, percent in top_langs:
+        if len(segments) == 0: segments.append(f'<rect x="0" y="0" width="{percent}%" height="8" fill="#000000"/>')
         other_languages -= percent
         color = color_map.get(lang, '#858585')
         width = (percent / 100) * total_width
@@ -50,7 +46,7 @@ def generate_language_bar_and_defs(langs_info: tuple[dict[str, Number], int], ca
     
     return bar_block, bar_defs
 
-def generate_language_labels(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number]) -> str:
+def generate_language_labels(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number], debug: bool = False) -> str:
     # WILL REDO TO WORK IN PERCENTAGES
     
     langs, max_langs = langs_info
@@ -81,7 +77,7 @@ def generate_language_labels(langs_info: tuple[dict[str, Number], int], card_dim
             
     return f''.join(items)
 
-def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tuple[str, tuple[Number, Number]], x_offset: int = 380) -> str:
+def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tuple[str, tuple[Number, Number]], x_offset: int = 380, debug: bool = False) -> str:
     # WILL REDO TO WORK IN PERCENTAGES
     
     repos, max_repos = repos_info
@@ -93,10 +89,10 @@ def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tup
             
     items = []
     y_offset = 55
-    
+    x_offset = total_width    
     for i, (name, data) in enumerate(top_repos):
-        
-        if data['count'] < 1: continue
+
+        if data['total_views'] < 1: continue
         
         # Icons for different tiers
         icon = '▪'
@@ -114,12 +110,12 @@ def generate_top_repos(repos_info: tuple[dict[str, Number], int], card_info: tup
                         f'<tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">{name}</tspan>'
                     f'</a>'
                 f'</text>'
-                f'<text x="{x_offset}" y="0" class="text lang-text">{data['count']} views</text>'
+                f'<text x="{x_offset}" y="0" class="text lang-text">{data['total_views']} views</text>'
             f'</g>'
             )
     return f''.join(items)
 
-def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number]) -> str:
+def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dimensions: tuple[Number, Number], debug: bool = False) -> str:
     # WILL REDO TO WORK IN PERCENTAGES
     
     langs, max_langs = langs_info
@@ -164,32 +160,35 @@ def generate_language_stack(langs_info: tuple[dict[str, Number], int], card_dime
     
     return f''.join(items)
 
-def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, str]:
-    #input(active_streak)
-    print(active_streak)
-    # Flame parameters
-    T_core = 2200
-    k_r = 1.3
-    k_alpha = 1.5
-    alpha_min, alpha_max = 0.15, 1
-    s0, s1 = 0.15, 0.55
-    iterations_max = 5
+def generate_flame(active_streak: int, debug: bool = False) -> tuple[str, str, str, str]:
+    debugLog(generate_flame, f'Active streak: {active_streak}', debug, 'DEBUG')
+    T_core = 2200        # Fire temperature: best if \in [1700, 2400]
+    k_r = 1.3            # Temperature decay: best if \in [0.8, 2]
+    k_alpha = 1.5        # Opacity decay: best if \in [1, 2]
+    alpha_min = 0.15     # Min opacity: best if \in [0.1, 0.3]
+    alpha_max = 1        # Max opacity: best if \in [0.8, 1]
+    s0, s1 = 0.15, 0.55  # Theme blending: best if \in [0, 0.3] and [0.3, 0.7]
+    iterations_max = 5   # #Gradients: best if \in [3, 8]
 
     # Fire themes
     Fire_themes: dict[str, RGB] = {
-            "fire_red": (255, 85, 0),
-            "fire_orange": (0, 255, 50),
-            "fire_blue": (0, 100, 255),
+            "hot_blue": (0, 180, 255),
+            "red": (255, 50, 0), #_,85,_
+            "orange": (255, 140, 0), # 0, 255, 50 
+            "cold_blue": (0, 100, 255),
     }   
     
-    fire_theme = 'fire_blue'
+    if active_streak >= 30: fire_theme = 'hot_blue'
+    if active_streak < 30: fire_theme = 'red'
+    if active_streak < 1: fire_theme = 'orange'
+    if active_streak < 0: fire_theme = 'cold_blue'
+
     if active_streak != None:
-        print('active_streak not None')
-        fire_theme = 'fire_red' if active_streak > 1 else 'fire_orange'
+        debugLog(generate_flame, 'active_streak not None', debug, 'DEBUG')
 
     rgb_theme = Fire_themes[fire_theme]
 
-    def RGB_bb(temperature: float) -> RGB:
+    def RGB_bb(temperature: float, debug: bool = False) -> RGB:
         # Temeperature -> RGB color a.k.a "Black-Body Color" (using Tanner Helland's aprox)
         t = temperature / 100
         if t > 66:
@@ -201,13 +200,11 @@ def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, 
             Red = 255
             Green = 99.4708025861 * log(t) - 161.1195681661
             Blue = (0 if t <= 19 else 138.5177312231 * log(t - 10) - 305.0447927307)
-        
-        print(
-            f'With t = {t}'
-            f'Red = {Red}'            
-            f'Green = {Green}'            
-            f'Blue = {Blue}'
-            )
+        _msg = (f'With t = {t}\n'
+            f'Red = {Red}\n'        
+            f'Green = {Green}\n'         
+            f'Blue = {Blue}\n')
+        debugLog(generate_flame, _msg, debug, 'DEBUG')
         Red = max(0, min(255, Red))
         Green = max(0, min(255, Green))
         Blue = max(0, min(255, Blue))
@@ -215,7 +212,7 @@ def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, 
         return int(Red), int(Green), int(Blue)
     
     stops = []
-    alpha_list = (1.0, 0.8, 0.6, 0.4, 0.2)
+    alpha_list = (1.0, 0.8, 0.6, 0.4, 0.2) ### function
 
     for i in range(iterations_max):
 
@@ -225,7 +222,7 @@ def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, 
         temp_r = exponential_decay_formula(T_core, k_r, r) # t_core = 1.0 antes
 
         # Black-body color
-        color_bb = RGB_bb(temp_r)
+        color_bb = RGB_bb(temp_r, debug)
 
         s_r = s0 + s1 * r
         r_final = int((1 - s_r) * color_bb[0] + s_r * rgb_theme[0])
@@ -252,7 +249,7 @@ def generate_flame(active_streak: dict[str, str | int]) -> tuple[str, str, str, 
 
     return flame_gradient, flame_fill, flame_number_color, flame_y
 
-def generate_animated_blobs_and_style(langs_info: tuple[dict[str, Number], int], svg_dimensions: tuple[Number, Number] = (500, 800), margins: tuple[Number, Number] = (10, 10)) -> tuple[str, str]:
+def generate_animated_blobs_and_style(langs_info: tuple[dict[str, Number], int], svg_dimensions: tuple[Number, Number] = (500, 800), margins: tuple[Number, Number] = (10, 10), debug: bool = False) -> tuple[str, str]:
     # WILL REDO TO WORK IN PERCENTAGES
     
     langs, max_langs = langs_info

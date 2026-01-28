@@ -1,30 +1,36 @@
 # Might update when changed to fetch contribs per repository
-from utils.customDataTypes import GitHubRepository
+from typing import TypeAlias, Any
+from utils.customDataTypes import GitHubRepository, DataByYear
+from utils.helpers.debug import debugLog
+
+Element: TypeAlias = str
 
 def USELESSATMget_year(repos: dict[str, GitHubRepository], year: int, debug: bool = False) -> None:
-    if debug: print(f'Year: {year} is a {type(year)}')
+    debugLog(USELESSATMget_year, f'Year: {year} is a {type(year)}', debug, ['ERROR', 'WARNING', 'DEBUG', 'SUCCESS'])
     for repo in repos.values():
         pass
-def get_element(data: dict[str, int], element: str) -> int:
-    return data[element]
 
-def get_year(element:str, data: dict[str, int], year: int, debug: bool = False):
-    if debug:
-        print(f'Year: {year} is a {type(year)}')
-        print(f'Data: {data} is a {type(data)}')
-    res = 0
-    for date, year_data in data.items():
-        date = int(date)
-        if date == year:
-            res += get_element(year_data, element)
-    if debug: print(f'{element} during {year}: {res}')
+def get_element(data: dict[Element, Any], element: str) -> Any:
+    try:
+        return data[int(element)]
+    except:
+        return data[str(element)]
+def get_year(element: str, data: DataByYear, year: int, debug: bool = False) -> int:
+    debugLog(get_year, f'Looking up year {year} for element "{element}"', debug, 'DEBUG')
+    year_data = get_element(data, str(year))
+    if year_data is None:
+        debugLog(get_year, f'Year {year} not found in data', debug, 'WARNING')
+        return 0
+
+    res = get_element(year_data, element)
+    debugLog(get_year, f'Result for {element} in {year}: {res}', debug, 'DEBUG')
     return res
 
-def get_total(element: str, data: dict[str, int], debug: bool = False):
-    if debug: print(f'Data: {data} is a {type(data)}')
-    res = 0
-    for year_data in data.values():
-        res += get_element(year_data, element)
-    
-    if debug: print(f'{element} total: {res}')
+
+def get_total(element: str, data: DataByYear, debug: bool = False) -> int:
+    debugLog(get_total, f'Computing total for element "{element}"', debug, 'DEBUG')
+
+    res = sum(get_element(year_data, element) for year_data in data.values())
+
+    debugLog(get_total, f'Total for {element}: {res}', debug, 'DEBUG')
     return res

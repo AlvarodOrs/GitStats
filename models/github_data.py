@@ -1,3 +1,6 @@
+from utils.customDataTypes import RepositoryViews, LanguagesData
+from utils.helpers.debug import debugLog
+
 class Profile: # GithubProfile(profile _data)
     def __init__(self, profile_data: dict):
         self.profile_data = profile_data
@@ -80,6 +83,10 @@ class Profile: # GithubProfile(profile _data)
     
     def updated_at(self) -> str:
         return self.profile_data.get("updated_at", "get_updated_at_failed")
+    
+    def label(self) -> str:
+        uname = self.profile_data.get("login", "get_label_failed")
+        return f'{uname}\'' if uname[-1].lower() == 's' else f'{uname}\'s' 
     
 class Repository: # GithubRepository(repo_data)
     def __init__(self, repo_data: dict):
@@ -203,4 +210,11 @@ class Repository: # GithubRepository(repo_data)
         permissions = self.repo_data.get("permissions", {"get_permissions_failed": True})
         if permission == '':
             return permissions
-        return permissions.get(permission, False)
+        return permissions.get(permission, False)\
+        
+    def views(self) -> RepositoryViews:
+        views = self.repo_data.get("views", {})
+        return views.get("total_views", views.get("uniques", -1)), views.get("uniques", -1)
+    
+    def languages(self) -> LanguagesData:
+        return self.repo_data.get("languages", {})

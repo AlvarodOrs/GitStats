@@ -1,0 +1,17 @@
+{
+  "_comment": "Rename this file to 'config.json' and fill in the values below as needed.",
+
+  "USERNAME": "example",
+  "_comment_USERNAME": "Your GitHub username or the username associated with the token.",
+
+  "GITHUB_TOKEN": "example",
+  "_comment_GITHUB_TOKEN": "A personal access token with the necessary permissions (repo/read) to access your GitHub data.",
+
+  "VISIBILITY": "example",
+  "_comment_VISIBILITY": "Define repository visibility for operations: 'public', 'private', or 'all'.",
+
+  "EXCLUDED_LANGUAGES": [
+    "example"
+  ],
+  "_comment_EXCLUDED_LANGUAGES": "List of programming languages to ignore in analytics (e.g., ['Python', 'HTML'])."
+}
