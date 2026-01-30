@@ -2,6 +2,12 @@
 tests/
 **/__pycache__
 .env
-output/data/views/**.json
-output/data/**.json
+output/images/*
+output/data/*
+output/.cache
+!output/data/auto-commitsExample.json
+!output/data/User-statsExample.json
+!output/data/YYYY-MM-DDExample.json
 *copy*
+GitStats.egg-info
+README.md

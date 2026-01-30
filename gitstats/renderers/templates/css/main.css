@@ -1,0 +1,92 @@
+.backend {
+    width: 900;
+    height: 600;
+}
+.default {
+    width: 500;
+    height: 800;
+}
+.neutral {
+    width: 550;
+    height: 380;
+}
+.oss {
+    width: 900;
+    height: 550;
+}
+.profesional {
+    width: 700;
+    height: 300;
+}
+
+.invisible {
+    opacity: 0;
+}
+.blue {
+    fill: #58a6ff;
+}
+
+.text {
+    font-family: 'Segoe UI', Ubuntu, Sans-Serif;
+    font-weight: 600;
+    fill: #ffffff;
+}
+.header {
+    font-size: 28px;
+    font-weight: bold;
+}
+.big-title {
+    font-size: 24px;
+    font-weight: bold;
+}
+.title {
+    font-size: 22px;
+}
+.section-title {
+    font-size: 18px;
+}
+.block-title {
+    font-size: 16px;
+}
+.subsection-title {
+    font-size: 13px;
+    fill: #7d8590;
+    letter-spacing: 0.5px;
+}
+.stat-label {
+    font-size: 14px;
+    font-weight: 400;
+    opacity: 0.9;
+}
+.stat-value {
+    font-size: 18px;
+}
+.lang-text {
+    font-size: 12px;
+    font-weight: 400;
+}
+.streak-number {
+    font-family: 'Segoe UI', Ubuntu, Sans-Serif;
+    font-size: 48px;
+    font-weight: 700;
+}
+.streak-label {
+    font-size: 14px;
+}
+.streak-date {
+    font-size: 11px;
+    font-weight: 400;
+    opacity: 0.8;
+}
+.repo-name {
+    font-size: 13px;
+}
+.card {
+    fill: rgba(255, 255, 255, 0.25);
+    rx: 10;
+}
+.card-shadow {
+    fill: rgba(0,0,0,0.2);
+    filter: blur(5);
+    rx: 10;
+}

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="$SVG_WIDTH" height="$SVG_HEIGHT" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    $language_bar_defs
+    <!-- Dark terminal-like background -->
+    <linearGradient id="terminalBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#010409;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Terminal green accent -->
+    <linearGradient id="terminalGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#39ff14;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff00;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Scanline effect -->
+    <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+      <rect width="100%" height="2" fill="rgba(57, 255, 20, 0.02)"/>
+    </pattern>
+    
+    <!-- Matrix-style background pattern -->
+    <pattern id="matrix" width="20" height="20" patternUnits="userSpaceOnUse">
+      <text x="0" y="15" font-family="'Courier New', monospace" font-size="10" fill="rgba(57, 255, 20, 0.05)">0</text>
+    </pattern>
+    
+    <!-- Glow for terminal text -->
+    <filter id="terminalGlow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background layers -->
+  <rect width="100%" height="100%" fill="url(#terminalBg)"/>
+  <rect width="100%" height="100%" fill="url(#matrix)" opacity="0.3"/>
+  <rect width="100%" height="100%" fill="url(#scanlines)"/>
+  
+  <!-- Terminal window chrome -->
+  <rect x="10" y="10" width="880" height="580" fill="#0d1117" rx="8" stroke="#39ff14" stroke-width="2" opacity="0.8"/>
+  
+  <!-- Terminal title bar -->
+  <rect x="10" y="10" width="880" height="40" fill="rgba(57, 255, 20, 0.1)" rx="8"/>
+  <circle cx="30" cy="30" r="6" fill="#ff5f56"/>
+  <circle cx="50" cy="30" r="6" fill="#ffbd2e"/>
+  <circle cx="70" cy="30" r="6" fill="#27c93f"/>
+  <text x="100" y="35" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+    $special_title
+  </text>
+  
+  <!-- Terminal prompt line -->
+  <text x="30" y="80" font-family="'Courier New', monospace" font-size="13" fill="#39ff14" filter="url(#terminalGlow)">
+    $special_subtitle
+  </text>
+  
+  <!-- Blinking cursor -->
+  <rect x="600" y="68" width="10" height="16" fill="#39ff14">
+    <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Separator line -->
+  <line x1="30" y1="100" x2="870" y2="100" stroke="#39ff14" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Main stats output -->
+  <g id="output" transform="translate(30, 130)">
+    <!-- System Architecture Section -->
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+      [INFO] Backend Development Metrics
+    </text>
+    
+    <!-- Primary metrics grid -->
+    <g transform="translate(0, 30)">
+      <!-- Commits -->
+      <g>
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ COMMITS_TOTAL:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          $commits commits
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="170" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="170" dur="1.5s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Repositories -->
+      <g transform="translate(0, 35)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ REPOS_ACTIVE:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          $total_repos repositories
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="90" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="90" dur="1.5s" begin="0.2s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- PRs -->
+      <g transform="translate(0, 70)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          ├─ PULL_REQUESTS:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          $prs merged
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="135" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="135" dur="1.5s" begin="0.4s" fill="freeze"/>
+        </rect>
+      </g>
+      
+      <!-- Issues -->
+      <g transform="translate(0, 105)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="12" fill="#6e7681">
+          └─ ISSUES_FIXED:
+        </text>
+        <text x="220" y="0" font-family="'Courier New', monospace" font-size="12" fill="#39ff14" font-weight="bold">
+          $issues resolved
+        </text>
+        <rect x="350" y="-10" width="200" height="4" fill="rgba(57, 255, 20, 0.2)" rx="2"/>
+        <rect x="350" y="-10" width="145" height="4" fill="#39ff14" rx="2">
+          <animate attributeName="width" from="0" to="145" dur="1.5s" begin="0.6s" fill="freeze"/>
+        </rect>
+      </g>
+    </g>
+    
+    <!-- Language Stack Section -->
+    <g transform="translate(0, 270)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="14" fill="#39ff14" filter="url(#terminalGlow)">
+        [INFO] Backend Technology Stack
+    </text>
+      
+    <g transform="translate(0, 30)">
+        $languages_stack
+    </g>
+    </g>
+  </g>
+  
+  <!-- Bottom status bar -->
+  <g transform="translate(30, 560)">
+    <text x="0" y="0" font-family="'Courier New', monospace" font-size="11" fill="#39ff14" opacity="0.7">
+      $special_streak
+    </text>
+    <text x="640" y="0" font-family="'Courier New', monospace" font-size="11" fill="#6e7681">
+      $special_endline
+    </text>
+    
+    <!-- Blinking cursor at end -->
+    <rect x="840" y="-12" width="8" height="14" fill="#39ff14">
+      <animate attributeName="opacity" values="0;1;0" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>
