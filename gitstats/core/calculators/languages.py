@@ -15,51 +15,39 @@ class LanguageCalculator:
         self,
         language_bytes: dict[str, int]
     ) -> dict[str, float]:
-        """
-        Calculate language percentages.
-        
-        Args:
-            language_bytes: dictionary of language -> bytes
-            
-        Returns:
-            dictionary of language -> percentage
-        """
         if not language_bytes:
             return {}
-        
-        total_bytes = sum(language_bytes.values())
-        
+
+        # Filter out excluded languages first
+        filtered_bytes = {
+            lang: count
+            for lang, count in language_bytes.items()
+            if lang.lower() not in self.config.excluded_languages
+        }
+
+        total_bytes = sum(filtered_bytes.values())
         if total_bytes == 0:
             return {}
-        
+
+        # Calculate percentages
         percentages = {
-            lang: (bytes_count / total_bytes) * 100
-            for lang, bytes_count in language_bytes.items()
+            lang: (count / total_bytes) * 100
+            for lang, count in filtered_bytes.items()
         }
-        
+
         # Sort by percentage descending
         sorted_percentages = dict(
             sorted(percentages.items(), key=lambda x: x[1], reverse=True)
         )
-        
-        logger.debug(f"Calculated percentages for {len(sorted_percentages)} languages")
+
+        logger.debug(f"Calculated percentages for {len(sorted_percentages)}")
         return sorted_percentages
-    
+
     def aggregate_from_repositories(
         self,
         repositories: list[Repository],
         language_data: dict[str, dict[str, int]]
     ) -> dict[str, int]:
-        """
-        Aggregate language bytes across repositories.
-        
-        Args:
-            repositories: list of repositories
-            language_data: Repository name -> language bytes
-            
-        Returns:
-            Aggregated language bytes
-        """
         totals = Counter()
         
         for repo in repositories:

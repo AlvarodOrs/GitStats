@@ -50,18 +50,20 @@ class SVGRenderer:
             issues=statistics.total_issues,
             total_repos=len(statistics.repositories)
         )
-        
+        print(f'POR COMPLETAR {stats_grid_svg = }')
         language_bar_svg, language_bar_defs = self.language_bar.render(
             languages=statistics.languages,
-            width=self.theme.config.width - 60,
+            width=self.theme.config.width,
+            card_margin_x=self.theme.config.card_margin_x,
+            text_margin_x=self.theme.config.text_margin_x,
             max_languages=self.config.max_languages_shown
         )
-        
+
         language_labels_svg = self.language_labels.render(
             languages=statistics.languages,
             max_languages=self.config.max_languages_shown
         )
-        
+        print(f'POR COMPLETAR {language_labels_svg = }')
         # Optional components based on theme
         flame_defs, flame_fill, flame_color = '', '', ''
         particles_svg, particles_css = '', ''

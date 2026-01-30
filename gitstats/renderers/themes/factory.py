@@ -7,9 +7,7 @@ from gitstats.renderers.themes.professional import ProfessionalTheme
 from gitstats.renderers.themes.oss import OSSTheme
 from gitstats.renderers.themes.backend import BackendTheme
 
-class ThemeFactory:
-    """Factory for creating themes."""
-    
+class ThemeFactory:    
     _themes: dict[str, Type[Theme]] = {
         'default': DefaultTheme,
         'neutral': NeutralTheme,
@@ -20,18 +18,6 @@ class ThemeFactory:
     
     @classmethod
     def create(cls, theme_name: str) -> Theme:
-        """
-        Create a theme instance.
-        
-        Args:
-            theme_name: Name of the theme
-            
-        Returns:
-            Theme instance
-            
-        Raises:
-            ValueError: If theme name is invalid
-        """
         theme_class = cls._themes.get(theme_name.lower())
         
         if theme_class is None:
@@ -42,5 +28,4 @@ class ThemeFactory:
     
     @classmethod
     def available_themes(cls) -> list[str]:
-        """Get list of available theme names."""
         return list(cls._themes.keys())

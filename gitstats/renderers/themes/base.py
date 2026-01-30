@@ -1,26 +1,25 @@
-from abc import ABC, abstractmethod
-from dataclasses import dataclass, field, asdict
 import logging
+from abc import ABC, abstractmethod
+from dataclasses import dataclass, asdict
+
+from gitstats.constants import DEFAULT_SVG_WIDTH, DEFAULT_SVG_HEIGHT, DEFAULT_CARD_MARGIN, DEFAULT_TITLE_MARGIN, DEFAULT_TEXT_MARGIN
 
 logger = logging.getLogger(__name__)
 
 
 @dataclass
 class ThemeConfig:
-    width: int = 100
-    height: int = 100
+    width: int = DEFAULT_SVG_WIDTH
+    height: int = DEFAULT_SVG_HEIGHT
     background: str = 'dark'
 
-    cards: list[str] = field(
-        default_factory=lambda: ['main', 'streaks', 'topRepos', 'languages']
-    )
-
-    card_margin_x: int = 20
-    card_margin_y: int = 20
-    title_margin_x: int = 20
-    title_margin_y: int = 30
-    text_margin_x: int = 30
-    text_margin_y: int = 0
+    card_margin_x: int = DEFAULT_CARD_MARGIN[0]
+    card_margin_y: int = DEFAULT_CARD_MARGIN[1]
+    title_margin_x: int = DEFAULT_TITLE_MARGIN[0]
+    title_margin_y: int = DEFAULT_TITLE_MARGIN[1]
+    text_margin_x: int = DEFAULT_TEXT_MARGIN[0]
+    text_margin_y: int = DEFAULT_TEXT_MARGIN[1]
+    
     show_flame: bool = True
 
     def as_dict(self) -> dict:
@@ -41,7 +40,11 @@ class Theme(ABC):
     @abstractmethod
     def _create_config(self) -> ThemeConfig:
         pass
-
+    
+    @abstractmethod
+    def get_cards(self) -> list[str]:
+        pass
+        
     @abstractmethod
     def get_template_name(self) -> str:
         pass
