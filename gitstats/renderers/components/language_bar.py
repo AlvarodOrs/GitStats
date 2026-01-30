@@ -12,7 +12,6 @@ config = CollectionConfig()
 class LanguageBarComponent(SVGComponent):
     def __init__(self, theme):
         super().__init__(theme)
-
             
     def render(
         self,
