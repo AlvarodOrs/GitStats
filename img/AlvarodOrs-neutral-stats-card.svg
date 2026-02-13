@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="550" height="380" xmlns="http://www.w3.org/2000/svg">
     <defs>
-        <clipPath id="rounded-bar-2125710344384"><rect x="0" y="0" width="510" height="8" rx="4"/></clipPath>
+        <clipPath id="rounded-bar-1690831316416"><rect x="0" y="0" width="510" height="8" rx="4"/></clipPath>
         <style>
                     .invisible { opacity: 0; }         .blue { fill: #58a6ff; }         .text { font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: 600; fill: #ffffff; }         .header { font-size: 28px; font-weight: bold; }         .big-title { font-size: 24px; font-weight: bold; }         .title { font-size: 22px; }         .section-title { font-size: 18px; }         .block-title { font-size: 16px; }         .subsection-title { font-size: 13px; fill: #7d8590; letter-spacing: 0.5px; }         .stat-label { font-size: 14px; font-weight: 400; opacity: 0.9; }         .stat-value { font-size: 18px; }         .lang-text { font-size: 12px; font-weight: 400; }         .streak-number { font-size: 48px; font-weight: 700; }         .streak-label { font-size: 14px; }         .streak-date { font-size: 11px; font-weight: 400; opacity: 0.8; }         .repo-name { font-size: 13px; }
             .header {{ font-family: 'Segoe UI', Ubuntu, Sans-Serif; font-weight: bold; font-size: 28px; fill: #ffffff; }} 
@@ -22,12 +22,12 @@
         
         <g transform="translate(0, 35)">
             <text x="60" y="0" class="text stat-label">Total Contributions</text>
-            <text x="0" y="0" class="text stat-value">317</text>
+            <text x="0" y="0" class="text stat-value">320</text>
         </g>
         
         <g transform="translate(0, 65)">
             <text x="60" y="0" class="text stat-label">Commits</text>
-            <text x="0" y="0" class="text stat-value">215</text>
+            <text x="0" y="0" class="text stat-value">218</text>
         </g>
         
         <g transform="translate(0, 95)">
@@ -59,11 +59,11 @@
         <!-- Languages -->
         <g transform="translate(0, 15)">            
             <g transform="translate(0, 15)">
-                <g clip-path="url(#rounded-bar-2125710344384)"><rect x="0" y="0" width="45.54087831779053%" height="8" fill="#000000"/><rect x="0.0" y="0" width="45.54087831779053%" height="8" fill="#ffd700"/><rect x="232.2584794207317" y="0" width="17.843211979913917%" height="8" fill="#2b7489"/><rect x="323.2588605182927" y="0" width="14.045406653515064%" height="8" fill="#555555"/><rect x="394.8904344512195" y="0" width="13.88624237804878%" height="8" fill="#b07219"/><rect x="465.7102705792683" y="0" width="5.914017664992826%" height="8" fill="#198CE7"/><rect x="495.8717606707317" y="0" width="2.770243005738882%" height="8" fill="#83056a"/></g>
+                <g clip-path="url(#rounded-bar-1690831316416)"><rect x="0" y="0" width="47.10376475199233%" height="8" fill="#000000"/><rect x="0.0" y="0" width="47.10376475199233%" height="8" fill="#ffd700"/><rect x="240.22920023516087" y="0" width="17.331141401384837%" height="8" fill="#2b7489"/><rect x="328.61802138222356" y="0" width="13.6423267865697%" height="8" fill="#555555"/><rect x="398.19388799372905" y="0" width="13.487730261725384%" height="8" fill="#b07219"/><rect x="466.9813123285285" y="0" width="5.74429517049166%" height="8" fill="#198CE7"/><rect x="496.27721769803594" y="0" width="2.6907416278360854%" height="8" fill="#83056a"/></g>
             </g>
             
             <g transform="translate(0, 45)">
-                <g transform="translate(0.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#ffd700"/><text x="15" y="0" class="text lang-text">Python 45.54%</text></g><g transform="translate(170.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#2b7489"/><text x="15" y="0" class="text lang-text">TypeScript 17.84%</text></g><g transform="translate(340.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#555555"/><text x="15" y="0" class="text lang-text">C 14.05%</text></g><g transform="translate(0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#b07219"/><text x="15" y="0" class="text lang-text">Java 13.89%</text></g><g transform="translate(170.0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#198CE7"/><text x="15" y="0" class="text lang-text">R 5.91%</text></g><g transform="translate(340.0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#83056a"/><text x="15" y="0" class="text lang-text">Others 2.77%</text></g>
+                <g transform="translate(0.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#ffd700"/><text x="15" y="0" class="text lang-text">Python 47.10%</text></g><g transform="translate(170.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#2b7489"/><text x="15" y="0" class="text lang-text">TypeScript 17.33%</text></g><g transform="translate(340.0, 0.0)"><circle cx="5" cy="-3" r="5" fill="#555555"/><text x="15" y="0" class="text lang-text">C 13.64%</text></g><g transform="translate(0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#b07219"/><text x="15" y="0" class="text lang-text">Java 13.49%</text></g><g transform="translate(170.0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#198CE7"/><text x="15" y="0" class="text lang-text">R 5.74%</text></g><g transform="translate(340.0, 25.0)"><circle cx="5" cy="-3" r="5" fill="#83056a"/><text x="15" y="0" class="text lang-text">Others 2.69%</text></g>
             </g>
         </g>
     </g>
