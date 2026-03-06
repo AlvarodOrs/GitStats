@@ -34,7 +34,7 @@
             <text x="0" y="0" class="text stat-value">14</text>
         </g>
         
-        <g transform="translate(0, 95)">
+        <g transform="translate(0, 125)">
             <text x="60" y="0" class="text stat-label">Total views</text>
             <text x="0" y="0" class="text stat-value">2004</text>
         </g>
