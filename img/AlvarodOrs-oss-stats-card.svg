@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="900" height="550" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
-        <clipPath id="rounded-bar-1690831314432"><rect x="0" y="0" width="420" height="8" rx="4"/></clipPath>
+        <clipPath id="rounded-bar-3120362340096"><rect x="0" y="0" width="420" height="8" rx="4"/></clipPath>
         <filter id="blur">
             <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
         </filter>
@@ -3386,13 +3386,13 @@
         
         <g transform="translate(20, 55)">
             <text x="0" y="0" class="text stat-label">Contributions</text>
-            <text x="220" y="0" class="text stat-value">320</text>
+            <text x="220" y="0" class="text stat-value">321</text>
             
             <text x="0" y="30" class="text stat-label">Commits</text>
-            <text x="220" y="30" class="text stat-value">218</text>
+            <text x="220" y="30" class="text stat-value">219</text>
             
             <text x="0" y="60" class="text stat-label">Stars</text>
-            <text x="220" y="60" class="text stat-value">12</text>
+            <text x="220" y="60" class="text stat-value">14</text>
             
             <text x="0" y="90" class="text stat-label">PRs</text>
             <text x="220" y="90" class="text stat-value">1</text>
@@ -3449,7 +3449,7 @@
         <text x="20" y="30" class="text block-title">Top Repositories</text>
         
         <g transform="translate(0, 0)">
-            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="400" y="0" class="text lang-text">9 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="400" y="0" class="text lang-text">4 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/UNIR" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">UNIR</tspan></a></text><text x="400" y="0" class="text lang-text">4 views</text></g><g transform="translate(30, 139)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="400" y="0" class="text lang-text">1 views</text></g>
+            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="400" y="0" class="text lang-text">189 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/UNIR" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">UNIR</tspan></a></text><text x="400" y="0" class="text lang-text">56 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="400" y="0" class="text lang-text">5 views</text></g><g transform="translate(30, 139)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/AlvarodOrs" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">AlvarodOrs</tspan></a></text><text x="400" y="0" class="text lang-text">2 views</text></g><g transform="translate(30, 167)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="400" y="0" class="text lang-text">1 views</text></g>
         </g>
     </g>
     
@@ -3459,7 +3459,7 @@
         <text x="20" y="30" class="text block-title">Languages</text>
         
         <g transform="translate(20, 55)">
-            <g clip-path="url(#rounded-bar-1690831314432)"><rect x="0" y="0" width="47.10376475199233%" height="8" fill="#000000"/><rect x="0.0" y="0" width="47.10376475199233%" height="8" fill="#ffd700"/><rect x="197.83581195836777" y="0" width="17.331141401384837%" height="8" fill="#2b7489"/><rect x="270.6266058441841" y="0" width="13.6423267865697%" height="8" fill="#555555"/><rect x="327.92437834777684" y="0" width="13.487730261725384%" height="8" fill="#b07219"/><rect x="384.57284544702344" y="0" width="5.74429517049166%" height="8" fill="#198CE7"/><rect x="408.6988851630884" y="0" width="2.6907416278360854%" height="8" fill="#83056a"/></g>
+            <g clip-path="url(#rounded-bar-3120362340096)"><rect x="0" y="0" width="47.10376475199233%" height="8" fill="#000000"/><rect x="0.0" y="0" width="47.10376475199233%" height="8" fill="#ffd700"/><rect x="197.83581195836777" y="0" width="17.331141401384837%" height="8" fill="#2b7489"/><rect x="270.6266058441841" y="0" width="13.6423267865697%" height="8" fill="#555555"/><rect x="327.92437834777684" y="0" width="13.487730261725384%" height="8" fill="#b07219"/><rect x="384.57284544702344" y="0" width="5.74429517049166%" height="8" fill="#198CE7"/><rect x="408.6988851630884" y="0" width="2.6907416278360854%" height="8" fill="#83056a"/></g>
         </g>
         
         <g transform="translate(20, 80)">

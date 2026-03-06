@@ -10,7 +10,7 @@
     <stop offset="100%" style="stop-color:rgb(255,103,0);stop-opacity:0.15"/>
 </radialGradient>
 
-        <clipPath id="rounded-bar-1690831497408"><rect x="0" y="0" width="470" height="8" rx="4"/></clipPath>
+        <clipPath id="rounded-bar-3120362426560"><rect x="0" y="0" width="470" height="8" rx="4"/></clipPath>
         <clipPath id="avatar-clip">
             <circle cx="420" cy="70" r="35"/>
         </clipPath>
@@ -31,168 +31,174 @@
 <defs><filter id="blobBlur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="20"/></filter></defs>
 <rect width="100%" height="100%" fill="#ffd700"/>
 	<path fill="#2b7489" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="30.4394797898292s" repeatCount="indefinite"
-			values="M 176,17
-		C 130,25 122,58 75,87
-		C 70,161 79,131 -1,164
-		C -93,163 -71,123 -156,110
-		C -111,56 -154,63 -119,0
-		C -89,-28 -133,-42 -86,-63
-		C -36,-149 -94,-141 -31,-190
-		C 27,-174 51,-159 113,-136
-		C 166,-44 119,-54 176,17
+		<animate attributeName="d" dur="22.874005389408378s" repeatCount="indefinite"
+			values="M 152,-25
+		C 146,68 52,49 39,121
+		C -60,49 -55,31 -152,114
+		C -53,-6 -153,0 -145,-119
+		C -56,-128 -46,-54 47,-95
+		C 116,-17 96,-19 152,-25
 		Z;
 
-		M 151,37
-		C 168,66 81,82 99,128
-		C 29,134 5,113 -67,162
-		C -134,142 -102,94 -167,68
-		C -199,-4 -159,-2 -151,-80
-		C -123,-141 -114,-77 -73,-146
-		C -18,-182 -17,-118 51,-172
-		C 110,-113 144,-93 124,-73
-		C 143,-12 170,-22 151,37
+		M 159,45
+		C 101,79 96,90 16,103
+		C -22,28 -64,34 -106,22
+		C -107,-25 -39,-36 -68,-91
+		C 29,-52 34,-79 107,-138
+		C 130,-44 185,-49 159,45
 		Z;
 
-		M 176,17
-		C 130,25 122,58 75,87
-		C 70,161 79,131 -1,164
-		C -93,163 -71,123 -156,110
-		C -111,56 -154,63 -119,0
-		C -89,-28 -133,-42 -86,-63
-		C -36,-149 -94,-141 -31,-190
-		C 27,-174 51,-159 113,-136
-		C 166,-44 119,-54 176,17
+		M 152,-25
+		C 146,68 52,49 39,121
+		C -60,49 -55,31 -152,114
+		C -53,-6 -153,0 -145,-119
+		C -56,-128 -46,-54 47,-95
+		C 116,-17 96,-19 152,-25
 		Z"/>
-		<animateTransform attributeName="transform" dur="22.83943569129258s" repeatCount="indefinite" type="translate"
-			values="130.36587338896982,625.4178599238699;132.96796163823353,659.6882553432717;150.3984931411825,665.8067678915529;130.36587338896982,625.4178599238699" />
+		<animateTransform attributeName="transform" dur="23.008450445886442s" repeatCount="indefinite" type="translate"
+			values="192.20210706685003,191.75730157858135;148.57857168605017,174.1421684833615;145.6569324172624,222.3100141920745;192.20210706685003,191.75730157858135" />
 	</path>
 	<path fill="#555555" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="15.149745160201196s" repeatCount="indefinite"
-			values="M 137,-23
-		C 145,35 168,18 114,80
-		C 41,53 64,76 3,120
-		C -53,98 -29,101 -82,62
-		C -75,37 -95,40 -100,6
-		C -52,-55 -96,-60 -86,-114
-		C -40,-131 -61,-110 -14,-162
-		C -1,-96 46,-138 64,-67
-		C 97,-49 107,-55 137,-23
+		<animate attributeName="d" dur="33.664818947684026s" repeatCount="indefinite"
+			values="M 153,-12
+		C 113,65 79,63 73,120
+		C 12,192 6,192 -35,158
+		C -34,85 -94,88 -81,46
+		C -105,2 -72,3 -115,-41
+		C -102,-91 -48,-120 -55,-161
+		C -13,-179 9,-97 63,-93
+		C 132,-83 106,-16 153,-12
 		Z;
 
-		M 154,53
-		C 78,68 64,139 49,132
-		C -7,97 -14,91 -43,85
-		C -81,80 -87,59 -137,57
-		C -163,3 -95,-7 -89,-41
-		C -69,-60 -82,-55 -65,-85
-		C -12,-73 -10,-95 43,-97
-		C 61,-54 52,-85 98,-30
-		C 156,26 110,4 154,53
+		M 157,25
+		C 131,37 70,119 49,100
+		C -24,132 -13,39 -83,117
+		C -92,87 -144,90 -135,21
+		C -85,-30 -100,-37 -84,-71
+		C -35,-109 -40,-43 18,-106
+		C 45,-89 60,-80 90,-42
+		C 139,-39 149,-33 157,25
 		Z;
 
-		M 137,-23
-		C 145,35 168,18 114,80
-		C 41,53 64,76 3,120
-		C -53,98 -29,101 -82,62
-		C -75,37 -95,40 -100,6
-		C -52,-55 -96,-60 -86,-114
-		C -40,-131 -61,-110 -14,-162
-		C -1,-96 46,-138 64,-67
-		C 97,-49 107,-55 137,-23
+		M 153,-12
+		C 113,65 79,63 73,120
+		C 12,192 6,192 -35,158
+		C -34,85 -94,88 -81,46
+		C -105,2 -72,3 -115,-41
+		C -102,-91 -48,-120 -55,-161
+		C -13,-179 9,-97 63,-93
+		C 132,-83 106,-16 153,-12
 		Z"/>
-		<animateTransform attributeName="transform" dur="33.66050471649119s" repeatCount="indefinite" type="translate"
-			values="48.21831708630488,435.0039794367928;78.63371797390906,427.19006069161753;94.2623316226189,401.30495403678526;48.21831708630488,435.0039794367928" />
+		<animateTransform attributeName="transform" dur="23.032885835649665s" repeatCount="indefinite" type="translate"
+			values="249.1144599429794,60.94234072568479;271.53904132713336,43.291114610746334;216.74216775050596,16.20893380668859;249.1144599429794,60.94234072568479" />
 	</path>
 	<path fill="#b07219" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="15.864931739747494s" repeatCount="indefinite"
-			values="M 94,5
-		C 120,71 74,64 36,151
-		C -46,154 -31,205 -115,112
-		C -169,4 -90,10 -100,-87
-		C -2,-83 -12,-152 69,-136
-		C 100,-56 3,-54 94,5
+		<animate attributeName="d" dur="29.143219878744482s" repeatCount="indefinite"
+			values="M 129,21
+		C 108,20 100,61 73,66
+		C 25,79 19,99 -43,154
+		C -68,121 -107,81 -137,45
+		C -119,-15 -147,-6 -105,-66
+		C -43,-76 -45,-125 -14,-116
+		C 12,-116 21,-79 53,-80
+		C 68,-33 97,-23 129,21
 		Z;
 
-		M 114,39
-		C 53,64 50,30 -3,110
-		C -66,47 -76,66 -145,46
-		C -122,-36 -68,-15 -56,-73
-		C 21,-89 9,-148 76,-100
-		C 105,-35 54,-27 114,39
+		M 119,34
+		C 92,81 113,50 70,112
+		C 10,92 4,155 -56,101
+		C -112,39 -80,70 -135,44
+		C -104,-47 -83,-38 -94,-114
+		C -37,-139 -37,-147 20,-118
+		C 66,-63 82,-96 132,-58
+		C 105,-5 152,-9 119,34
 		Z;
 
-		M 94,5
-		C 120,71 74,64 36,151
-		C -46,154 -31,205 -115,112
-		C -169,4 -90,10 -100,-87
-		C -2,-83 -12,-152 69,-136
-		C 100,-56 3,-54 94,5
+		M 129,21
+		C 108,20 100,61 73,66
+		C 25,79 19,99 -43,154
+		C -68,121 -107,81 -137,45
+		C -119,-15 -147,-6 -105,-66
+		C -43,-76 -45,-125 -14,-116
+		C 12,-116 21,-79 53,-80
+		C 68,-33 97,-23 129,21
 		Z"/>
-		<animateTransform attributeName="transform" dur="34.30196264601561s" repeatCount="indefinite" type="translate"
-			values="102.7358288056304,526.3729534600008;106.29861897398207,536.0152667746204;56.635888263077106,496.4633068192161;102.7358288056304,526.3729534600008" />
+		<animateTransform attributeName="transform" dur="31.9117849001544s" repeatCount="indefinite" type="translate"
+			values="88.90849932641244,245.19703778280956;120.73925177029959,259.962941878193;101.39927665314784,202.08290272401968;88.90849932641244,245.19703778280956" />
 	</path>
 	<path fill="#198CE7" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="31.182124793450566s" repeatCount="indefinite"
-			values="M 104,19
-		C 49,92 62,28 16,75
-		C -3,35 -10,54 -43,45
-		C -46,8 -21,8 -53,-37
-		C -7,-82 -6,-85 37,-76
-		C 84,-34 49,-9 104,19
+		<animate attributeName="d" dur="24.895338266391782s" repeatCount="indefinite"
+			values="M 60,4
+		C 75,36 58,35 55,64
+		C 28,77 40,69 9,103
+		C -34,81 -19,101 -63,65
+		C -65,32 -52,25 -76,-10
+		C -48,-44 -68,-54 -62,-89
+		C -31,-62 -29,-101 2,-81
+		C 29,-55 28,-91 55,-82
+		C 55,-40 14,-40 60,4
 		Z;
 
-		M 87,10
-		C 45,49 42,71 -11,94
-		C -34,89 -64,86 -86,42
-		C -73,-10 -68,-17 -76,-69
-		C -15,-97 -8,-143 47,-88
-		C 58,-23 99,-40 87,10
+		M 85,34
+		C 66,46 67,44 41,73
+		C 3,88 7,50 -37,86
+		C -61,72 -47,66 -71,52
+		C -83,16 -64,26 -91,-20
+		C -62,-42 -80,-20 -46,-57
+		C -17,-93 -13,-26 15,-61
+		C 42,-54 41,-66 53,-38
+		C 79,-12 80,-11 85,34
 		Z;
 
-		M 104,19
-		C 49,92 62,28 16,75
-		C -3,35 -10,54 -43,45
-		C -46,8 -21,8 -53,-37
-		C -7,-82 -6,-85 37,-76
-		C 84,-34 49,-9 104,19
+		M 60,4
+		C 75,36 58,35 55,64
+		C 28,77 40,69 9,103
+		C -34,81 -19,101 -63,65
+		C -65,32 -52,25 -76,-10
+		C -48,-44 -68,-54 -62,-89
+		C -31,-62 -29,-101 2,-81
+		C 29,-55 28,-91 55,-82
+		C 55,-40 14,-40 60,4
 		Z"/>
-		<animateTransform attributeName="transform" dur="39.274575251716136s" repeatCount="indefinite" type="translate"
-			values="111.34073768421929,633.6572571497205;117.46585640158759,641.0075008364258;150.89873095073824,651.2948783808798;111.34073768421929,633.6572571497205" />
+		<animateTransform attributeName="transform" dur="25.411578904348566s" repeatCount="indefinite" type="translate"
+			values="273.567765863881,285.3427177407006;291.1282841623806,321.1828675300269;241.55510596892012,252.40967870161307;273.567765863881,285.3427177407006" />
 	</path>
 	<path fill="#83056a" filter="url(#blobBlur)">
-		<animate attributeName="d" dur="22.032605540171886s" repeatCount="indefinite"
-			values="M 65,6
-		C 54,35 73,30 45,44
-		C 25,59 26,59 -15,72
-		C -66,48 -21,29 -72,19
-		C -44,11 -43,-1 -44,-20
-		C -15,-35 -36,-30 -12,-73
-		C 14,-49 15,-44 30,-55
-		C 37,-37 65,-25 65,6
+		<animate attributeName="d" dur="21.548124573764163s" repeatCount="indefinite"
+			values="M 57,1
+		C 36,14 40,28 31,32
+		C 9,58 6,46 -7,75
+		C -37,51 -39,53 -44,49
+		C -59,12 -42,23 -75,-3
+		C -65,-23 -73,-17 -50,-40
+		C -29,-43 -18,-42 2,-56
+		C 18,-55 16,-55 36,-46
+		C 43,-21 43,-17 57,1
 		Z;
 
-		M 55,14
-		C 11,33 57,42 23,71
-		C -14,91 -6,35 -38,53
-		C -41,32 -56,41 -67,16
-		C -60,-17 -64,-12 -44,-38
-		C -24,-46 -19,-38 2,-47
-		C 22,-51 29,-47 52,-33
-		C 72,-10 54,-10 55,14
+		M 42,9
+		C 47,28 25,33 20,48
+		C -2,58 1,62 -10,71
+		C -0,35 -1,57 -35,23
+		C -33,9 -47,3 -50,-12
+		C -19,-31 -54,-36 -35,-57
+		C -12,-49 -14,-56 9,-47
+		C 38,-14 40,-54 61,-25
+		C 44,-9 56,-10 42,9
 		Z;
 
-		M 65,6
-		C 54,35 73,30 45,44
-		C 25,59 26,59 -15,72
-		C -66,48 -21,29 -72,19
-		C -44,11 -43,-1 -44,-20
-		C -15,-35 -36,-30 -12,-73
-		C 14,-49 15,-44 30,-55
-		C 37,-37 65,-25 65,6
+		M 57,1
+		C 36,14 40,28 31,32
+		C 9,58 6,46 -7,75
+		C -37,51 -39,53 -44,49
+		C -59,12 -42,23 -75,-3
+		C -65,-23 -73,-17 -50,-40
+		C -29,-43 -18,-42 2,-56
+		C 18,-55 16,-55 36,-46
+		C 43,-21 43,-17 57,1
 		Z"/>
-		<animateTransform attributeName="transform" dur="34.61566621105513s" repeatCount="indefinite" type="translate"
-			values="282.804442120786,134.2298607536486;275.04853079647467,104.80986687126543;284.6702312674135,138.33000354736203;282.804442120786,134.2298607536486" />
+		<animateTransform attributeName="transform" dur="28.505332313520967s" repeatCount="indefinite" type="translate"
+			values="413.98190331041457,619.7198171940738;394.00408885798925,662.9996236108235;433.7098538456212,633.0648251683999;413.98190331041457,619.7198171940738" />
 	</path>
 </svg>
     
@@ -218,7 +224,7 @@
             </text>
 
             <text x="250" y="0" class="text stat-value">
-                12
+                14
             </text>
             
             <text x="0" y="30" class="text stat-label">
@@ -226,7 +232,7 @@
             </text>
             
             <text x="250" y="30" class="text stat-value">
-                218
+                219
             </text>
             
             <text x="0" y="60" class="text stat-label">
@@ -250,7 +256,7 @@
             </text>
             
             <text x="250" y="120" class="text stat-value">
-                43
+                44
             </text>
         </g>
     </g>
@@ -262,7 +268,7 @@
         <!-- Total Contributions -->
         <g transform="translate(150, 40)">
             <text x="0" y="25" text-anchor="middle" class="text streak-number">
-                320
+                321
             </text>
             
             <text x="0" y="45" text-anchor="middle" class="text streak-label">
@@ -323,7 +329,7 @@
             Top Repositories by Views
         </text>
         <g transform="translate(0, 10)">
-            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="400" y="0" class="text lang-text">9 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="400" y="0" class="text lang-text">4 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/UNIR" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">UNIR</tspan></a></text><text x="400" y="0" class="text lang-text">4 views</text></g><g transform="translate(30, 139)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="400" y="0" class="text lang-text">1 views</text></g>
+            <g transform="translate(30, 55)"><text x="0" y="0" font-size="18" fill="#ffd700">★</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/TestSolver" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">TestSolver</tspan></a></text><text x="400" y="0" class="text lang-text">189 views</text></g><g transform="translate(30, 83)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/UNIR" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">UNIR</tspan></a></text><text x="400" y="0" class="text lang-text">56 views</text></g><g transform="translate(30, 111)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/GitStats" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">GitStats</tspan></a></text><text x="400" y="0" class="text lang-text">5 views</text></g><g transform="translate(30, 139)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/AlvarodOrs" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">AlvarodOrs</tspan></a></text><text x="400" y="0" class="text lang-text">2 views</text></g><g transform="translate(30, 167)"><text x="0" y="0" font-size="18" fill="#ffffff">▪</text><text x="25" y="0" class="text repo-name"><a href="https://github.com/None/Destiny" target="_blank"><tspan fill="#ffffff" text-decoration="none" style="cursor:pointer">Destiny</tspan></a></text><text x="400" y="0" class="text lang-text">1 views</text></g>
         </g>
     </g>
     
@@ -336,7 +342,7 @@
         </text>
         
         <g transform="translate(30, 55)">
-            <g clip-path="url(#rounded-bar-1690831497408)"><rect x="0" y="0" width="47.10376475199233%" height="8" fill="#000000"/><rect x="0.0" y="0" width="47.10376475199233%" height="8" fill="#ffd700"/><rect x="221.38769433436394" y="0" width="17.331141401384837%" height="8" fill="#2b7489"/><rect x="302.84405892087267" y="0" width="13.6423267865697%" height="8" fill="#555555"/><rect x="366.96299481775026" y="0" width="13.487730261725384%" height="8" fill="#b07219"/><rect x="430.35532704785953" y="0" width="5.74429517049166%" height="8" fill="#198CE7"/><rect x="457.3535143491703" y="0" width="2.6907416278360854%" height="8" fill="#83056a"/></g>
+            <g clip-path="url(#rounded-bar-3120362426560)"><rect x="0" y="0" width="47.10376475199233%" height="8" fill="#000000"/><rect x="0.0" y="0" width="47.10376475199233%" height="8" fill="#ffd700"/><rect x="221.38769433436394" y="0" width="17.331141401384837%" height="8" fill="#2b7489"/><rect x="302.84405892087267" y="0" width="13.6423267865697%" height="8" fill="#555555"/><rect x="366.96299481775026" y="0" width="13.487730261725384%" height="8" fill="#b07219"/><rect x="430.35532704785953" y="0" width="5.74429517049166%" height="8" fill="#198CE7"/><rect x="457.3535143491703" y="0" width="2.6907416278360854%" height="8" fill="#83056a"/></g>
         </g>
         
         <g transform="translate(30, 80)">
