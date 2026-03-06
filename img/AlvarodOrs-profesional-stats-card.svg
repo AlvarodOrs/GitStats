@@ -39,7 +39,7 @@
             <text x="0" y="0" class="text stat-value">2004</text>
         </g>
 
-        <g transform="translate(0, 125)">
+        <g transform="translate(0, 155)">
             <text x="0" y="60" font-weight="700" font-family="'Segoe UI', Ubuntu, Sans-Serif" font-size="20" fill="#ffffff">Active since Dec 02, 2020</text>
         </g>
     </g>
