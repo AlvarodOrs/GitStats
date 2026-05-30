@@ -1,3 +1,30 @@
+<!-- [START]
+## Overview
+
+GitStats automatically generates animated SVG stats cards for GitHub profiles, pulling data via the GitHub REST and GraphQL APIs. Cards include contribution history, streaks, top languages, and repository views — with particle effects that visually reflect the languages used across your repos.
+
+The project is designed to run on a schedule via GitHub Actions and self-update by committing the generated SVG back to the repository.
+
+## Scope
+
+- **Data collection** — profile info, contributions, stars, PRs, issues, language breakdown, and repo views via GitHub API
+- **SVG generation** — modular card renderer with multiple layouts (default, professional, backend, OSS, neutral)
+- **Particle system** — animated particles whose colors correspond to the languages in your repos
+- **Automation** — auto-commit and push via GitHub Actions on a daily cron schedule
+- **Filtering** — excludes automated commits from contribution counts
+
+## Card Models
+
+- **Default** — general-purpose stats overview
+- **Internship** — professional summary layout
+- **Backend** — backend-oriented metrics emphasis
+- **Neutral** — minimal, clean layout
+- **OSS** — open source contribution focus
+
+## Status
+
+In progress. Core generation pipeline and multiple card models are functional.
+[END]-->
 # 📊 GitHub Stats Generator
 
 Automatically generate stunning, animated GitHub stats cards based on [anuraghazra's](https://github.com/anuraghazra/github-readme-stats) and [Nirzak's](https://github.com/Nirzak/github-streak-stats-personal) projects. Track contributions, repository insights, and language breakdowns—with particle effects that visually represent the programming languages used in your repos.
